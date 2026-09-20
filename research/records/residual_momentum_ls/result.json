@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "name": "residual_momentum_ls",
+    "channel": "long_short",
+    "universe": "cross_section",
+    "long_only": false,
+    "description": "残差动量多空：对每个资产用尾部窗口把它对「等权市场收益」做过原点回归得到 beta，残差 = 自身收益 - beta×市场收益，按 score_window 期累计残差（以残差波动标准化）截面排序，做多残差动量最强的 top 分位、做空最弱的 bottom 分位，两腿等权各占 0.5 预算，组合美元中性。",
+    "hypothesis": "成因：原始动量被市场 beta 污染——高 beta 资产在上涨期「看起来强」，其强势只是市场的放大镜像，一旦市场回调便加倍回吐；把等权市场收益回归掉之后，累计残差更接近特质信息（业绩、竞争力、资金关注度）的逐步扩散速度，截面区分度更高、时序更稳定，且多空两端再对冲掉残余市场敞口，赚的是纯特质相对强弱。失效条件：等权市场收益是粗糙的单因子代理，当真实因子结构多元（行业/风格主导）或 beta 不稳定时，残差仍被共同因子污染，排序失真；市场急转弯处尾部窗口估出的 beta 滞后于真实敞口；特质收益由一次性事件（跳空、复牌）贡献时残差动量追错方向；策略拥挤后残差动量价差被提前收敛。",
+    "source": "多空股票 alpha 范式——残差动量 (residual momentum, Blitz-Huij-Martens 思路) 的市场中性版本，本仓库原创 numpy/pandas 实现（滚动过原点回归 beta + 波动标准化累计残差，不用 statsmodels）；与 factor 渠道的 idio_momentum（只做多、且用「动量减截面均值」近似而非回归残差）在信号构造与组合形态上均不同。",
+    "params": {
+      "reg_window": 60,
+      "score_window": 60,
+      "top_frac": 0.3333333333333333,
+      "leg_budget": 0.5
+    }
+  },
+  "metrics": {
+    "total_return": -0.11935119707931119,
+    "cagr": -0.031520811271149585,
+    "volatility": 0.08926851478846132,
+    "sharpe": -0.3141629050402089,
+    "sortino": -0.43605695053248344,
+    "max_drawdown": 0.17612494910941923,
+    "calmar": -0.17896846205228423,
+    "win_rate": 0.48412698412698413,
+    "profit_factor": 0.9484754063659284,
+    "avg_turnover": 0.15169587734445572,
+    "total_turnover": 151.6958773444557,
+    "n_periods": 1000.0
+  },
+  "data": "synthetic",
+  "cost_rate": 0.0005
+}

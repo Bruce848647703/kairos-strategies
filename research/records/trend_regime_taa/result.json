@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "name": "trend_regime_taa",
+    "channel": "taa",
+    "universe": "cross_section",
+    "long_only": true,
+    "description": "趋势状态战术配置：以等权组合净值指数作为『市场』代理，指数高于其 ma_window 期均线（含 ±buffer 滞后带，状态机持有）时满仓持有风险 sleeve（等权或正动量加权），跌破均线时全部转为现金（risk-off，总敞口 0）。",
+    "hypothesis": "核心假设：大类资产/宽基市场存在可持续数月的趋势状态（牛熊切换），长期均线是最简单稳健的状态判别器——在均线之上时承担风险、之下时退到现金，可截断熊市左尾、以少量震荡市的假信号成本换取回撤的大幅下降。buffer 滞后带 + 状态机持有降低在均线附近反复进出的换手。失效场景：无方向的箱体震荡（连续假突破、反复挨打）、V 型急跌急涨（均线滞后导致既没躲过下跌又踏空反弹）、以及均线窗口与市场周期错配时。",
+    "source": "TAA 经典范式——趋势跟随 / 200 日均线择时 (trend regime、time-series momentum overlay) 的多资产组合层实现，本仓库原创。",
+    "params": {
+      "ma_window": 200,
+      "buffer": 0.01,
+      "sleeve": "equal",
+      "mom_window": 63
+    }
+  },
+  "metrics": {
+    "total_return": 0.05860071270148515,
+    "cagr": 0.01445435263195427,
+    "volatility": 0.06973626928278813,
+    "sharpe": 0.2406404571124328,
+    "sortino": 0.33972397668813065,
+    "max_drawdown": 0.08435503394184773,
+    "calmar": 0.171351393704835,
+    "win_rate": 0.5098870056497176,
+    "profit_factor": 1.0463108631824638,
+    "avg_turnover": 0.018705759458624266,
+    "total_turnover": 18.705759458624264,
+    "n_periods": 1000.0
+  },
+  "data": "synthetic",
+  "cost_rate": 0.0005
+}

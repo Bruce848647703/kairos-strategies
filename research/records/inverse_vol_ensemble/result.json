@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "name": "inverse_vol_ensemble",
+    "channel": "ensemble",
+    "universe": "cross_section",
+    "long_only": true,
+    "description": "逆波动元策略（walk-forward）：先用 engine.Backtester 对 sma_cross、donchian_turtle、ts_momentum、low_volatility、inverse_vol 各做一次零成本向量化回测得到策略收益序列，第 t 期按各基础策略「截至 t-1」的 window 期滚动波动倒数（1/σ，σ 设下限 vol_floor）加权，逐行归一到和为 1 后混合其权重面板；观测不足 min_obs 的预热期回退等权。",
+    "hypothesis": "核心假设：策略层波动率的可预测性远强于策略层收益率，把更多资金分给近期更平稳的基础策略，能在不预测收益的前提下压低元策略波动、改善夏普（风险平价的策略层版本）；波动下限避免长期空仓（σ→0）的策略获得爆炸性权重。系数由滚动统计再 shift(1) 得到，第 t 期只使用 [0, t-1] 的已实现回测收益，严格防未来。失效场景：波动 regime 切换时历史波动对前瞻波动失去代表性（低波策略恰在波动跳升前重仓）、低波腿本身拥挤，或各基础策略波动接近时退化为近似等权而无增益；它也不区分波动的方向性，高收益高波动策略会被系统性低配。",
+    "source": "元策略范式——策略层逆波动率加权（inverse-volatility weighting over strategies），思路来自风险平价/波动率目标；基础策略收益由本仓库 engine.Backtester 回测产生，滚动窗口、shift(1) 的 walk-forward 系数与归一/退化回退为本渠道原创实现。",
+    "params": {
+      "weighting": "inverse_vol",
+      "window": 126,
+      "min_obs": 42,
+      "vol_floor": 0.0001,
+      "cost_rate": 0.0,
+      "n_bases": 5,
+      "bases": [
+        "sma_cross",
+        "donchian_turtle",
+        "ts_momentum",
+        "low_volatility",
+        "inverse_vol"
+      ]
+    }
+  },
+  "metrics": {
+    "total_return": 0.19272982846648157,
+    "cagr": 0.045414704053116095,
+    "volatility": 0.05704314019962131,
+    "sharpe": 0.8071556817680812,
+    "sortino": 1.1864407489284312,
+    "max_drawdown": 0.05955905986052423,
+    "calmar": 0.7625154621222787,
+    "win_rate": 0.524,
+    "profit_factor": 1.1391048907790104,
+    "avg_turnover": 0.059426243755236856,
+    "total_turnover": 59.426243755236854,
+    "n_periods": 1000.0
+  },
+  "data": "synthetic",
+  "cost_rate": 0.0005
+}

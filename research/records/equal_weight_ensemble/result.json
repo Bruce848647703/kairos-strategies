@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "name": "equal_weight_ensemble",
+    "channel": "ensemble",
+    "universe": "cross_section",
+    "long_only": true,
+    "description": "等权元策略：把 sma_cross、donchian_turtle、ts_momentum、low_volatility、inverse_vol 五个基础策略的目标权重面板按 1/5 等权平均成单一元策略权重（各腿先统一为 long_only，系数恒为 1/5，每行权重和 ≤ 1，无杠杆）。",
+    "hypothesis": "核心假设：单个策略的失效时点无法预测，而趋势择时（双均线/通道突破）、时序动量、低波动异象、逆波动率配置这几类范式的收益驱动来源不同、相关性较低，等权平均能在不做任何『哪个策略接下来有效』判断的前提下分散策略层风险，压低元策略波动与单策略回撤，长期获得更接近池内平均、更平滑的净值。失效场景：系统性危机中各基础策略暴露趋同（趋势与低波同时受挫、相关性趋向 1），分散化红利消失；等权也放弃了对表现差异的自适应，长期会跑输池内最优单策略，且在全部基础策略同向亏损时同样亏损。",
+    "source": "元策略（strategy of strategies / fund-of-strategies）经典范式——策略层等权组合；基础策略全部复用本仓库 technical / momentum / factor / allocation 渠道已稳定的公开 Strategy 类，等权混合、long_only 统一与去杠杆为本渠道原创实现。",
+    "params": {
+      "weighting": "equal",
+      "n_bases": 5,
+      "bases": [
+        "sma_cross",
+        "donchian_turtle",
+        "ts_momentum",
+        "low_volatility",
+        "inverse_vol"
+      ]
+    }
+  },
+  "metrics": {
+    "total_return": 0.22439504464764037,
+    "cagr": 0.052340376710555914,
+    "volatility": 0.06516232833641385,
+    "sharpe": 0.8155384019213174,
+    "sortino": 1.1978850316050396,
+    "max_drawdown": 0.08041561522950935,
+    "calmar": 0.65087329819183,
+    "win_rate": 0.524,
+    "profit_factor": 1.1393390216743209,
+    "avg_turnover": 0.08534993700827724,
+    "total_turnover": 85.34993700827724,
+    "n_periods": 1000.0
+  },
+  "data": "synthetic",
+  "cost_rate": 0.0005
+}
