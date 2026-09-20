@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "name": "min_variance_alloc",
+    "channel": "allocation",
+    "universe": "cross_section",
+    "long_only": true,
+    "description": "全局最小方差：滚动样本协方差下解 w ∝ Σ⁻¹1（岭正则 + np.linalg.solve，奇异回退 pinv），负分量裁剪到 0 后重新归一，保证 long-only 满仓。",
+    "hypothesis": "协方差是收益分布中最可估计的部分，最小方差组合位于有效前沿最左端，在不预测收益的前提下最小化组合波动。对协方差估计误差高度敏感（『误差最大化』效应），样本病态时会给出极端权重——用岭正则与 long-only 投影约束之。",
+    "source": "组合配置经典范式——Markowitz 全局最小方差组合 (GMV)，纯 numpy 原创实现。",
+    "params": {
+      "window": 60,
+      "ridge": 1e-10
+    }
+  },
+  "metrics": {
+    "total_return": 0.23111825468194547,
+    "cagr": 0.0537935651441761,
+    "volatility": 0.08748100564918063,
+    "sharpe": 0.642698710111517,
+    "sortino": 0.9398627992870074,
+    "max_drawdown": 0.14828908875371793,
+    "calmar": 0.36276145194686404,
+    "win_rate": 0.51,
+    "profit_factor": 1.106631387173102,
+    "avg_turnover": 0.05161833219375756,
+    "total_turnover": 51.61833219375756,
+    "n_periods": 1000.0
+  },
+  "data": "synthetic",
+  "cost_rate": 0.0005
+}

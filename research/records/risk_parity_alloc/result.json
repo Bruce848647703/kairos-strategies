@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "name": "risk_parity_alloc",
+    "channel": "allocation",
+    "universe": "cross_section",
+    "long_only": true,
+    "description": "风险平价(ERC)：用滚动样本协方差，自研牛顿迭代（对数障碍凸形式 + 回溯线搜索）使各资产成分风险贡献 wᵢ(Σw)ᵢ 相等，归一到每行和=1。",
+    "hypothesis": "等风险贡献让组合风险在资产间均衡分散，而非被少数高波/高相关资产垄断，在风险维度（而非资金维度）做分散化，长期风险调整后收益更稳健。当风险因子高度共振（危机中相关性趋 1）时『分散化幻觉』破裂，可能出现同步回撤。",
+    "source": "组合配置经典范式——Equal Risk Contribution / Risk Parity（Maillard-Roncalli-Teïletche 思想），牛顿迭代求解为本仓库原创纯 numpy 实现。",
+    "params": {
+      "window": 60,
+      "max_iters": 50,
+      "tol": 1e-10
+    }
+  },
+  "metrics": {
+    "total_return": 0.3222540210868339,
+    "cagr": 0.07292991404591342,
+    "volatility": 0.08479373036507867,
+    "sharpe": 0.8726313836110178,
+    "sortino": 1.2877796345434214,
+    "max_drawdown": 0.07939310138456157,
+    "calmar": 0.918592582655992,
+    "win_rate": 0.516,
+    "profit_factor": 1.1471313864302446,
+    "avg_turnover": 0.025913113970474674,
+    "total_turnover": 25.913113970474676,
+    "n_periods": 1000.0
+  },
+  "data": "synthetic",
+  "cost_rate": 0.0005
+}
