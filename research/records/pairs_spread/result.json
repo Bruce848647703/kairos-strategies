@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "name": "pairs_spread",
+    "channel": "meanrev",
+    "universe": "cross_section",
+    "long_only": false,
+    "description": "配对价差统计套利：取两只资产的对数价差滚动 z-score，价差被低估时做多 A/做空 B、被高估时反向，回归中枢平仓；两腿等权，组合市场中性。",
+    "hypothesis": "核心假设：同族资产的对数价差（相对估值）比绝对价格更平稳，价差极端偏离后倾向收敛，多空对冲可剥离市场 beta。失效场景：两腿基本面脱钩（协整关系破裂）时价差不回归而是持续发散，亏损无自然上限；配对选择错误是最大风险来源。",
+    "source": "统计套利经典范式——pairs trading / 价差 z-score 多空（本仓库原创实现）。",
+    "params": {
+      "leg_a": "A0",
+      "leg_b": "A1",
+      "window": 40,
+      "entry_z": 1.5,
+      "exit_z": 0.5,
+      "leg_weight": 0.5
+    }
+  },
+  "metrics": {
+    "total_return": -0.23008892059978514,
+    "cagr": -0.06376898637590533,
+    "volatility": 0.11741351122177315,
+    "sharpe": -0.5024701530902879,
+    "sortino": -0.6930339878962898,
+    "max_drawdown": 0.31013349110820054,
+    "calmar": -0.2056178652232608,
+    "win_rate": 0.47103658536585363,
+    "profit_factor": 0.9052554755752735,
+    "avg_turnover": 0.06789524798070229,
+    "total_turnover": 67.8952479807023,
+    "n_periods": 1000.0
+  },
+  "data": "synthetic",
+  "cost_rate": 0.0005
+}

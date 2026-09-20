@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kairos-strategies"
+version = "0.1.0"
+description = "Kairos Strategies — 自研策略研究库：多渠道收集策略、原创实现、回测并固化 QR 研究记录"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "Bruce848647703" }]
+keywords = ["quant", "strategy", "backtest", "alpha", "quantitative-research", "python"]
+dependencies = [
+    "numpy>=1.21",
+    "pandas>=1.3",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+plot = ["matplotlib>=3.4"]
+
+[tool.setuptools]
+packages = ["kairos_strategies", "kairos_strategies.channels"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "name": "ts_momentum",
+    "channel": "momentum",
+    "universe": "timing",
+    "long_only": true,
+    "description": "时序动量：过去 N 期累计收益为正则做多该资产、为负则空仓（等预算 1/N）。",
+    "hypothesis": "价格存在中期趋势延续（正自相关），顺势持有可获取动量溢价；在震荡反转或趋势急转时失效。",
+    "source": "动量范式——时序动量 time-series momentum（Moskowitz-Ooi-Pedersen 思路，原创实现）。",
+    "params": {
+      "lookback": 60
+    }
+  },
+  "metrics": {
+    "total_return": 0.06492790147339855,
+    "cagr": 0.015978907776326157,
+    "volatility": 0.061855099874198655,
+    "sharpe": 0.28719241466935824,
+    "sortino": 0.41051398262749,
+    "max_drawdown": 0.07555118858911547,
+    "calmar": 0.2114977682644719,
+    "win_rate": 0.5106382978723404,
+    "profit_factor": 1.0484235483459035,
+    "avg_turnover": 0.05679137363900101,
+    "total_turnover": 56.79137363900101,
+    "n_periods": 1000.0
+  },
+  "data": "synthetic",
+  "cost_rate": 0.0005
+}

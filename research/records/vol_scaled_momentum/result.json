@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "name": "vol_scaled_momentum",
+    "channel": "volatility",
+    "universe": "timing",
+    "long_only": true,
+    "description": "时序动量（跳过最近数期）为正的资产才持有，权重按已实现波动倒数分配（波动越大仓位越小），总敞口 = 正动量资产占比。",
+    "hypothesis": "核心假设：动量信号的风险调整强度与波动成反比——同样的涨幅，低波动资产更可能来自持续性资金流而非噪声，因此按 1/vol 加权近似最大化组合 Sharpe（等风险贡献的简化版）；总敞口用「正动量资产占比」(breadth) 决定，等价于在市场普跌时自动降仓（绝对动量过滤）。失效场景：低波动资产同时缺乏弹性时会跑输等权；高波动急跌后的反弹被系统性低配；breadth 项在震荡市中会频繁改变总敞口，增加换手。",
+    "source": "时序动量 (time-series momentum) + 波动率缩放 (inverse-vol weighting) 的组合范式（本仓库原创实现）。",
+    "params": {
+      "mom_window": 60,
+      "skip": 5,
+      "vol_window": 20,
+      "vol_floor": 0.05
+    }
+  },
+  "metrics": {
+    "total_return": 0.06058089537606959,
+    "cagr": 0.014932214658757603,
+    "volatility": 0.05909266850177899,
+    "sharpe": 0.2803378872959175,
+    "sortino": 0.4083613860153246,
+    "max_drawdown": 0.09901723207784141,
+    "calmar": 0.150804201909207,
+    "win_rate": 0.5080213903743316,
+    "profit_factor": 1.047865344499422,
+    "avg_turnover": 0.07305750070735192,
+    "total_turnover": 73.05750070735192,
+    "n_periods": 1000.0
+  },
+  "data": "synthetic",
+  "cost_rate": 0.0005
+}

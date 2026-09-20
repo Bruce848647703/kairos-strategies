@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "name": "short_term_reversal",
+    "channel": "factor",
+    "universe": "cross_section",
+    "long_only": true,
+    "description": "短期反转：按过去短窗口收益升序排名，做多近期跌幅最大的一篮子，跌得越多权重越高。",
+    "hypothesis": "流动性冲击与投资者过度反应使近端价格短暂偏离，随后做市商回补与均值回归推动反弹；做多最近大幅下跌的一篮子可捕捉这种短期修复。当下跌由基本面恶化（信息驱动）主导，或市场处于持续单边趋势时，反转会失效甚至放大亏损。",
+    "source": "因子异象——短期反转 (short-term reversal)，纯价格构造。",
+    "params": {
+      "lookback": 5,
+      "top_frac": 0.3333333333333333
+    }
+  },
+  "metrics": {
+    "total_return": -0.506557954826568,
+    "cagr": -0.1630577150747371,
+    "volatility": 0.18442352353319932,
+    "sharpe": -0.8726735862184525,
+    "sortino": -1.188332391818058,
+    "max_drawdown": 0.591697857038278,
+    "calmar": -0.275575977055108,
+    "win_rate": 0.47839195979899496,
+    "profit_factor": 0.8714439526375325,
+    "avg_turnover": 0.7976388609707771,
+    "total_turnover": 797.638860970777,
+    "n_periods": 1000.0
+  },
+  "data": "synthetic",
+  "cost_rate": 0.0005
+}

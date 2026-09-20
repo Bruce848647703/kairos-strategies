@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "name": "rsi_reversion",
+    "channel": "technical",
+    "universe": "timing",
+    "long_only": true,
+    "description": "RSI 均值回归：超卖买入，回升至中性上方离场（双阈值滞后）。",
+    "hypothesis": "短期超跌后价格倾向反弹；及时止盈避免持有下行趋势。",
+    "source": "经典技术分析——RSI 超买超卖。",
+    "params": {
+      "window": 14,
+      "enter_below": 35.0,
+      "exit_above": 55.0
+    }
+  },
+  "metrics": {
+    "total_return": 0.0811046361089931,
+    "cagr": 0.019846166808291432,
+    "volatility": 0.04369395128662133,
+    "sharpe": 0.471595821557899,
+    "sortino": 0.6958206792185917,
+    "max_drawdown": 0.0538078649044047,
+    "calmar": 0.3688339398626989,
+    "win_rate": 0.5144385026737968,
+    "profit_factor": 1.0810262847455832,
+    "avg_turnover": 0.023913896274820025,
+    "total_turnover": 23.913896274820026,
+    "n_periods": 1000.0
+  },
+  "data": "synthetic",
+  "cost_rate": 0.0005
+}

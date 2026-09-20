@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "name": "atr_breakout",
+    "channel": "volatility",
+    "universe": "timing",
+    "long_only": true,
+    "description": "ATR 通道突破：收盘价上穿「均线 + k×ATR」做多，跌回均线（或下轨）离场；状态机持有 + 通道滞后一期以降低换手。",
+    "hypothesis": "核心假设：以波动自适应的通道宽度能区分「真突破」与「噪声」——波动放大时门槛自动抬高，波动收敛后的突破更可能延续为趋势（波动收缩形态 VCP 的思路）。在趋势/突破行情中盈利，在无方向的宽幅震荡市中会被反复打脸（连续小亏，靠偶发大趋势回本）；由于用收盘价近似 TR（无日内高低点），通道偏窄，触发频率高于真实 ATR 通道。",
+    "source": "经典技术分析——ATR 通道 / 肯特纳通道 (Keltner channel) 突破范式（本仓库原创实现）。",
+    "params": {
+      "ma_window": 20,
+      "atr_window": 14,
+      "k": 2.0,
+      "atr_floor_pct": 0.002,
+      "exit_band": 0.0,
+      "exit_ref": "mid"
+    }
+  },
+  "metrics": {
+    "total_return": 0.37975550158705285,
+    "cagr": 0.08450145216156457,
+    "volatility": 0.0540590610904192,
+    "sharpe": 1.5278140649596113,
+    "sortino": 2.40354581828911,
+    "max_drawdown": 0.05643489852173311,
+    "calmar": 1.4973262001883996,
+    "win_rate": 0.5193877551020408,
+    "profit_factor": 1.281872892117247,
+    "avg_turnover": 0.05637219467700963,
+    "total_turnover": 56.37219467700963,
+    "n_periods": 1000.0
+  },
+  "data": "synthetic",
+  "cost_rate": 0.0005
+}

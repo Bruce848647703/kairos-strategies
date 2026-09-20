@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "name": "crypto_momentum_247",
+    "channel": "crypto",
+    "universe": "timing",
+    "long_only": true,
+    "description": "24/7 动量：加密市场无休市，用较短窗口（7/30 期）时序动量双确认，做多强势币、空仓弱势币，等预算 1/N。",
+    "hypothesis": "加密资产 7x24 连续交易、信息消化更快，趋势窗口更短，短周期动量在趋势延续段有效；高噪声震荡期频繁进出会失效。",
+    "source": "加密市场实践——24/7 短周期时序动量，本仓库基于价格面板原创实现。",
+    "params": {
+      "fast": 7,
+      "slow": 30
+    }
+  },
+  "metrics": {
+    "total_return": 0.26886481912440297,
+    "cagr": 0.061843883544202116,
+    "volatility": 0.05116742173371323,
+    "sharpe": 1.1984308314102057,
+    "sortino": 1.8732453739977586,
+    "max_drawdown": 0.05026371017567188,
+    "calmar": 1.2303883523133783,
+    "win_rate": 0.5150884495317378,
+    "profit_factor": 1.2232220873900592,
+    "avg_turnover": 0.11403374006584803,
+    "total_turnover": 114.03374006584804,
+    "n_periods": 1000.0
+  },
+  "data": "synthetic",
+  "cost_rate": 0.0005
+}

@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "name": "bollinger_breakout",
+    "channel": "technical",
+    "universe": "timing",
+    "long_only": true,
+    "description": "布林带突破：收盘上穿上轨做多，回落至中轨下方离场。",
+    "hypothesis": "突破上轨代表强势启动，趋势延续至均值附近。",
+    "source": "经典技术分析——布林带突破。",
+    "params": {
+      "window": 20,
+      "num_std": 2.0
+    }
+  },
+  "metrics": {
+    "total_return": 0.26244715560721676,
+    "cagr": 0.06048792639578515,
+    "volatility": 0.04977325815623991,
+    "sharpe": 1.204919407408808,
+    "sortino": 1.8534853515112766,
+    "max_drawdown": 0.04208044379192444,
+    "calmar": 1.437435562582951,
+    "win_rate": 0.509783728115345,
+    "profit_factor": 1.221413766834657,
+    "avg_turnover": 0.04387304941174227,
+    "total_turnover": 43.87304941174227,
+    "n_periods": 1000.0
+  },
+  "data": "synthetic",
+  "cost_rate": 0.0005
+}

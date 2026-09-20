@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "name": "donchian_turtle",
+    "channel": "technical",
+    "universe": "timing",
+    "long_only": true,
+    "description": "唐奇安通道突破（海龟）：创 N 日新高做多，跌破 M 日新低离场。",
+    "hypothesis": "区间突破后趋势延续（海龟交易法则）。",
+    "source": "经典技术分析——唐奇安通道 / 海龟交易法。",
+    "params": {
+      "entry": 20,
+      "exit": 10
+    }
+  },
+  "metrics": {
+    "total_return": 0.36207142738460285,
+    "cagr": 0.08098177123246386,
+    "volatility": 0.053268611166721734,
+    "sharpe": 1.4886484666101343,
+    "sortino": 2.316589865893725,
+    "max_drawdown": 0.05020527601158142,
+    "calmar": 1.6130131664604905,
+    "win_rate": 0.5195071868583162,
+    "profit_factor": 1.2761052102950912,
+    "avg_turnover": 0.04637141438774729,
+    "total_turnover": 46.37141438774729,
+    "n_periods": 1000.0
+  },
+  "data": "synthetic",
+  "cost_rate": 0.0005
+}
