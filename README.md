@@ -59,9 +59,35 @@ for s in ks.discover():
     print(s.name, round(res.metrics["sharpe"], 2))
 ```
 
-## 策略渠道一览
-见 [`research/SUMMARY.md`](research/SUMMARY.md)（自动生成，含每个策略的累计收益/夏普/回撤等）。
-渠道随收录持续扩充；每个策略的研究记录在 `research/records/<name>/`。
+## 策略渠道一览（87 策略 / 22 渠道）
+
+| 渠道 | 策略数 | 策略 |
+|---|---|---|
+| `benchmark` | 1 | `equal_weight_buy_hold` |
+| `technical` | 5 | `bollinger_breakout`, `donchian_turtle`, `macd_trend`, `rsi_reversion`, `sma_cross` |
+| `trend` | 5 | `adx_trend`, `dual_thrust`, `ma_ribbon`, `tsmom_volscaled`, `turtle_atr` |
+| `breakout` | 4 | `channel_atr_breakout`, `keltner_breakout`, `range_breakout`, `volatility_breakout` |
+| `momentum` | 4 | `dual_momentum`, `high_52w`, `ts_momentum`, `xs_momentum` |
+| `meanrev` | 4 | `bollinger_reversion`, `ma_deviation`, `pairs_spread`, `zscore_reversion` |
+| `factor` | 4 | `idio_momentum`, `low_volatility`, `short_term_reversal`, `trend_quality` |
+| `multi_factor` | 4 | `equalweight_composite`, `ic_weighted_composite`, `max_ir_composite`, `pca_factor` |
+| `allocation` | 5 | `equal_weight_rebal`, `inverse_vol`, `max_diversification`, `min_variance_alloc`, `risk_parity_alloc` |
+| `hrp` | 3 | `clustered_inverse_vol`, `herc`, `hrp` |
+| `statarb` | 4 | `basket_neutral`, `coint_pairs`, `eof_stat_arb`, `xs_zscore_reversion` |
+| `pairs` | 3 | `coint_pairs_portfolio`, `sector_neutral_pairs`, `ssd_pairs` |
+| `long_short` | 5 | `lowvol_ls`, `quality_ls`, `residual_momentum_ls`, `reversal_ls`, `xs_momentum_ls` |
+| `volatility` | 4 | `atr_breakout`, `vol_regime_filter`, `vol_scaled_momentum`, `vol_target` |
+| `regime` | 4 | `beta_timing`, `em_regime`, `regime_vol_timing`, `trend_regime_switch` |
+| `taa` | 4 | `dual_momentum_taa`, `mom_12m_taa`, `trend_regime_taa`, `vol_target_taa` |
+| `riskmgmt` | 5 | `circuit_breaker`, `cppi`, `drawdown_throttle`, `portfolio_vol_target`, `trailing_stop_overlay` |
+| `ml_signal` | 4 | `gbm_alpha`, `knn_alpha`, `logit_signal`, `ridge_alpha` |
+| `ensemble` | 4 | `equal_weight_ensemble`, `inverse_vol_ensemble`, `sharpe_weighted_ensemble`, `trend_reversion_blend` |
+| `microstructure` | 4 | `liquidity_premium`, `volume_imbalance`, `volume_price_divergence`, `vwap_reversion` |
+| `seasonality` | 3 | `month_of_year`, `turn_of_month`, `weekday_effect` |
+| `crypto` | 4 | `carry_proxy`, `crypto_momentum_247`, `dca`, `grid_trading` |
+
+完整回测指标见 [`research/SUMMARY.md`](research/SUMMARY.md)（自动生成）；逐策略研究记录在 `research/records/<name>/`。
+
 
 ## 新增一个策略（贡献指南）
 1. 在 `kairos_strategies/channels/<渠道>.py` 中定义一个 `Strategy` 子类；
