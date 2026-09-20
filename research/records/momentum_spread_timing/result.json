@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "name": "momentum_spread_timing",
+    "channel": "momentum_adv",
+    "universe": "cross_section",
+    "long_only": false,
+    "description": "多空动量价差择时：做多赢家/做空输家构成美元中性 WML（行和≈0、绝对值和≤1），但仅当『动量价差动量』为正（赢家组近期仍相对输家组走强）时才持仓，价差转弱即整行平仓避险。",
+    "hypothesis": "针对动量的『崩溃 + 拥挤』缺陷：多空动量价差 (WML) 在价差持续走阔时最稳，而在价差见顶收敛时最易崩溃——拥挤的同向资金一旦反向解仓、或危机后前期弱者暴力反弹，WML 会短期内巨亏。用价差组合自身的近期已实现收益（赢家腿减输家腿）作为『价差动量』开关，在其转负时空仓，可规避大部分崩溃段落。失效条件：价差反复拉锯的震荡期会频繁开关、放大换手与成本，并被假信号两头打脸；开关本身滞后，对突发单日崩溃反应不及。",
+    "source": "进阶动量变体——动量价差/波动择时 (momentum spread timing, Daniel-Moskowitz 动量崩溃择时思路，本仓库原创实现)；与 long_short 渠道的 xs_momentum_ls（**始终满仓**多空）不同，此处按价差动量**动态开关**多空敞口，崩溃来临前主动离场。",
+    "params": {
+      "lookback": 126,
+      "skip": 21,
+      "top_frac": 0.3333333333333333,
+      "leg_budget": 0.5,
+      "spread_window": 21
+    }
+  },
+  "metrics": {
+    "total_return": -0.03585884765216929,
+    "cagr": -0.009160215261426186,
+    "volatility": 0.06453775332660824,
+    "sharpe": -0.11034416180981096,
+    "sortino": -0.15502234019546512,
+    "max_drawdown": 0.12712833638201582,
+    "calmar": -0.07205486614644344,
+    "win_rate": 0.4414784394250513,
+    "profit_factor": 0.9745774990361266,
+    "avg_turnover": 0.1454613463614166,
+    "total_turnover": 145.46134636141662,
+    "n_periods": 1000.0
+  },
+  "data": "synthetic",
+  "cost_rate": 0.0005
+}

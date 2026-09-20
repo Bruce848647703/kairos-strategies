@@ -1,0 +1,121 @@
+{
+  "name": "equal_weight_buy_hold",
+  "channel": "benchmark",
+  "mode": "quick",
+  "params": {},
+  "data": {
+    "name": "synthetic",
+    "n_assets": 8,
+    "n_periods": 1000,
+    "start": "2018-01-02",
+    "end": "2021-11-01",
+    "periods_per_year": 252
+  },
+  "cost_rate": 0.001,
+  "baseline": {
+    "total_return": 0.4211283239039756,
+    "cagr": 0.09260602343136037,
+    "volatility": 0.08583222372519667,
+    "sharpe": 1.0748939556370372,
+    "sortino": 1.5953225386980021,
+    "max_drawdown": 0.06919387381115816,
+    "calmar": 1.3383558157778237,
+    "win_rate": 0.525,
+    "profit_factor": 1.1842874897455433,
+    "avg_turnover": 0.011994658744724305,
+    "total_turnover": 11.994658744724305,
+    "n_periods": 1000.0
+  },
+  "walk_forward": {
+    "n_windows": 3,
+    "windows": [
+      {
+        "window": 1,
+        "start": "2018-01-02",
+        "end": "2019-04-12",
+        "n_periods": 334,
+        "total_return": 0.24234890949990406,
+        "sharpe": 1.8359148996544499,
+        "volatility": 0.09148009028018392,
+        "max_drawdown": 0.04292077251105264
+      },
+      {
+        "window": 2,
+        "start": "2019-04-15",
+        "end": "2020-07-22",
+        "n_periods": 333,
+        "total_return": 0.11494500239571481,
+        "sharpe": 1.0301235791782937,
+        "volatility": 0.08330156074563883,
+        "max_drawdown": 0.06804817129965446
+      },
+      {
+        "window": 3,
+        "start": "2020-07-23",
+        "end": "2021-11-01",
+        "n_periods": 333,
+        "total_return": 0.02415188614190633,
+        "sharpe": 0.2622863728702233,
+        "volatility": 0.0814843401879363,
+        "max_drawdown": 0.05951404498111812
+      }
+    ],
+    "positive_window_ratio": 1.0,
+    "window_sharpe_mean": 1.0427749505676556,
+    "window_sharpe_std": 0.7868905438342727,
+    "best_window_return": 0.24234890949990406,
+    "worst_window_return": 0.02415188614190633
+  },
+  "sensitivity": {
+    "baseline_sharpe": 1.0748939556370372,
+    "params": {},
+    "overall": {
+      "min": 1.0748939556370372,
+      "median": 1.0748939556370372,
+      "max": 1.0748939556370372,
+      "range": 0.0
+    },
+    "n_numeric_params": 0,
+    "n_evals": 0,
+    "n_skipped": 0,
+    "capped": false
+  },
+  "psr": 0.983749293860577,
+  "psr_detail": {
+    "n": 1000,
+    "sr_benchmark": 0.0,
+    "sr": 0.06771195458052606,
+    "skew": -0.045149838629584896,
+    "kurt": -0.05049958608138194,
+    "psr": 0.983749293860577
+  },
+  "sharpe_ci": {
+    "ci": 0.95,
+    "lo": 0.3178164767524311,
+    "hi": 2.0014526185480968,
+    "n_boot": 200,
+    "block": 20,
+    "seed": 0,
+    "point_annualized_sharpe": 1.0748939556370372
+  },
+  "row": {
+    "name": "equal_weight_buy_hold",
+    "channel": "benchmark",
+    "mode": "quick",
+    "error": null,
+    "total_return": 0.4211283239039756,
+    "sharpe": 1.0748939556370372,
+    "max_drawdown": 0.06919387381115816,
+    "psr": 0.983749293860577,
+    "sharpe_ci_lo": 0.3178164767524311,
+    "sharpe_ci_hi": 2.0014526185480968,
+    "positive_window_ratio": 1.0,
+    "window_sharpe_mean": 1.0427749505676556,
+    "window_sharpe_std": 0.7868905438342727,
+    "n_windows": 3,
+    "sens_sharpe_min": 1.0748939556370372,
+    "sens_sharpe_median": 1.0748939556370372,
+    "sens_sharpe_max": 1.0748939556370372,
+    "sens_range": 0.0
+  }
+}

@@ -1,0 +1,104 @@
+# 样本外验证汇总 (VALIDATION_SUMMARY)
+
+> 数据：synthetic（8 资产，1000 期）｜ 模式：**quick**（walk-forward 3 窗、bootstrap 200 次、OAT 扰动 ×0.5/×1.0/×2.0）。
+> 由 `kairos_strategies.validation` / `examples/validate.py` 自动生成，**仅为合成数据演示，非投资建议**。按 PSR 降序排列。
+
+| 策略 | 渠道 | 累计收益 | 夏普 | PSR | 夏普95%CI | 正收益窗口占比 | 窗口夏普 均值±std | 敏感性区间(稳健性) | 敏感性中位夏普 |
+|---|---|---|---|---|---|---|---|---|---|
+| [channel_atr_breakout](validation/channel_atr_breakout) | breakout | 33.48% | 1.43 | 0.998 | [0.48, 2.48] | 100.00% | 1.40 ± 0.87 | 0.91 ~ 1.55 (0.64) | 1.43 |
+| [atr_breakout](validation/atr_breakout) | volatility | 34.14% | 1.39 | 0.997 | [0.44, 2.42] | 100.00% | 1.36 ± 0.81 | 0.93 ~ 1.39 (0.46) | 1.31 |
+| [donchian_turtle](validation/donchian_turtle) | technical | 33.08% | 1.38 | 0.997 | [0.44, 2.41] | 100.00% | 1.36 ± 0.74 | 0.90 ~ 1.52 (0.62) | 1.33 |
+| [turtle_atr](validation/turtle_atr) | trend | 33.08% | 1.38 | 0.997 | [0.44, 2.41] | 100.00% | 1.36 ± 0.74 | 0.90 ~ 1.49 (0.59) | 1.38 |
+| [keltner_breakout](validation/keltner_breakout) | breakout | 33.46% | 1.32 | 0.996 | [0.33, 2.38] | 100.00% | 1.30 ± 0.78 | 0.73 ~ 1.34 (0.61) | 1.21 |
+| [volatility_breakout](validation/volatility_breakout) | breakout | 35.11% | 1.29 | 0.995 | [0.35, 2.29] | 66.67% | 1.23 ± 1.12 | 1.19 ~ 1.56 (0.37) | 1.32 |
+| [macd_trend](validation/macd_trend) | technical | 33.87% | 1.26 | 0.994 | [0.32, 2.40] | 100.00% | 1.27 ± 0.78 | 0.81 ~ 1.33 (0.52) | 1.24 |
+| [equal_weight_rebal](validation/equal_weight_rebal) | allocation | 47.31% | 1.18 | 0.990 | [0.42, 2.10] | 100.00% | 1.14 ± 0.73 | 1.13 ~ 1.18 (0.04) | 1.16 |
+| [dual_thrust](validation/dual_thrust) | trend | 32.45% | 1.14 | 0.988 | [0.16, 2.18] | 66.67% | 1.11 ± 1.21 | 0.87 ~ 1.37 (0.49) | 1.14 |
+| [vol_target](validation/vol_target) | volatility | 43.59% | 1.12 | 0.987 | [0.32, 2.02] | 100.00% | 1.10 ± 0.87 | 0.95 ~ 1.12 (0.17) | 1.12 |
+| [circuit_breaker](validation/circuit_breaker) | riskmgmt | 43.99% | 1.12 | 0.987 | [0.32, 2.02] | 100.00% | 1.09 ± 0.86 | 1.11 ~ 1.14 (0.03) | 1.12 |
+| [portfolio_vol_target](validation/portfolio_vol_target) | riskmgmt | 42.31% | 1.10 | 0.986 | [0.30, 2.00] | 100.00% | 1.08 ± 0.85 | 0.86 ~ 1.12 (0.26) | 1.10 |
+| [bollinger_breakout](validation/bollinger_breakout) | technical | 23.50% | 1.09 | 0.985 | [-0.05, 2.18] | 66.67% | 1.02 ± 1.38 | 0.31 ~ 1.31 (1.00) | 1.09 |
+| [trend_reversion_blend](validation/trend_reversion_blend) | ensemble | 16.66% | 1.09 | 0.985 | [0.16, 2.11] | 100.00% | 1.06 ± 0.86 | 0.74 ~ 1.26 (0.52) | 1.09 |
+| [equal_weight_buy_hold](validation/equal_weight_buy_hold) | benchmark | 42.11% | 1.07 | 0.984 | [0.32, 2.00] | 100.00% | 1.04 ± 0.79 | 1.07 ~ 1.07 (0.00) | 1.07 |
+| [trailing_stop_overlay](validation/trailing_stop_overlay) | riskmgmt | 42.11% | 1.07 | 0.984 | [0.32, 2.00] | 100.00% | 1.04 ± 0.79 | 0.79 ~ 1.07 (0.28) | 1.07 |
+| [cppi](validation/cppi) | riskmgmt | 41.79% | 1.07 | 0.983 | [0.32, 2.00] | 100.00% | 1.04 ± 0.78 | 0.00 ~ 1.07 (1.07) | 1.07 |
+| [vol_target_taa](validation/vol_target_taa) | taa | 37.51% | 1.02 | 0.979 | [0.22, 1.91] | 66.67% | 1.00 ± 1.09 | 0.75 ~ 1.03 (0.29) | 1.02 |
+| [inverse_vol](validation/inverse_vol) | allocation | 36.79% | 0.98 | 0.975 | [0.24, 1.90] | 66.67% | 0.95 ± 1.02 | 0.96 ~ 1.00 (0.04) | 0.98 |
+| [drawdown_throttle](validation/drawdown_throttle) | riskmgmt | 33.99% | 0.97 | 0.973 | [0.21, 1.93] | 100.00% | 0.93 ± 0.83 | 0.82 ~ 1.03 (0.21) | 0.97 |
+| [logit_signal](validation/logit_signal) | ml_signal | 74.16% | 0.95 | 0.971 | [-0.14, 1.99] | 66.67% | 0.99 ± 0.80 | 0.40 ~ 1.30 (0.90) | 0.94 |
+| [crypto_momentum_247](validation/crypto_momentum_247) | crypto | 19.85% | 0.91 | 0.967 | [-0.07, 2.04] | 100.00% | 0.87 ± 0.73 | 0.41 ~ 0.92 (0.51) | 0.88 |
+| [dca](validation/dca) | crypto | 30.36% | 0.89 | 0.962 | [0.11, 1.76] | 100.00% | 0.92 ± 0.61 | 0.77 ~ 0.97 (0.20) | 0.89 |
+| [risk_parity_alloc](validation/risk_parity_alloc) | allocation | 30.53% | 0.83 | 0.952 | [0.05, 1.71] | 66.67% | 0.80 ± 1.14 | 0.76 ~ 0.96 (0.20) | 0.83 |
+| [hrp](validation/hrp) | hrp | 28.34% | 0.79 | 0.941 | [-0.00, 1.70] | 66.67% | 0.74 ± 1.48 | 0.64 ~ 0.91 (0.28) | 0.79 |
+| [carry_proxy](validation/carry_proxy) | crypto | 19.79% | 0.77 | 0.937 | [-0.19, 1.79] | 100.00% | 0.72 ± 0.63 | 0.28 ~ 0.77 (0.49) | 0.64 |
+| [range_breakout](validation/range_breakout) | breakout | 14.19% | 0.72 | 0.923 | [-0.20, 1.73] | 66.67% | 0.70 ± 0.72 | 0.39 ~ 1.06 (0.67) | 0.68 |
+| [sma_cross](validation/sma_cross) | technical | 17.82% | 0.71 | 0.922 | [-0.22, 1.83] | 66.67% | 0.66 ± 0.88 | -0.02 ~ 1.10 (1.12) | 0.71 |
+| [inverse_vol_ensemble](validation/inverse_vol_ensemble) | ensemble | 15.78% | 0.68 | 0.911 | [-0.19, 1.67] | 66.67% | 0.65 ± 0.81 | 0.56 ~ 0.93 (0.37) | 0.68 |
+| [equal_weight_ensemble](validation/equal_weight_ensemble) | ensemble | 17.32% | 0.65 | 0.902 | [-0.24, 1.78] | 66.67% | 0.61 ± 1.39 | 0.65 ~ 0.65 (0.00) | 0.65 |
+| [max_diversification](validation/max_diversification) | allocation | 22.96% | 0.64 | 0.898 | [-0.03, 1.59] | 66.67% | 0.61 ± 1.23 | 0.50 ~ 0.91 (0.40) | 0.64 |
+| [min_variance_alloc](validation/min_variance_alloc) | allocation | 19.98% | 0.57 | 0.871 | [-0.16, 1.63] | 66.67% | 0.54 ± 1.43 | 0.51 ~ 0.83 (0.32) | 0.57 |
+| [regime_vol_timing](validation/regime_vol_timing) | regime | 15.62% | 0.57 | 0.870 | [-0.36, 1.51] | 66.67% | 0.53 ± 0.67 | 0.38 ~ 0.80 (0.41) | 0.57 |
+| [volume_imbalance](validation/volume_imbalance) | microstructure | 13.71% | 0.56 | 0.867 | [-0.37, 1.64] | 100.00% | 0.55 ± 0.15 | -0.02 ~ 0.98 (1.00) | 0.57 |
+| [vol_regime_filter](validation/vol_regime_filter) | volatility | 15.04% | 0.54 | 0.860 | [-0.37, 1.61] | 100.00% | 0.55 ± 0.49 | 0.16 ~ 0.66 (0.50) | 0.54 |
+| [sharpe_weighted_ensemble](validation/sharpe_weighted_ensemble) | ensemble | 14.67% | 0.52 | 0.849 | [-0.45, 1.71] | 33.33% | 0.38 ± 1.85 | 0.39 ~ 1.12 (0.72) | 0.52 |
+| [high_52w](validation/high_52w) | momentum | 4.90% | 0.44 | 0.812 | [-0.62, 1.56] | 66.67% | 0.52 ± 0.79 | 0.00 ~ 0.55 (0.55) | 0.44 |
+| [rsi_reversion](validation/rsi_reversion) | technical | 6.83% | 0.40 | 0.790 | [-0.52, 1.39] | 100.00% | 0.44 ± 0.43 | -0.50 ~ 1.32 (1.82) | 0.40 |
+| [ic_weighted_composite](validation/ic_weighted_composite) | multi_factor | 14.11% | 0.31 | 0.730 | [-0.62, 1.24] | 33.33% | 0.37 ± 1.01 | -0.11 ~ 0.57 (0.68) | 0.23 |
+| [ma_ribbon](validation/ma_ribbon) | trend | 5.40% | 0.29 | 0.720 | [-0.55, 1.14] | 66.67% | 0.27 ± 0.41 | 0.29 ~ 0.29 (0.00) | 0.29 |
+| [adx_trend](validation/adx_trend) | trend | 3.62% | 0.29 | 0.718 | [-0.81, 1.56] | 33.33% | 0.17 ± 1.05 | -1.02 ~ 1.39 (2.41) | 0.29 |
+| [ridge_alpha](validation/ridge_alpha) | ml_signal | 14.24% | 0.28 | 0.714 | [-0.91, 1.26] | 66.67% | 0.52 ± 1.46 | -0.22 ~ 1.03 (1.25) | 0.32 |
+| [clustered_inverse_vol](validation/clustered_inverse_vol) | hrp | 9.61% | 0.26 | 0.697 | [-0.62, 1.22] | 33.33% | 0.27 ± 0.90 | -0.08 ~ 0.98 (1.06) | 0.19 |
+| [max_ir_composite](validation/max_ir_composite) | multi_factor | 10.74% | 0.25 | 0.693 | [-0.72, 1.19] | 33.33% | 0.31 ± 0.92 | -0.06 ~ 0.64 (0.69) | 0.25 |
+| [pca_factor](validation/pca_factor) | multi_factor | 10.32% | 0.24 | 0.687 | [-0.67, 1.20] | 66.67% | 0.23 ± 0.29 | -0.32 ~ 0.38 (0.70) | 0.16 |
+| [grid_trading](validation/grid_trading) | crypto | 4.05% | 0.24 | 0.684 | [-0.57, 1.17] | 66.67% | 0.28 ± 0.32 | -0.54 ~ 0.57 (1.11) | 0.24 |
+| [beta_timing](validation/beta_timing) | regime | 6.22% | 0.22 | 0.672 | [-0.66, 1.15] | 66.67% | 0.26 ± 0.97 | 0.18 ~ 0.59 (0.41) | 0.22 |
+| [trend_regime_switch](validation/trend_regime_switch) | regime | 3.85% | 0.21 | 0.664 | [-0.71, 1.15] | 66.67% | 0.15 ± 1.21 | -0.29 ~ 0.52 (0.81) | 0.10 |
+| [trend_regime_taa](validation/trend_regime_taa) | taa | 4.87% | 0.21 | 0.659 | [-0.69, 1.11] | 66.67% | 0.27 ± 0.75 | 0.16 ~ 0.51 (0.35) | 0.21 |
+| [ts_momentum](validation/ts_momentum) | momentum | 3.51% | 0.17 | 0.633 | [-0.79, 1.08] | 33.33% | 0.18 ± 0.58 | 0.17 ~ 0.71 (0.54) | 0.43 |
+| [vol_scaled_momentum](validation/vol_scaled_momentum) | volatility | 2.25% | 0.12 | 0.598 | [-0.87, 1.21] | 66.67% | 0.08 ± 0.57 | -0.21 ~ 0.18 (0.39) | 0.05 |
+| [herc](validation/herc) | hrp | 1.19% | 0.08 | 0.566 | [-0.79, 1.10] | 33.33% | 0.11 ± 1.14 | -0.27 ~ 0.61 (0.88) | 0.08 |
+| [vwap_reversion](validation/vwap_reversion) | microstructure | 0.67% | 0.06 | 0.546 | [-0.98, 0.90] | 66.67% | 0.08 ± 0.78 | -0.75 ~ 0.14 (0.88) | -0.01 |
+| [gbm_alpha](validation/gbm_alpha) | ml_signal | -0.18% | 0.04 | 0.533 | [-1.06, 0.97] | 66.67% | 0.14 ± 1.35 | -0.59 ~ 0.43 (1.02) | 0.04 |
+| [idio_momentum](validation/idio_momentum) | factor | -6.18% | 0.01 | 0.509 | [-1.16, 1.30] | 33.33% | -0.03 ± 0.77 | -0.71 ~ 0.59 (1.30) | 0.01 |
+| [trend_quality](validation/trend_quality) | factor | -8.12% | -0.03 | 0.474 | [-0.83, 1.16] | 33.33% | -0.01 ± 1.41 | -0.46 ~ 0.11 (0.57) | -0.21 |
+| [low_volatility](validation/low_volatility) | factor | -6.81% | -0.04 | 0.471 | [-1.12, 1.19] | 33.33% | 0.07 ± 2.10 | -0.34 ~ 0.28 (0.63) | -0.21 |
+| [frog_in_pan](validation/frog_in_pan) | momentum_adv | -12.47% | -0.07 | 0.442 | [-1.01, 1.05] | 33.33% | -0.10 ± 1.05 | -0.23 ~ 0.84 (1.06) | 0.00 |
+| [liquidity_premium](validation/liquidity_premium) | microstructure | -10.73% | -0.15 | 0.380 | [-1.19, 0.81] | 66.67% | -0.15 ± 0.78 | -0.51 ~ 0.22 (0.73) | -0.15 |
+| [knn_alpha](validation/knn_alpha) | ml_signal | -8.38% | -0.18 | 0.356 | [-1.57, 1.05] | 33.33% | -0.01 ± 1.73 | -0.71 ~ 0.38 (1.09) | -0.19 |
+| [lowvol_ls](validation/lowvol_ls) | long_short | -8.55% | -0.20 | 0.344 | [-1.34, 0.84] | 33.33% | -0.12 ± 1.24 | -0.99 ~ -0.20 (0.79) | -0.25 |
+| [month_of_year](validation/month_of_year) | seasonality | -4.49% | -0.22 | 0.329 | [-1.10, 0.91] | 33.33% | -0.57 ± 0.69 | -0.29 ~ 0.18 (0.47) | -0.22 |
+| [xs_momentum](validation/xs_momentum) | momentum | -11.80% | -0.23 | 0.326 | [-1.04, 0.64] | 0.00% | -0.33 ± 0.30 | -0.41 ~ 0.96 (1.37) | -0.23 |
+| [coint_pairs](validation/coint_pairs) | statarb | -12.08% | -0.25 | 0.309 | [-1.46, 0.86] | 33.33% | -0.22 ± 0.96 | -0.94 ~ 0.95 (1.88) | -0.25 |
+| [tsmom_volscaled](validation/tsmom_volscaled) | trend | -3.81% | -0.29 | 0.283 | [-1.32, 0.76] | 0.00% | -0.30 ± 0.46 | -0.49 ~ 0.84 (1.34) | -0.29 |
+| [turn_of_month](validation/turn_of_month) | seasonality | -5.90% | -0.38 | 0.229 | [-1.30, 0.72] | 33.33% | -0.44 ± 1.20 | -0.60 ~ -0.11 (0.48) | -0.28 |
+| [em_regime](validation/em_regime) | regime | -6.19% | -0.38 | 0.227 | [-1.17, 0.59] | 33.33% | -0.41 ± 0.55 | -0.43 ~ -0.02 (0.41) | -0.38 |
+| [basket_neutral](validation/basket_neutral) | statarb | -8.82% | -0.38 | 0.223 | [-1.10, 0.49] | 0.00% | -0.37 ± 0.28 | -1.24 ~ -0.27 (0.96) | -0.38 |
+| [volume_price_divergence](validation/volume_price_divergence) | microstructure | -5.33% | -0.39 | 0.219 | [-1.17, 0.69] | 33.33% | -0.44 ± 1.10 | -0.79 ~ -0.05 (0.74) | -0.39 |
+| [momentum_spread_timing](validation/momentum_spread_timing) | momentum_adv | -10.36% | -0.39 | 0.218 | [-1.36, 0.49] | 33.33% | -0.39 ± 0.83 | -1.14 ~ -0.11 (1.03) | -0.39 |
+| [vol_managed_momentum](validation/vol_managed_momentum) | momentum_adv | -21.03% | -0.41 | 0.209 | [-1.26, 0.87] | 33.33% | -0.50 ± 0.53 | -0.85 ~ 0.68 (1.53) | -0.41 |
+| [weekday_effect](validation/weekday_effect) | seasonality | -11.56% | -0.41 | 0.207 | [-1.25, 0.60] | 33.33% | -0.42 ± 1.23 | -0.57 ~ -0.31 (0.26) | -0.41 |
+| [dual_momentum_taa](validation/dual_momentum_taa) | taa | -22.97% | -0.47 | 0.176 | [-1.28, 0.67] | 0.00% | -0.55 ± 0.46 | -0.55 ~ 0.15 (0.70) | -0.37 |
+| [dual_momentum](validation/dual_momentum) | momentum | -24.73% | -0.50 | 0.158 | [-1.34, 0.63] | 0.00% | -0.58 ± 0.40 | -0.50 ~ 0.31 (0.82) | -0.14 |
+| [residual_momentum_ls](validation/residual_momentum_ls) | long_short | -18.38% | -0.53 | 0.147 | [-1.61, 0.30] | 0.00% | -0.55 ± 0.65 | -0.84 ~ -0.06 (0.78) | -0.53 |
+| [inventory_skew_mm](validation/inventory_skew_mm) | market_making | -13.93% | -0.54 | 0.141 | [-1.63, 0.33] | 0.00% | -0.51 ± 0.60 | -0.94 ~ -0.04 (0.90) | -0.50 |
+| [mom_12m_taa](validation/mom_12m_taa) | taa | -26.74% | -0.54 | 0.141 | [-1.39, 0.51] | 0.00% | -0.76 ± 0.56 | -0.54 ~ 0.33 (0.87) | -0.16 |
+| [pairs_spread](validation/pairs_spread) | meanrev | -25.57% | -0.58 | 0.125 | [-1.48, 0.26] | 0.00% | -0.57 ± 0.83 | -1.06 ~ 1.10 (2.15) | -0.58 |
+| [equalweight_composite](validation/equalweight_composite) | multi_factor | -29.76% | -0.61 | 0.110 | [-1.73, 0.68] | 33.33% | -0.57 ± 1.31 | -1.08 ~ -0.09 (0.99) | -0.61 |
+| [xs_momentum_ls](validation/xs_momentum_ls) | long_short | -21.72% | -0.69 | 0.085 | [-1.55, 0.31] | 33.33% | -0.59 ± 0.73 | -0.85 ~ 0.27 (1.12) | -0.64 |
+| [sector_neutral_pairs](validation/sector_neutral_pairs) | pairs | -22.52% | -0.70 | 0.080 | [-1.73, 0.40] | 0.00% | -0.75 ± 0.91 | -1.21 ~ -0.39 (0.82) | -0.73 |
+| [coint_pairs_portfolio](validation/coint_pairs_portfolio) | pairs | -25.81% | -0.83 | 0.049 | [-1.77, 0.24] | 0.00% | -1.00 ± 1.47 | -1.01 ~ 0.08 (1.09) | -0.83 |
+| [group_momentum](validation/group_momentum) | momentum_adv | -31.65% | -0.91 | 0.035 | [-1.82, -0.05] | 0.00% | -0.94 ± 0.64 | -1.35 ~ -0.25 (1.10) | -0.84 |
+| [quality_ls](validation/quality_ls) | long_short | -34.22% | -1.08 | 0.016 | [-2.24, -0.09] | 0.00% | -0.99 ± 0.91 | -1.36 ~ -0.67 (0.69) | -0.77 |
+| [ssd_pairs](validation/ssd_pairs) | pairs | -40.99% | -1.17 | 0.011 | [-2.11, -0.31] | 0.00% | -1.16 ± 0.72 | -1.65 ~ -0.89 (0.76) | -1.17 |
+| [bollinger_reversion](validation/bollinger_reversion) | meanrev | -24.48% | -1.19 | 0.009 | [-2.37, -0.17] | 0.00% | -1.17 ± 0.23 | -2.37 ~ 0.00 (2.37) | -1.19 |
+| [avellaneda_stoikov_proxy](validation/avellaneda_stoikov_proxy) | market_making | -23.95% | -1.25 | 0.006 | [-2.26, -0.36] | 0.00% | -1.22 ± 0.51 | -2.02 ~ -0.64 (1.38) | -1.25 |
+| [ma_deviation](validation/ma_deviation) | meanrev | -24.04% | -1.28 | 0.005 | [-2.40, -0.41] | 0.00% | -1.26 ± 0.69 | -1.76 ~ 0.08 (1.84) | -1.28 |
+| [short_term_reversal](validation/short_term_reversal) | factor | -66.86% | -1.43 | 0.002 | [-2.16, -0.54] | 0.00% | -1.49 ± 1.11 | -2.44 ~ -1.32 (1.12) | -1.43 |
+| [zscore_reversion](validation/zscore_reversion) | meanrev | -34.09% | -1.61 | 0.001 | [-2.77, -0.62] | 0.00% | -1.59 ± 0.37 | -2.50 ~ -0.68 (1.82) | -1.61 |
+| [xs_zscore_reversion](validation/xs_zscore_reversion) | statarb | -51.92% | -1.72 | 0.000 | [-2.64, -0.91] | 0.00% | -1.71 ± 0.41 | -2.17 ~ -0.58 (1.58) | -1.72 |
+| [grid_mm_daily](validation/grid_mm_daily) | market_making | -38.54% | -2.81 | 0.000 | [-3.76, -2.01] | 0.00% | -2.81 ± 0.30 | -3.22 ~ -2.33 (0.89) | -2.81 |
+| [eof_stat_arb](validation/eof_stat_arb) | statarb | -65.34% | -2.99 | 0.000 | [-4.19, -2.03] | 0.00% | -2.86 ± 1.36 | -3.88 ~ -2.68 (1.19) | -3.01 |
+| [reversal_ls](validation/reversal_ls) | long_short | -70.66% | -3.28 | 0.000 | [-4.26, -2.53] | 0.00% | -3.31 ± 0.78 | -3.72 ~ -2.54 (1.18) | -3.28 |
+| [liquidity_provision_ls](validation/liquidity_provision_ls) | market_making | -89.25% | -5.79 | 0.000 | [-6.61, -5.02] | 0.00% | -5.81 ± 0.28 | -5.79 ~ -5.63 (0.16) | -5.76 |
+
+合计策略：**95** 个（成功 95 / 失败 0）。逐策略详情见 `validation/<name>/`（report.md + validation.json）。

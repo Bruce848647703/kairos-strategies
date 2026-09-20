@@ -1,0 +1,123 @@
+{
+  "name": "ma_ribbon",
+  "channel": "trend",
+  "mode": "quick",
+  "params": {
+    "windows": "[10, 20, 50, 100]"
+  },
+  "data": {
+    "name": "synthetic",
+    "n_assets": 8,
+    "n_periods": 1000,
+    "start": "2018-01-02",
+    "end": "2021-11-01",
+    "periods_per_year": 252
+  },
+  "cost_rate": 0.001,
+  "baseline": {
+    "total_return": 0.05400665314881259,
+    "cagr": 0.013343123569816484,
+    "volatility": 0.04944506221403221,
+    "sharpe": 0.2927802717107027,
+    "sortino": 0.4182609349506143,
+    "max_drawdown": 0.081967412220182,
+    "calmar": 0.1627857121312309,
+    "win_rate": 0.4938956714761376,
+    "profit_factor": 1.0502013058476025,
+    "avg_turnover": 0.030702707754535555,
+    "total_turnover": 30.702707754535556,
+    "n_periods": 1000.0
+  },
+  "walk_forward": {
+    "n_windows": 3,
+    "windows": [
+      {
+        "window": 1,
+        "start": "2018-01-02",
+        "end": "2019-04-12",
+        "n_periods": 334,
+        "total_return": 0.046400873476820204,
+        "sharpe": 0.7264180330566262,
+        "volatility": 0.04874277614046882,
+        "max_drawdown": 0.03394422547732845
+      },
+      {
+        "window": 2,
+        "start": "2019-04-15",
+        "end": "2020-07-22",
+        "n_periods": 333,
+        "total_return": 0.008553232188110105,
+        "sharpe": 0.15602013715922464,
+        "volatility": 0.048974996792185053,
+        "max_drawdown": 0.0646128735082534
+      },
+      {
+        "window": 3,
+        "start": "2020-07-23",
+        "end": "2021-11-01",
+        "n_periods": 333,
+        "total_return": -0.00596648659818344,
+        "sharpe": -0.06469313962213323,
+        "volatility": 0.05041264851439094,
+        "max_drawdown": 0.032454269470983954
+      }
+    ],
+    "positive_window_ratio": 0.6666666666666666,
+    "window_sharpe_mean": 0.2725816768645725,
+    "window_sharpe_std": 0.40823298040230843,
+    "best_window_return": 0.046400873476820204,
+    "worst_window_return": -0.00596648659818344
+  },
+  "sensitivity": {
+    "baseline_sharpe": 0.2927802717107027,
+    "params": {},
+    "overall": {
+      "min": 0.2927802717107027,
+      "median": 0.2927802717107027,
+      "max": 0.2927802717107027,
+      "range": 0.0
+    },
+    "n_numeric_params": 0,
+    "n_evals": 0,
+    "n_skipped": 0,
+    "capped": false
+  },
+  "psr": 0.719916134323524,
+  "psr_detail": {
+    "n": 1000,
+    "sr_benchmark": 0.0,
+    "sr": 0.018443423517439016,
+    "skew": -0.06705313729825173,
+    "kurt": 0.5174513586189788,
+    "psr": 0.719916134323524
+  },
+  "sharpe_ci": {
+    "ci": 0.95,
+    "lo": -0.5508792610464023,
+    "hi": 1.1408824060431972,
+    "n_boot": 200,
+    "block": 20,
+    "seed": 0,
+    "point_annualized_sharpe": 0.2927802717107027
+  },
+  "row": {
+    "name": "ma_ribbon",
+    "channel": "trend",
+    "mode": "quick",
+    "error": null,
+    "total_return": 0.05400665314881259,
+    "sharpe": 0.2927802717107027,
+    "max_drawdown": 0.081967412220182,
+    "psr": 0.719916134323524,
+    "sharpe_ci_lo": -0.5508792610464023,
+    "sharpe_ci_hi": 1.1408824060431972,
+    "positive_window_ratio": 0.6666666666666666,
+    "window_sharpe_mean": 0.2725816768645725,
+    "window_sharpe_std": 0.40823298040230843,
+    "n_windows": 3,
+    "sens_sharpe_min": 0.2927802717107027,
+    "sens_sharpe_median": 0.2927802717107027,
+    "sens_sharpe_max": 0.2927802717107027,
+    "sens_range": 0.0
+  }
+}

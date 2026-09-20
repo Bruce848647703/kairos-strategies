@@ -59,7 +59,7 @@ for s in ks.discover():
     print(s.name, round(res.metrics["sharpe"], 2))
 ```
 
-## 策略渠道一览（87 策略 / 22 渠道）
+## 策略渠道一览（95 策略 / 24 渠道）
 
 | 渠道 | 策略数 | 策略 |
 |---|---|---|
@@ -68,6 +68,7 @@ for s in ks.discover():
 | `trend` | 5 | `adx_trend`, `dual_thrust`, `ma_ribbon`, `tsmom_volscaled`, `turtle_atr` |
 | `breakout` | 4 | `channel_atr_breakout`, `keltner_breakout`, `range_breakout`, `volatility_breakout` |
 | `momentum` | 4 | `dual_momentum`, `high_52w`, `ts_momentum`, `xs_momentum` |
+| `momentum_adv` | 4 | `frog_in_pan`, `group_momentum`, `momentum_spread_timing`, `vol_managed_momentum` |
 | `meanrev` | 4 | `bollinger_reversion`, `ma_deviation`, `pairs_spread`, `zscore_reversion` |
 | `factor` | 4 | `idio_momentum`, `low_volatility`, `short_term_reversal`, `trend_quality` |
 | `multi_factor` | 4 | `equalweight_composite`, `ic_weighted_composite`, `max_ir_composite`, `pca_factor` |
@@ -76,6 +77,7 @@ for s in ks.discover():
 | `statarb` | 4 | `basket_neutral`, `coint_pairs`, `eof_stat_arb`, `xs_zscore_reversion` |
 | `pairs` | 3 | `coint_pairs_portfolio`, `sector_neutral_pairs`, `ssd_pairs` |
 | `long_short` | 5 | `lowvol_ls`, `quality_ls`, `residual_momentum_ls`, `reversal_ls`, `xs_momentum_ls` |
+| `market_making` | 4 | `avellaneda_stoikov_proxy`, `grid_mm_daily`, `inventory_skew_mm`, `liquidity_provision_ls` |
 | `volatility` | 4 | `atr_breakout`, `vol_regime_filter`, `vol_scaled_momentum`, `vol_target` |
 | `regime` | 4 | `beta_timing`, `em_regime`, `regime_vol_timing`, `trend_regime_switch` |
 | `taa` | 4 | `dual_momentum_taa`, `mom_12m_taa`, `trend_regime_taa`, `vol_target_taa` |
@@ -86,7 +88,7 @@ for s in ks.discover():
 | `seasonality` | 3 | `month_of_year`, `turn_of_month`, `weekday_effect` |
 | `crypto` | 4 | `carry_proxy`, `crypto_momentum_247`, `dca`, `grid_trading` |
 
-完整回测指标见 [`research/SUMMARY.md`](research/SUMMARY.md)（自动生成）；逐策略研究记录在 `research/records/<name>/`。
+完整回测指标见 [`research/SUMMARY.md`](research/SUMMARY.md)；样本外验证见 [`research/VALIDATION_SUMMARY.md`](research/VALIDATION_SUMMARY.md)；逐策略研究记录在 `research/records/<name>/`。
 
 
 ## 新增一个策略（贡献指南）
@@ -100,6 +102,18 @@ for s in ks.discover():
 - 默认使用**合成数据**（固定 seed、离线、可复现），植入趋势/均值回归/随机三种"市场性格"，
   仅用于验证实现正确性与演示 QR 流程。
 - 所有回测结果**不构成任何投资建议或收益承诺**；真实使用前请在自有数据上重跑并做参数敏感性/样本外验证。
+
+## 样本外验证 (Validation)
+
+`examples/validate.py` 对每个策略产出稳健性证据（写入 `research/validation/<name>/`）：
+- **Walk-forward OOS**：连续样本外窗口的收益/夏普与一致性（正收益窗口占比）。
+- **参数敏感性**：对数值参数做 OAT 扰动，给出夏普的 min/median/max（越窄越稳健）。
+- **概率夏普比率 PSR**：按偏度/峰度校正，衡量夏普显著性。
+- **Block-bootstrap 置信区间**：移动块自助法给出年化夏普的 95% CI（保留自相关）。
+
+```bash
+python examples/validate.py        # quick 模式；--full 更细
+```
 
 ## 测试
 ```bash
