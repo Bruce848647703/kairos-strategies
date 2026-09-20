@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "name": "drawdown_throttle",
+    "channel": "riskmgmt",
+    "universe": "overlay",
+    "long_only": true,
+    "description": "回撤节流 overlay：实时计算等权基准净值距 expanding 历史高点的回撤 dd，总敞口 e = clip(1 - dd / max_dd, 0, 1)——回撤越大仓位越低（线性节流），回撤达到 max_dd 时降至全现金，净值收复回撤后敞口自动回升。",
+    "hypothesis": "核心假设：回撤具有持续性（危机传播、去杠杆螺旋、趋势下行），『正在回撤』的组合短期内更可能继续回撤，因此把回撤本身当作风险信号做连续降杠杆，可在深熊中显著压低尾部损失；与二元止损相比，线性节流避免了在阈值附近的反复全进全出。失效场景：V 型急跌急涨（节流在底部仓位最轻、反弹初期仍低仓，踏空最猛的一段）、高波动震荡市（回撤信号频繁升降导致换手放大）；max_dd 越小越保守、对噪声越敏感。",
+    "source": "风险管理实践——drawdown-based position sizing / 回撤控制 (drawdown control) 的组合层原创实现，等权基准 + 线性节流旋钮。",
+    "params": {
+      "max_dd": 0.25
+    }
+  },
+  "metrics": {
+    "total_return": 0.3530639606111219,
+    "cagr": 0.07917585062723487,
+    "volatility": 0.0794332324264732,
+    "sharpe": 0.9990862399099703,
+    "sortino": 1.4710479734385264,
+    "max_drawdown": 0.07211176626233673,
+    "calmar": 1.0979602182977959,
+    "win_rate": 0.525,
+    "profit_factor": 1.1709761813021482,
+    "avg_turnover": 0.01950565077428135,
+    "total_turnover": 19.50565077428135,
+    "n_periods": 1000.0
+  },
+  "data": "synthetic",
+  "cost_rate": 0.0005
+}

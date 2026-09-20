@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "name": "regime_vol_timing",
+    "channel": "regime",
+    "universe": "overlay",
+    "long_only": true,
+    "description": "多档分位波动状态择时：对等权市场组合的已实现波动计算其在过去 lookback 期历史分布中的分位（mid-rank），以 q_low/q_mid 两个分位锚点划分低/中/高三档状态，总敞口按分位分段线性连续缩放 1.0 → scale_mid → scale_high：低波满仓、中波按比例降、高波深度降杠杆，差额即现金（每资产 scale/N）。",
+    "hypothesis": "核心假设：波动率有强聚集性（状态可短期预测），且高波动状态下单位风险收益系统性更差（杠杆效应、被迫去杠杆、流动性收缩）。滚动分位使阈值自适应不同时代/资产的波动水平；相对二元开关（如 vol_regime_filter），多档连续缩放把『状态强度』映射为『仓位强度』，避免在阈值附近满仓/空仓来回跳变，换手更低、敞口路径更平滑。失效场景：低波平静期后的突发崩盘（分位阈值滞后于跳升的波动，减仓晚一步）、高波动伴随强反弹的市场（深度降杠杆踏空）、以及波动水平长期漂移时分位的相对性导致『新常态』被误判为高波状态。",
+    "source": "波动率 regime switching 范式的「多档分位 + 连续缩放」改写（与 volatility 渠道二元 vol_regime_filter 互补，档位映射与 mid-rank 分位为本仓库原创实现）。",
+    "params": {
+      "vol_window": 20,
+      "lookback": 250,
+      "min_obs": 60,
+      "q_low": 0.4,
+      "q_mid": 0.8,
+      "scale_mid": 0.6,
+      "scale_high": 0.2,
+      "vol_floor": 0.01
+    }
+  },
+  "metrics": {
+    "total_return": 0.1846337990568172,
+    "cagr": 0.04362193381845292,
+    "volatility": 0.06867825399293663,
+    "sharpe": 0.6560652438580109,
+    "sortino": 0.9445837357483919,
+    "max_drawdown": 0.09187267192892323,
+    "calmar": 0.4748085900037911,
+    "win_rate": 0.5179153094462541,
+    "profit_factor": 1.1184651824901424,
+    "avg_turnover": 0.04858588428216014,
+    "total_turnover": 48.58588428216014,
+    "n_periods": 1000.0
+  },
+  "data": "synthetic",
+  "cost_rate": 0.0005
+}

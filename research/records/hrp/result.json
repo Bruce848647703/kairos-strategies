@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "name": "hrp",
+    "channel": "hrp",
+    "universe": "cross_section",
+    "long_only": true,
+    "description": "层次风险平价(HRP)：①相关矩阵→距离 sqrt(0.5(1-ρ))；②层次聚类（scipy single-linkage，缺失回退自研 numpy 凝聚聚类）；③按树状图叶序重排协方差（准对角化）；④递归二分，按簇内逆波动组合方差倒数 α=1-σ²_L/(σ²_L+σ²_R) 分配预算，归一到每行和=1。",
+    "hypothesis": "把『相关结构聚类』与『风险预算二分』结合，无需矩阵求逆即可利用协方差信息，对估计误差远不如最小方差敏感，在高相关/病态样本下仍给出分散的 long-only 配置。当相关性结构快速切换（危机中簇边界失稳）或窗口过短导致聚类抖动时，权重换手上升、分散化效果打折。",
+    "source": "层次配置经典范式——Hierarchical Risk Parity（López de Prado 四步思想的原创实现）；聚类用 scipy linkage，缺失时自研 numpy 凝聚聚类回退，全链路确定性。",
+    "params": {
+      "window": 60
+    }
+  },
+  "metrics": {
+    "total_return": 0.32138238648178175,
+    "cagr": 0.07275163571392618,
+    "volatility": 0.084592487822524,
+    "sharpe": 0.8725390211996621,
+    "sortino": 1.2890449357988452,
+    "max_drawdown": 0.10827964582148897,
+    "calmar": 0.6718865319698712,
+    "win_rate": 0.522,
+    "profit_factor": 1.1478341236332794,
+    "avg_turnover": 0.058313269463948825,
+    "total_turnover": 58.31326946394883,
+    "n_periods": 1000.0
+  },
+  "data": "synthetic",
+  "cost_rate": 0.0005
+}

@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "name": "herc",
+    "channel": "hrp",
+    "universe": "cross_section",
+    "long_only": true,
+    "description": "层次等风险贡献(HERC)：滚动相关距离→层次聚类后在树状图上切 k 簇；簇间等权（各 1/k），簇内用自研阻尼乘法定点迭代求等风险贡献(ERC)权重，使簇内各资产风险贡献 wᵢ(Σw)ᵢ 相等，归一到每行和=1。",
+    "hypothesis": "『先聚类分预算、再簇内均衡风险』把风险平价约束在相关子结构内部，避免全局 ERC 被跨簇共同风险主导；簇间等权不依赖簇数估计的精度，配置更均衡稳健。当簇数 k 与真实相关结构错配、或簇内资产数过少时，退化为近似逆波动率配置。",
+    "source": "层次配置经典范式——Hierarchical Equal Risk Contribution（Pozzi 等 HERC 思想的原创实现）；簇内 ERC 用自研乘法定点迭代，scipy 缺失时聚类自动 numpy 回退。",
+    "params": {
+      "window": 60,
+      "n_clusters": 2,
+      "erc_iters": 200,
+      "erc_tol": 1e-12
+    }
+  },
+  "metrics": {
+    "total_return": 0.12347902187831261,
+    "cagr": 0.029775065485876828,
+    "volatility": 0.11492592068854281,
+    "sharpe": 0.31268142908715196,
+    "sortino": 0.45761500671166727,
+    "max_drawdown": 0.20901983345654462,
+    "calmar": 0.14245091000929863,
+    "win_rate": 0.5,
+    "profit_factor": 1.050641060777797,
+    "avg_turnover": 0.20902316237614957,
+    "total_turnover": 209.02316237614957,
+    "n_periods": 1000.0
+  },
+  "data": "synthetic",
+  "cost_rate": 0.0005
+}

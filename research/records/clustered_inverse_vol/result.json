@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "name": "clustered_inverse_vol",
+    "channel": "hrp",
+    "universe": "cross_section",
+    "long_only": true,
+    "description": "聚类逆波动率：滚动相关距离→层次聚类切 k 簇；簇内按 1/σ 逆波动率加权，簇间等权（各 1/k），归一到每行和=1。相比全局逆波动率，先隔离相关子结构再在簇内比较波动，避免高相关资产叠加重仓。",
+    "hypothesis": "普通逆波动率忽略相关性：一簇高度相关的高波资产仍可能合计吃掉大部分资金。簇间等权把预算先均分到相关子结构，簇内再按波动倒数细分，兼得相关性分散与波动率缩放。当聚类边界在窗口间抖动时换手上升；k 过大时退化为全局逆波动率。",
+    "source": "层次配置经典范式——clustered inverse volatility（聚类 + 逆波动率的原创组合实现）；scipy 缺失时聚类自动回退自研 numpy 凝聚算法，确定性打破并列。",
+    "params": {
+      "window": 60,
+      "n_clusters": 2
+    }
+  },
+  "metrics": {
+    "total_return": 0.20847888278251436,
+    "cagr": 0.048876232912755224,
+    "volatility": 0.11410354755121185,
+    "sharpe": 0.4752072701974813,
+    "sortino": 0.6991796223732765,
+    "max_drawdown": 0.14735805869052987,
+    "calmar": 0.33168347457264863,
+    "win_rate": 0.515,
+    "profit_factor": 1.0779859898100732,
+    "avg_turnover": 0.19508181982088404,
+    "total_turnover": 195.08181982088405,
+    "n_periods": 1000.0
+  },
+  "data": "synthetic",
+  "cost_rate": 0.0005
+}

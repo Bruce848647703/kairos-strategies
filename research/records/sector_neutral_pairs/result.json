@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "name": "sector_neutral_pairs",
+    "channel": "pairs",
+    "universe": "cross_section",
+    "long_only": false,
+    "description": "板块中性配对：先用尾部收益的相关系数矩阵构造距离 d = 1 - corr，跑自研的平均链接层次聚类把资产并成 n_sectors 个「板块」；再在每个板块**内部**按尾部相关性最强的顺序取出互不共用腿的配对（每块最多 max_pairs_per_sector 对），用 OLS 估 β 后对对数残差做滚动 z-score 反向持仓。预算先等分到各活跃板块、再等分到块内各对，每一对两腿等幅反向，故**每个板块的净敞口恒为 0（板块中性）**、整体行和恒为 0、绝对值和 ≤ 1。",
+    "hypothesis": "核心假设：相关性最高的资产对更可能同属一个「板块」（同行业/同风格/同资金链），板块内部的相对估值偏离是流动性与情绪造成的临时错价，会收敛；把配对限制在板块内部并让每块净敞口为 0，可同时剥离市场 beta **与板块 beta**，只承担「块内相对价值」这一维风险，比全 universe 自由配对更抗行业性冲击。失效场景：板块划分依赖历史相关性，相关性结构切换（板块轮动、危机期相关性齐涨）时分组不稳定、换手上升；块内资产太少（< 2）则该块无法配对、预算浪费；若真正的错价发生在**跨板块**之间，本策略结构上就抓不到。",
+    "source": "统计套利经典范式——行业内配对 / 板块中性多空（sector-neutral pairs trading）。本仓库原创 numpy 实现：相关距离 + **平均链接层次聚类**（不用 scipy.cluster）、块内相关性排序选对、两级等分预算。与 statarb 渠道 basket_neutral（按波动分成两个篮子、交易**篮子之间**的便宜度价差）方向相反：那里是篮子间多空，这里是**篮子内部**配对、篮子之间零敞口；与 coint_pairs / ssd_pairs 的自由配对也不同，配对候选被板块结构约束。",
+    "params": {
+      "corr_window": 60,
+      "est_window": 60,
+      "z_window": 25,
+      "refit_freq": 15,
+      "entry_z": 1.2,
+      "exit_z": 0.3,
+      "n_sectors": 3,
+      "max_pairs_per_sector": 1,
+      "gross_budget": 1.0
+    }
+  },
+  "metrics": {
+    "total_return": -0.11182078097643833,
+    "cagr": -0.02944052630206795,
+    "volatility": 0.08682325709799689,
+    "sharpe": -0.30074519831989327,
+    "sortino": -0.41041808829899823,
+    "max_drawdown": 0.247233873584069,
+    "calmar": -0.11907966281188827,
+    "win_rate": 0.48822269807280516,
+    "profit_factor": 0.9485513019003396,
+    "avg_turnover": 0.2735405669477286,
+    "total_turnover": 273.5405669477286,
+    "n_periods": 1000.0
+  },
+  "data": "synthetic",
+  "cost_rate": 0.0005
+}

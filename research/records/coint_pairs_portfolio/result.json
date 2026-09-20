@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "name": "coint_pairs_portfolio",
+    "channel": "pairs",
+    "universe": "cross_section",
+    "long_only": false,
+    "description": "协整配对**组合**（Engle-Granger 两步法的自研 numpy 实现）：在再平衡网格的尾部窗口上遍历全部资产对，第一步 OLS 估对冲比率 β（logy = α + β·logx），第二步对残差同时做两道平稳性诊断——带滞后差分项的 ADF 风格单位根回归（t 统计量）与方差比 VR(q)；两道门槛都通过的对**全部入选**（按协整证据强度排序、腿不重复地贪心取前 max_pairs 对），把 gross_budget 等分到每一对，各对按残差 z-score 反向持仓（z 高做空贵腿/做多便宜腿）。每对内部两腿等预算反向，故整体逐行权重和恒为 0、绝对值和 ≤ 1。",
+    "hypothesis": "核心假设：真协整的资产对存在平稳的线性组合（相对估值），偏离中枢后由套利/基本面纽带拉回；把预算分散到**多对**而非单对，可摊薄「某一对协整关系突然破裂」的特质风险，同时多空对冲剥离市场 beta，收益来源是多个价差的收敛。失效场景：多重检验下总有一些伪回归残差看起来平稳（尤其小样本），入选的对可能根本不协整；系统性压力期（流动性危机）所有价差同时走阔且不收敛，分散化在最需要时失效；β 在 block 内冻结，关系漂移会带来实现偏差。",
+    "source": "统计套利经典范式——协整配对组合（cointegrated pairs portfolio / Engle-Granger）。OLS β、带滞后项的 ADF 风格 t 统计量、方差比诊断、贪心不重复选对与预算等分全部为本仓库原创 numpy 实现，不用 statsmodels / sklearn / scipy（也不查 Dickey-Fuller 临界值表、不给 p 值，只做同序排序 + 宽松地板阈值）。与 statarb 渠道 coint_pairs 的区别：那是**单对**最优（无滞后 ADF + 半衰期门槛、以 R² 优先排序、单一 leg_budget），此处是**多对分散**（ADF + 方差比双重门槛、以协整证据强度优先排序、预算等分到每对）。",
+    "params": {
+      "est_window": 120,
+      "z_window": 30,
+      "refit_freq": 20,
+      "entry_z": 1.5,
+      "exit_z": 0.5,
+      "max_pairs": 3,
+      "adf_lags": 2,
+      "min_adf_t": -2.5,
+      "max_half_life": 60.0,
+      "vr_lag": 5,
+      "max_var_ratio": 0.75,
+      "exclusive_legs": true,
+      "gross_budget": 1.0
+    }
+  },
+  "metrics": {
+    "total_return": -0.21174424543336579,
+    "cagr": -0.058196886616118215,
+    "volatility": 0.0861054796346965,
+    "sharpe": -0.6532446455904973,
+    "sortino": -0.9002731694631088,
+    "max_drawdown": 0.2905485476075844,
+    "calmar": -0.20030004312642125,
+    "win_rate": 0.4084507042253521,
+    "profit_factor": 0.848679892818508,
+    "avg_turnover": 0.1212940014001935,
+    "total_turnover": 121.29400140019351,
+    "n_periods": 1000.0
+  },
+  "data": "synthetic",
+  "cost_rate": 0.0005
+}
