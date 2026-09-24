@@ -36,14 +36,17 @@
 | [inverse_vol_ensemble](validation/inverse_vol_ensemble) | ensemble | 15.78% | 0.68 | 0.911 | [-0.19, 1.67] | 66.67% | 0.65 ± 0.81 | 0.56 ~ 0.93 (0.37) | 0.68 |
 | [equal_weight_ensemble](validation/equal_weight_ensemble) | ensemble | 17.32% | 0.65 | 0.902 | [-0.24, 1.78] | 66.67% | 0.61 ± 1.39 | 0.65 ~ 0.65 (0.00) | 0.65 |
 | [max_diversification](validation/max_diversification) | allocation | 22.96% | 0.64 | 0.898 | [-0.03, 1.59] | 66.67% | 0.61 ± 1.23 | 0.50 ~ 0.91 (0.40) | 0.64 |
+| [low_beta_timing](validation/low_beta_timing) | defensive | 22.06% | 0.62 | 0.892 | [-0.10, 1.60] | 66.67% | 0.60 ± 1.40 | 0.34 ~ 0.86 (0.52) | 0.62 |
 | [min_variance_alloc](validation/min_variance_alloc) | allocation | 19.98% | 0.57 | 0.871 | [-0.16, 1.63] | 66.67% | 0.54 ± 1.43 | 0.51 ~ 0.83 (0.32) | 0.57 |
 | [regime_vol_timing](validation/regime_vol_timing) | regime | 15.62% | 0.57 | 0.870 | [-0.36, 1.51] | 66.67% | 0.53 ± 0.67 | 0.38 ~ 0.80 (0.41) | 0.57 |
 | [volume_imbalance](validation/volume_imbalance) | microstructure | 13.71% | 0.56 | 0.867 | [-0.37, 1.64] | 100.00% | 0.55 ± 0.15 | -0.02 ~ 0.98 (1.00) | 0.57 |
 | [vol_regime_filter](validation/vol_regime_filter) | volatility | 15.04% | 0.54 | 0.860 | [-0.37, 1.61] | 100.00% | 0.55 ± 0.49 | 0.16 ~ 0.66 (0.50) | 0.54 |
 | [sharpe_weighted_ensemble](validation/sharpe_weighted_ensemble) | ensemble | 14.67% | 0.52 | 0.849 | [-0.45, 1.71] | 33.33% | 0.38 ± 1.85 | 0.39 ~ 1.12 (0.72) | 0.52 |
+| [drawdown_averse](validation/drawdown_averse) | defensive | 11.88% | 0.51 | 0.844 | [-0.36, 1.41] | 66.67% | 0.48 ± 0.94 | 0.15 ~ 1.02 (0.87) | 0.51 |
 | [high_52w](validation/high_52w) | momentum | 4.90% | 0.44 | 0.812 | [-0.62, 1.56] | 66.67% | 0.52 ± 0.79 | 0.00 ~ 0.55 (0.55) | 0.44 |
 | [rsi_reversion](validation/rsi_reversion) | technical | 6.83% | 0.40 | 0.790 | [-0.52, 1.39] | 100.00% | 0.44 ± 0.43 | -0.50 ~ 1.32 (1.82) | 0.40 |
 | [ic_weighted_composite](validation/ic_weighted_composite) | multi_factor | 14.11% | 0.31 | 0.730 | [-0.62, 1.24] | 33.33% | 0.37 ± 1.01 | -0.11 ~ 0.57 (0.68) | 0.23 |
+| [defensive_quality](validation/defensive_quality) | defensive | 13.00% | 0.31 | 0.729 | [-0.88, 1.54] | 66.67% | 0.40 ± 0.73 | -0.15 ~ 0.68 (0.82) | 0.29 |
 | [ma_ribbon](validation/ma_ribbon) | trend | 5.40% | 0.29 | 0.720 | [-0.55, 1.14] | 66.67% | 0.27 ± 0.41 | 0.29 ~ 0.29 (0.00) | 0.29 |
 | [adx_trend](validation/adx_trend) | trend | 3.62% | 0.29 | 0.718 | [-0.81, 1.56] | 33.33% | 0.17 ± 1.05 | -1.02 ~ 1.39 (2.41) | 0.29 |
 | [ridge_alpha](validation/ridge_alpha) | ml_signal | 14.24% | 0.28 | 0.714 | [-0.91, 1.26] | 66.67% | 0.52 ± 1.46 | -0.22 ~ 1.03 (1.25) | 0.32 |
@@ -93,6 +96,7 @@
 | [bollinger_reversion](validation/bollinger_reversion) | meanrev | -24.48% | -1.19 | 0.009 | [-2.37, -0.17] | 0.00% | -1.17 ± 0.23 | -2.37 ~ 0.00 (2.37) | -1.19 |
 | [avellaneda_stoikov_proxy](validation/avellaneda_stoikov_proxy) | market_making | -23.95% | -1.25 | 0.006 | [-2.26, -0.36] | 0.00% | -1.22 ± 0.51 | -2.02 ~ -0.64 (1.38) | -1.25 |
 | [ma_deviation](validation/ma_deviation) | meanrev | -24.04% | -1.28 | 0.005 | [-2.40, -0.41] | 0.00% | -1.26 ± 0.69 | -1.76 ~ 0.08 (1.84) | -1.28 |
+| [betting_against_beta](validation/betting_against_beta) | defensive | -38.27% | -1.30 | 0.005 | [-2.35, -0.32] | 33.33% | -1.24 ± 1.89 | -1.30 ~ -0.61 (0.70) | -1.30 |
 | [short_term_reversal](validation/short_term_reversal) | factor | -66.86% | -1.43 | 0.002 | [-2.16, -0.54] | 0.00% | -1.49 ± 1.11 | -2.44 ~ -1.32 (1.12) | -1.43 |
 | [zscore_reversion](validation/zscore_reversion) | meanrev | -34.09% | -1.61 | 0.001 | [-2.77, -0.62] | 0.00% | -1.59 ± 0.37 | -2.50 ~ -0.68 (1.82) | -1.61 |
 | [xs_zscore_reversion](validation/xs_zscore_reversion) | statarb | -51.92% | -1.72 | 0.000 | [-2.64, -0.91] | 0.00% | -1.71 ± 0.41 | -2.17 ~ -0.58 (1.58) | -1.72 |
@@ -101,4 +105,4 @@
 | [reversal_ls](validation/reversal_ls) | long_short | -70.66% | -3.28 | 0.000 | [-4.26, -2.53] | 0.00% | -3.31 ± 0.78 | -3.72 ~ -2.54 (1.18) | -3.28 |
 | [liquidity_provision_ls](validation/liquidity_provision_ls) | market_making | -89.25% | -5.79 | 0.000 | [-6.61, -5.02] | 0.00% | -5.81 ± 0.28 | -5.79 ~ -5.63 (0.16) | -5.76 |
 
-合计策略：**95** 个（成功 95 / 失败 0）。逐策略详情见 `validation/<name>/`（report.md + validation.json）。
+合计策略：**99** 个（成功 99 / 失败 0）。逐策略详情见 `validation/<name>/`（report.md + validation.json）。
