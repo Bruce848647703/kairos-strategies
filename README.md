@@ -59,7 +59,7 @@ for s in ks.discover():
     print(s.name, round(res.metrics["sharpe"], 2))
 ```
 
-## 策略渠道一览（95 策略 / 24 渠道）
+## 策略渠道一览（106 策略 / 27 渠道）
 
 | 渠道 | 策略数 | 策略 |
 |---|---|---|
@@ -78,11 +78,14 @@ for s in ks.discover():
 | `pairs` | 3 | `coint_pairs_portfolio`, `sector_neutral_pairs`, `ssd_pairs` |
 | `long_short` | 5 | `lowvol_ls`, `quality_ls`, `residual_momentum_ls`, `reversal_ls`, `xs_momentum_ls` |
 | `market_making` | 4 | `avellaneda_stoikov_proxy`, `grid_mm_daily`, `inventory_skew_mm`, `liquidity_provision_ls` |
+| `dispersion` | 3 | `correlation_regime`, `dispersion_timing`, `vol_dispersion_ls` |
 | `volatility` | 4 | `atr_breakout`, `vol_regime_filter`, `vol_scaled_momentum`, `vol_target` |
 | `regime` | 4 | `beta_timing`, `em_regime`, `regime_vol_timing`, `trend_regime_switch` |
 | `taa` | 4 | `dual_momentum_taa`, `mom_12m_taa`, `trend_regime_taa`, `vol_target_taa` |
 | `riskmgmt` | 5 | `circuit_breaker`, `cppi`, `drawdown_throttle`, `portfolio_vol_target`, `trailing_stop_overlay` |
+| `defensive` | 4 | `betting_against_beta`, `defensive_quality`, `drawdown_averse`, `low_beta_timing` |
 | `ml_signal` | 4 | `gbm_alpha`, `knn_alpha`, `logit_signal`, `ridge_alpha` |
+| `adaptive` | 4 | `adaptive_param`, `bandit_select`, `hedge_experts`, `online_mom_rev_switch` |
 | `ensemble` | 4 | `equal_weight_ensemble`, `inverse_vol_ensemble`, `sharpe_weighted_ensemble`, `trend_reversion_blend` |
 | `microstructure` | 4 | `liquidity_premium`, `volume_imbalance`, `volume_price_divergence`, `vwap_reversion` |
 | `seasonality` | 3 | `month_of_year`, `turn_of_month`, `weekday_effect` |

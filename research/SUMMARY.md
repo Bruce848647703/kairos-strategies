@@ -3,6 +3,15 @@
 > 数据集：synthetic（8 资产，1000 期）  
 > 回测：向量化、权重滞后一期、单边成本 0.0500%。结果由 `examples/run_all.py` 自动生成，**仅为合成数据演示，非投资建议**。
 
+## adaptive
+
+| 策略 | 累计收益 | CAGR | 波动 | 夏普 | 索提诺 | 最大回撤 | 卡玛 | 胜率 | 累计换手 |
+|---|---|---|---|---|---|---|---|---|---|
+| [adaptive_param](records/adaptive_param) | 15.59% | 3.72% | 4.20% | 0.8907 | 1.3166 | 4.48% | 0.8298 | 52.60% | 79.18 |
+| [bandit_select](records/bandit_select) | 37.64% | 8.38% | 10.17% | 0.8428 | 1.2859 | 14.84% | 0.5650 | 51.30% | 142.71 |
+| [online_mom_rev_switch](records/online_mom_rev_switch) | 5.76% | 1.42% | 3.99% | 0.3733 | 0.5355 | 5.15% | 0.2757 | 50.61% | 42.24 |
+| [hedge_experts](records/hedge_experts) | 7.01% | 1.72% | 10.76% | 0.2125 | 0.2997 | 27.06% | 0.0637 | 51.80% | 187.20 |
+
 ## allocation
 
 | 策略 | 累计收益 | CAGR | 波动 | 夏普 | 索提诺 | 最大回撤 | 卡玛 | 胜率 | 累计换手 |
@@ -45,6 +54,14 @@
 | [drawdown_averse](records/drawdown_averse) | 15.22% | 3.64% | 5.91% | 0.6336 | 0.9201 | 6.91% | 0.5263 | 52.56% | 58.86 |
 | [defensive_quality](records/defensive_quality) | 25.47% | 5.88% | 12.60% | 0.5167 | 0.7568 | 21.49% | 0.2739 | 51.77% | 208.67 |
 | [betting_against_beta](records/betting_against_beta) | -33.96% | -9.93% | 9.03% | -1.1123 | -1.5087 | 43.73% | -0.2270 | 46.33% | 134.82 |
+
+## dispersion
+
+| 策略 | 累计收益 | CAGR | 波动 | 夏普 | 索提诺 | 最大回撤 | 卡玛 | 胜率 | 累计换手 |
+|---|---|---|---|---|---|---|---|---|---|
+| [correlation_regime](records/correlation_regime) | 42.97% | 9.43% | 8.58% | 1.0925 | 1.6228 | 6.80% | 1.3862 | 52.50% | 11.99 |
+| [vol_dispersion_ls](records/vol_dispersion_ls) | -1.91% | -0.48% | 0.64% | -0.7551 | -1.0161 | 3.62% | -0.1339 | 48.51% | 5.39 |
+| [dispersion_timing](records/dispersion_timing) | -39.46% | -11.88% | 13.21% | -0.8911 | -1.2028 | 45.11% | -0.2633 | 47.50% | 553.32 |
 
 ## ensemble
 
@@ -227,4 +244,4 @@
 | [vol_regime_filter](records/vol_regime_filter) | 16.81% | 3.99% | 6.93% | 0.5996 | 0.8630 | 12.24% | 0.3262 | 51.86% | 30.44 |
 | [vol_scaled_momentum](records/vol_scaled_momentum) | 6.06% | 1.49% | 5.91% | 0.2803 | 0.4084 | 9.90% | 0.1508 | 50.80% | 73.06 |
 
-合计策略数：**99**。逐策略详情见 `records/<name>/`。
+合计策略数：**106**。逐策略详情见 `records/<name>/`。

@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "name": "online_mom_rev_switch",
+    "channel": "adaptive",
+    "universe": "cross_section",
+    "long_only": true,
+    "description": "在线动量/均值回归切换元策略：并行跟踪动量专家 ts_momentum 与均值回归专家 rsi_reversion 的零成本回测奖励，第 t 期用「截至 t-1」的 window 期奖励差均值/标准差得到相对优势 z 值，倾斜量 tilt = tilt_max·z/(1+|z|)，按 (0.5+tilt, 0.5-tilt) 在线混合两腿权重面板；预热期或优势不明时回退中性 50/50。",
+    "hypothesis": "核心假设：市场在『趋势 regime』与『震荡 regime』之间交替——动量专家在单边行情赚趋势钱、在震荡市被反复止损；均值回归专家恰好相反。两类奖励的滚动相对优势是 regime 的可观测代理，把权重连续地偏向近期更优的一类可让元策略净值自适应两种行情（在线的风格轮动）。有界软倾斜 z/(1+|z|) 保证任一腿权重不低于 0.5-tilt_max：即使判断错误也保留另一腿的纠错仓位，避免硬切换的双倍打脸。防未来：滚动均值/标准差算完后整体 shift(1)，第 t 期系数严格只用 ≤t-1 的已实现奖励差。失效场景：regime 快速交替（窗口内两种行情各半）时 z 值在 0 附近抖动、切换滞后于 regime 本身；两腿表现高度相关时相对优势不含信息，退化为近似 50/50。",
+    "source": "在线学习范式——专家跟踪 (expert tracking) / 在线 regime 切换的自研实现：对两个对立风格专家维护滚动相对优势统计量并做有界软倾斜；两腿分别复用本仓库 momentum.TsMomentumStrategy 与 technical.RsiReversionStrategy 公开类，奖励由 engine.Backtester 回测产生。",
+    "params": {
+      "window": 42,
+      "tilt_max": 0.35,
+      "std_floor": 0.0001,
+      "momentum_leg": "ts_momentum",
+      "reversion_leg": "rsi_reversion",
+      "cost_rate": 0.0
+    }
+  },
+  "metrics": {
+    "total_return": 0.057598673135834444,
+    "cagr": 0.014212283426914496,
+    "volatility": 0.039934276153083655,
+    "sharpe": 0.37334390575571413,
+    "sortino": 0.5354930564368092,
+    "max_drawdown": 0.051547963576017986,
+    "calmar": 0.2757098911571082,
+    "win_rate": 0.5060851926977687,
+    "profit_factor": 1.0612442729007736,
+    "avg_turnover": 0.04223586029770766,
+    "total_turnover": 42.23586029770766,
+    "n_periods": 1000.0
+  },
+  "data": "synthetic",
+  "cost_rate": 0.0005
+}
