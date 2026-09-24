@@ -1,0 +1,183 @@
+{
+  "name": "grid_trading",
+  "channel": "crypto",
+  "mode": "quick",
+  "params": {
+    "spacing": 0.04,
+    "max_steps": 5
+  },
+  "data": {
+    "name": "ashare_real",
+    "n_assets": 38,
+    "n_periods": 1930,
+    "start": "2018-10-16",
+    "end": "2026-09-23",
+    "periods_per_year": 252
+  },
+  "cost_rate": 0.001,
+  "baseline": {
+    "total_return": 2.997864096984112,
+    "cagr": 0.19834165050246333,
+    "volatility": 0.2910236501152403,
+    "sharpe": 0.7398215352961414,
+    "sortino": 2.2561852504604114,
+    "max_drawdown": 0.17555541721597112,
+    "calmar": 1.1297951020130597,
+    "win_rate": 0.5033696215655781,
+    "profit_factor": 1.3176460460045958,
+    "avg_turnover": 0.08539642067058409,
+    "total_turnover": 164.8150918942273,
+    "n_periods": 1930.0
+  },
+  "walk_forward": {
+    "n_windows": 3,
+    "windows": [
+      {
+        "window": 1,
+        "start": "2018-10-16",
+        "end": "2021-06-08",
+        "n_periods": 644,
+        "total_return": 3.299066873458181,
+        "sharpe": 1.3891582430281402,
+        "volatility": 0.4752199977330916,
+        "max_drawdown": 0.17555541721597112
+      },
+      {
+        "window": 2,
+        "start": "2021-06-09",
+        "end": "2024-01-26",
+        "n_periods": 643,
+        "total_return": -0.08483895797744201,
+        "sharpe": -0.19656374595983808,
+        "volatility": 0.1322981780825832,
+        "max_drawdown": 0.16083851536577765
+      },
+      {
+        "window": 3,
+        "start": "2024-01-29",
+        "end": "2026-09-23",
+        "n_periods": 643,
+        "total_return": 0.017796053927368938,
+        "sharpe": 0.11948937347629016,
+        "volatility": 0.09793631740618107,
+        "max_drawdown": 0.15602871208755675
+      }
+    ],
+    "positive_window_ratio": 0.6666666666666666,
+    "window_sharpe_mean": 0.4373612901815307,
+    "window_sharpe_std": 0.8392916496441478,
+    "best_window_return": 3.299066873458181,
+    "worst_window_return": -0.08483895797744201
+  },
+  "sensitivity": {
+    "baseline_sharpe": 0.7398215352961414,
+    "params": {
+      "spacing": {
+        "original": 0.04,
+        "points": [
+          {
+            "value": 0.02,
+            "factor": 0.5,
+            "sharpe": 0.669774694053359
+          },
+          {
+            "value": 0.04,
+            "factor": 1.0,
+            "sharpe": 0.7398215352961414,
+            "reused_baseline": true
+          },
+          {
+            "value": 0.08,
+            "factor": 2.0,
+            "sharpe": 0.7993744674313511
+          }
+        ],
+        "value_sharpe": {
+          "0.02": 0.669774694053359,
+          "0.04": 0.7398215352961414,
+          "0.08": 0.7993744674313511
+        },
+        "min": 0.669774694053359,
+        "median": 0.7398215352961414,
+        "max": 0.7993744674313511
+      },
+      "max_steps": {
+        "original": 5,
+        "points": [
+          {
+            "value": 3,
+            "factor": 0.5,
+            "sharpe": 0.6878828477647172
+          },
+          {
+            "value": 5,
+            "factor": 1.0,
+            "sharpe": 0.7398215352961414,
+            "reused_baseline": true
+          },
+          {
+            "value": 10,
+            "factor": 2.0,
+            "sharpe": 0.78304888500983
+          }
+        ],
+        "value_sharpe": {
+          "3": 0.6878828477647172,
+          "5": 0.7398215352961414,
+          "10": 0.78304888500983
+        },
+        "min": 0.6878828477647172,
+        "median": 0.7398215352961414,
+        "max": 0.78304888500983
+      }
+    },
+    "overall": {
+      "min": 0.669774694053359,
+      "median": 0.7398215352961414,
+      "max": 0.7993744674313511,
+      "range": 0.1295997733779921
+    },
+    "n_numeric_params": 2,
+    "n_evals": 4,
+    "n_skipped": 0,
+    "capped": false
+  },
+  "psr": 0.9997241140160879,
+  "psr_detail": {
+    "n": 1930,
+    "sr_benchmark": 0.0,
+    "sr": 0.04660437611818058,
+    "skew": 21.940888405905437,
+    "kurt": 689.176478252219,
+    "psr": 0.9997241140160879
+  },
+  "sharpe_ci": {
+    "ci": 0.95,
+    "lo": 0.3336519270649635,
+    "hi": 1.0797535319521978,
+    "n_boot": 200,
+    "block": 20,
+    "seed": 0,
+    "point_annualized_sharpe": 0.7398215352961414
+  },
+  "row": {
+    "name": "grid_trading",
+    "channel": "crypto",
+    "mode": "quick",
+    "error": null,
+    "total_return": 2.997864096984112,
+    "sharpe": 0.7398215352961414,
+    "max_drawdown": 0.17555541721597112,
+    "psr": 0.9997241140160879,
+    "sharpe_ci_lo": 0.3336519270649635,
+    "sharpe_ci_hi": 1.0797535319521978,
+    "positive_window_ratio": 0.6666666666666666,
+    "window_sharpe_mean": 0.4373612901815307,
+    "window_sharpe_std": 0.8392916496441478,
+    "n_windows": 3,
+    "sens_sharpe_min": 0.669774694053359,
+    "sens_sharpe_median": 0.7398215352961414,
+    "sens_sharpe_max": 0.7993744674313511,
+    "sens_range": 0.1295997733779921
+  }
+}

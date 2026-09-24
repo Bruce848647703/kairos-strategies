@@ -1,0 +1,213 @@
+{
+  "name": "liquidity_premium",
+  "channel": "microstructure",
+  "mode": "quick",
+  "params": {
+    "fast": 10,
+    "slow": 60,
+    "top_frac": 0.3333333333333333
+  },
+  "data": {
+    "name": "ashare_real",
+    "n_assets": 38,
+    "n_periods": 1930,
+    "start": "2018-10-16",
+    "end": "2026-09-23",
+    "periods_per_year": 252
+  },
+  "cost_rate": 0.001,
+  "baseline": {
+    "total_return": 1.961043113715116,
+    "cagr": 0.15227599400845637,
+    "volatility": 0.30167143018952747,
+    "sharpe": 0.6146169082210071,
+    "sortino": 1.0234074872144618,
+    "max_drawdown": 0.6254761102786262,
+    "calmar": 0.24345613126714485,
+    "win_rate": 0.49812934259754144,
+    "profit_factor": 1.1309396909674927,
+    "avg_turnover": 0.2742368637322636,
+    "total_turnover": 529.2771470032687,
+    "n_periods": 1930.0
+  },
+  "walk_forward": {
+    "n_windows": 3,
+    "windows": [
+      {
+        "window": 1,
+        "start": "2018-10-16",
+        "end": "2021-06-08",
+        "n_periods": 644,
+        "total_return": 5.165855217205077,
+        "sharpe": 1.929952017550406,
+        "volatility": 0.4100968900958986,
+        "max_drawdown": 0.293711012804622
+      },
+      {
+        "window": 2,
+        "start": "2021-06-09",
+        "end": "2024-01-26",
+        "n_periods": 643,
+        "total_return": -0.4144761789943915,
+        "sharpe": -0.7312576076294859,
+        "volatility": 0.2455802485574725,
+        "max_drawdown": 0.43159557644035285
+      },
+      {
+        "window": 3,
+        "start": "2024-01-29",
+        "end": "2026-09-23",
+        "n_periods": 643,
+        "total_return": -0.15719661118402473,
+        "sharpe": -0.22462259683700894,
+        "volatility": 0.20523970780636747,
+        "max_drawdown": 0.411382727449761
+      }
+    ],
+    "positive_window_ratio": 0.3333333333333333,
+    "window_sharpe_mean": 0.3246906043613037,
+    "window_sharpe_std": 1.413088076535068,
+    "best_window_return": 5.165855217205077,
+    "worst_window_return": -0.4144761789943915
+  },
+  "sensitivity": {
+    "baseline_sharpe": 0.6146169082210071,
+    "params": {
+      "fast": {
+        "original": 10,
+        "points": [
+          {
+            "value": 5,
+            "factor": 0.5,
+            "sharpe": 0.5763224580078748
+          },
+          {
+            "value": 10,
+            "factor": 1.0,
+            "sharpe": 0.6146169082210071,
+            "reused_baseline": true
+          },
+          {
+            "value": 20,
+            "factor": 2.0,
+            "sharpe": 0.6989809252634357
+          }
+        ],
+        "value_sharpe": {
+          "5": 0.5763224580078748,
+          "10": 0.6146169082210071,
+          "20": 0.6989809252634357
+        },
+        "min": 0.5763224580078748,
+        "median": 0.6146169082210071,
+        "max": 0.6989809252634357
+      },
+      "slow": {
+        "original": 60,
+        "points": [
+          {
+            "value": 30,
+            "factor": 0.5,
+            "sharpe": 0.6471514004819193
+          },
+          {
+            "value": 60,
+            "factor": 1.0,
+            "sharpe": 0.6146169082210071,
+            "reused_baseline": true
+          },
+          {
+            "value": 120,
+            "factor": 2.0,
+            "sharpe": 0.399478452073771
+          }
+        ],
+        "value_sharpe": {
+          "30": 0.6471514004819193,
+          "60": 0.6146169082210071,
+          "120": 0.399478452073771
+        },
+        "min": 0.399478452073771,
+        "median": 0.6146169082210071,
+        "max": 0.6471514004819193
+      },
+      "top_frac": {
+        "original": 0.3333333333333333,
+        "points": [
+          {
+            "value": 0.16666666666666666,
+            "factor": 0.5,
+            "sharpe": 0.5601546811788707
+          },
+          {
+            "value": 0.3333333333333333,
+            "factor": 1.0,
+            "sharpe": 0.6146169082210071,
+            "reused_baseline": true
+          },
+          {
+            "value": 0.6666666666666666,
+            "factor": 2.0,
+            "sharpe": 0.7070939209183442
+          }
+        ],
+        "value_sharpe": {
+          "0.16666666666666666": 0.5601546811788707,
+          "0.3333333333333333": 0.6146169082210071,
+          "0.6666666666666666": 0.7070939209183442
+        },
+        "min": 0.5601546811788707,
+        "median": 0.6146169082210071,
+        "max": 0.7070939209183442
+      }
+    },
+    "overall": {
+      "min": 0.399478452073771,
+      "median": 0.6146169082210071,
+      "max": 0.7070939209183442,
+      "range": 0.30761546884457325
+    },
+    "n_numeric_params": 3,
+    "n_evals": 6,
+    "n_skipped": 0,
+    "capped": false
+  },
+  "psr": 0.9657000887444902,
+  "psr_detail": {
+    "n": 1930,
+    "sr_benchmark": 0.0,
+    "sr": 0.03871722596971892,
+    "skew": 4.079362197807959,
+    "kurt": 80.8011124558631,
+    "psr": 0.9657000887444902
+  },
+  "sharpe_ci": {
+    "ci": 0.95,
+    "lo": -0.011959790459124464,
+    "hi": 1.2207627107806072,
+    "n_boot": 200,
+    "block": 20,
+    "seed": 0,
+    "point_annualized_sharpe": 0.6146169082210071
+  },
+  "row": {
+    "name": "liquidity_premium",
+    "channel": "microstructure",
+    "mode": "quick",
+    "error": null,
+    "total_return": 1.961043113715116,
+    "sharpe": 0.6146169082210071,
+    "max_drawdown": 0.6254761102786262,
+    "psr": 0.9657000887444902,
+    "sharpe_ci_lo": -0.011959790459124464,
+    "sharpe_ci_hi": 1.2207627107806072,
+    "positive_window_ratio": 0.3333333333333333,
+    "window_sharpe_mean": 0.3246906043613037,
+    "window_sharpe_std": 1.413088076535068,
+    "n_windows": 3,
+    "sens_sharpe_min": 0.399478452073771,
+    "sens_sharpe_median": 0.6146169082210071,
+    "sens_sharpe_max": 0.7070939209183442,
+    "sens_range": 0.30761546884457325
+  }
+}

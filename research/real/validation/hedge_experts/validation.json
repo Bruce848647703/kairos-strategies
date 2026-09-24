@@ -1,0 +1,232 @@
+{
+  "name": "hedge_experts",
+  "channel": "adaptive",
+  "mode": "quick",
+  "params": {
+    "eta": 8.0,
+    "decay": 1.0,
+    "cost_rate": 0.0,
+    "n_bases": 7,
+    "bases": "['sma_cross', 'donchian_turtle', 'rsi_reversion', 'ts_momentum', 'tsmom_volscaled', 'low_volatility', 'inverse_vol']"
+  },
+  "data": {
+    "name": "ashare_real",
+    "n_assets": 38,
+    "n_periods": 1930,
+    "start": "2018-10-16",
+    "end": "2026-09-23",
+    "periods_per_year": 252
+  },
+  "cost_rate": 0.001,
+  "baseline": {
+    "total_return": 3.9658140845697334,
+    "cagr": 0.23275121081821504,
+    "volatility": 0.2639477649108346,
+    "sharpe": 0.9167511918777491,
+    "sortino": 1.6727703408409165,
+    "max_drawdown": 0.31433783066967436,
+    "calmar": 0.7404492495298932,
+    "win_rate": 0.5025906735751295,
+    "profit_factor": 1.2175394907235497,
+    "avg_turnover": 0.021945958111479376,
+    "total_turnover": 42.35569915515519,
+    "n_periods": 1930.0
+  },
+  "walk_forward": {
+    "n_windows": 3,
+    "windows": [
+      {
+        "window": 1,
+        "start": "2018-10-16",
+        "end": "2021-06-08",
+        "n_periods": 644,
+        "total_return": 4.190540331443022,
+        "sharpe": 1.8895104840599566,
+        "volatility": 0.37530510372657105,
+        "max_drawdown": 0.2046945250886103
+      },
+      {
+        "window": 2,
+        "start": "2021-06-09",
+        "end": "2024-01-26",
+        "n_periods": 643,
+        "total_return": -0.20091039293536828,
+        "sharpe": -0.3511021098188933,
+        "volatility": 0.19577294406651935,
+        "max_drawdown": 0.2594907625272215
+      },
+      {
+        "window": 3,
+        "start": "2024-01-29",
+        "end": "2026-09-23",
+        "n_periods": 643,
+        "total_return": 0.19327619646494654,
+        "sharpe": 0.4939079435416767,
+        "volatility": 0.16902793249099413,
+        "max_drawdown": 0.2048849995707901
+      }
+    ],
+    "positive_window_ratio": 0.6666666666666666,
+    "window_sharpe_mean": 0.6774387725942467,
+    "window_sharpe_std": 1.1315250208774306,
+    "best_window_return": 4.190540331443022,
+    "worst_window_return": -0.20091039293536828
+  },
+  "sensitivity": {
+    "baseline_sharpe": 0.9167511918777491,
+    "params": {
+      "eta": {
+        "original": 8.0,
+        "points": [
+          {
+            "value": 4.0,
+            "factor": 0.5,
+            "sharpe": 0.9138732892549278
+          },
+          {
+            "value": 8.0,
+            "factor": 1.0,
+            "sharpe": 0.9167511918777491,
+            "reused_baseline": true
+          },
+          {
+            "value": 16.0,
+            "factor": 2.0,
+            "sharpe": 0.8908958654375845
+          }
+        ],
+        "value_sharpe": {
+          "4.0": 0.9138732892549278,
+          "8.0": 0.9167511918777491,
+          "16.0": 0.8908958654375845
+        },
+        "min": 0.8908958654375845,
+        "median": 0.9138732892549278,
+        "max": 0.9167511918777491
+      },
+      "decay": {
+        "original": 1.0,
+        "points": [
+          {
+            "value": 0.5,
+            "factor": 0.5,
+            "sharpe": 0.9763744058608806
+          },
+          {
+            "value": 1.0,
+            "factor": 1.0,
+            "sharpe": 0.9167511918777491,
+            "reused_baseline": true
+          },
+          {
+            "value": 2.0,
+            "factor": 2.0,
+            "sharpe": 0.9167511918777491
+          }
+        ],
+        "value_sharpe": {
+          "0.5": 0.9763744058608806,
+          "1.0": 0.9167511918777491,
+          "2.0": 0.9167511918777491
+        },
+        "min": 0.9167511918777491,
+        "median": 0.9167511918777491,
+        "max": 0.9763744058608806
+      },
+      "cost_rate": {
+        "original": 0.0,
+        "points": [
+          {
+            "value": 0.0,
+            "factor": 0.5,
+            "sharpe": 0.9167511918777491,
+            "reused_baseline": true
+          }
+        ],
+        "value_sharpe": {
+          "0.0": 0.9167511918777491
+        },
+        "min": 0.9167511918777491,
+        "median": 0.9167511918777491,
+        "max": 0.9167511918777491
+      },
+      "n_bases": {
+        "original": 7,
+        "points": [
+          {
+            "value": 4,
+            "factor": 0.5,
+            "sharpe": 0.9167511918777491
+          },
+          {
+            "value": 7,
+            "factor": 1.0,
+            "sharpe": 0.9167511918777491,
+            "reused_baseline": true
+          },
+          {
+            "value": 14,
+            "factor": 2.0,
+            "sharpe": 0.9167511918777491
+          }
+        ],
+        "value_sharpe": {
+          "4": 0.9167511918777491,
+          "7": 0.9167511918777491,
+          "14": 0.9167511918777491
+        },
+        "min": 0.9167511918777491,
+        "median": 0.9167511918777491,
+        "max": 0.9167511918777491
+      }
+    },
+    "overall": {
+      "min": 0.8908958654375845,
+      "median": 0.9167511918777491,
+      "max": 0.9763744058608806,
+      "range": 0.08547854042329617
+    },
+    "n_numeric_params": 4,
+    "n_evals": 6,
+    "n_skipped": 0,
+    "capped": false
+  },
+  "psr": 0.9985701609803398,
+  "psr_detail": {
+    "n": 1930,
+    "sr_benchmark": 0.0,
+    "sr": 0.057749896853109065,
+    "skew": 7.195521831325701,
+    "kurt": 167.47299536015007,
+    "psr": 0.9985701609803398
+  },
+  "sharpe_ci": {
+    "ci": 0.95,
+    "lo": 0.3475676510963732,
+    "hi": 1.5156824091087264,
+    "n_boot": 200,
+    "block": 20,
+    "seed": 0,
+    "point_annualized_sharpe": 0.9167511918777491
+  },
+  "row": {
+    "name": "hedge_experts",
+    "channel": "adaptive",
+    "mode": "quick",
+    "error": null,
+    "total_return": 3.9658140845697334,
+    "sharpe": 0.9167511918777491,
+    "max_drawdown": 0.31433783066967436,
+    "psr": 0.9985701609803398,
+    "sharpe_ci_lo": 0.3475676510963732,
+    "sharpe_ci_hi": 1.5156824091087264,
+    "positive_window_ratio": 0.6666666666666666,
+    "window_sharpe_mean": 0.6774387725942467,
+    "window_sharpe_std": 1.1315250208774306,
+    "n_windows": 3,
+    "sens_sharpe_min": 0.8908958654375845,
+    "sens_sharpe_median": 0.9167511918777491,
+    "sens_sharpe_max": 0.9763744058608806,
+    "sens_range": 0.08547854042329617
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "name": "cppi",
+  "channel": "riskmgmt",
+  "mode": "quick",
+  "params": {
+    "floor": 0.8,
+    "multiplier": 5.0
+  },
+  "data": {
+    "name": "ashare_real",
+    "n_assets": 38,
+    "n_periods": 1930,
+    "start": "2018-10-16",
+    "end": "2026-09-23",
+    "periods_per_year": 252
+  },
+  "cost_rate": 0.001,
+  "baseline": {
+    "total_return": 11.583933382512834,
+    "cagr": 0.39188377302030397,
+    "volatility": 0.36216719083011106,
+    "sharpe": 1.0719500572997187,
+    "sortino": 2.354473036191496,
+    "max_drawdown": 0.2975547502383187,
+    "calmar": 1.3170140039990454,
+    "win_rate": 0.5046632124352332,
+    "profit_factor": 1.311049268577602,
+    "avg_turnover": 0.017113486792089305,
+    "total_turnover": 33.02902950873236,
+    "n_periods": 1930.0
+  },
+  "walk_forward": {
+    "n_windows": 3,
+    "windows": [
+      {
+        "window": 1,
+        "start": "2018-10-16",
+        "end": "2021-06-08",
+        "n_periods": 644,
+        "total_return": 12.4722115108783,
+        "sharpe": 2.0521709401174206,
+        "volatility": 0.5619007127145105,
+        "max_drawdown": 0.2393675100256103
+      },
+      {
+        "window": 2,
+        "start": "2021-06-09",
+        "end": "2024-01-26",
+        "n_periods": 643,
+        "total_return": -0.19907400659682084,
+        "sharpe": -0.32073304844710604,
+        "volatility": 0.20546294554106842,
+        "max_drawdown": 0.25785922022411756
+      },
+      {
+        "window": 3,
+        "start": "2024-01-29",
+        "end": "2026-09-23",
+        "n_periods": 643,
+        "total_return": 0.16399626443787252,
+        "sharpe": 0.42133080373989357,
+        "volatility": 0.17921207366800176,
+        "max_drawdown": 0.22322168164786138
+      }
+    ],
+    "positive_window_ratio": 0.6666666666666666,
+    "window_sharpe_mean": 0.717589565136736,
+    "window_sharpe_std": 1.2138761366031763,
+    "best_window_return": 12.4722115108783,
+    "worst_window_return": -0.19907400659682084
+  },
+  "sensitivity": {
+    "baseline_sharpe": 1.0719500572997187,
+    "params": {
+      "floor": {
+        "original": 0.8,
+        "points": [
+          {
+            "value": 0.4,
+            "factor": 0.5,
+            "sharpe": 1.0749978577721055
+          },
+          {
+            "value": 0.8,
+            "factor": 1.0,
+            "sharpe": 1.0719500572997187,
+            "reused_baseline": true
+          },
+          {
+            "value": 1.6,
+            "factor": 2.0,
+            "sharpe": 0.0
+          }
+        ],
+        "value_sharpe": {
+          "0.4": 1.0749978577721055,
+          "0.8": 1.0719500572997187,
+          "1.6": 0.0
+        },
+        "min": 0.0,
+        "median": 1.0719500572997187,
+        "max": 1.0749978577721055
+      },
+      "multiplier": {
+        "original": 5.0,
+        "points": [
+          {
+            "value": 2.5,
+            "factor": 0.5,
+            "sharpe": 1.0938701905528794
+          },
+          {
+            "value": 5.0,
+            "factor": 1.0,
+            "sharpe": 1.0719500572997187,
+            "reused_baseline": true
+          },
+          {
+            "value": 10.0,
+            "factor": 2.0,
+            "sharpe": 1.0749978577721055
+          }
+        ],
+        "value_sharpe": {
+          "2.5": 1.0938701905528794,
+          "5.0": 1.0719500572997187,
+          "10.0": 1.0749978577721055
+        },
+        "min": 1.0719500572997187,
+        "median": 1.0749978577721055,
+        "max": 1.0938701905528794
+      }
+    },
+    "overall": {
+      "min": 0.0,
+      "median": 1.0749978577721055,
+      "max": 1.0938701905528794,
+      "range": 1.0938701905528794
+    },
+    "n_numeric_params": 2,
+    "n_evals": 4,
+    "n_skipped": 0,
+    "capped": false
+  },
+  "psr": 0.9999715288361528,
+  "psr_detail": {
+    "n": 1930,
+    "sr_benchmark": 0.0,
+    "sr": 0.06752650641658318,
+    "skew": 11.452177671646433,
+    "kurt": 278.40097807417726,
+    "psr": 0.9999715288361528
+  },
+  "sharpe_ci": {
+    "ci": 0.95,
+    "lo": 0.5995139798956995,
+    "hi": 1.5620154089140612,
+    "n_boot": 200,
+    "block": 20,
+    "seed": 0,
+    "point_annualized_sharpe": 1.0719500572997187
+  },
+  "row": {
+    "name": "cppi",
+    "channel": "riskmgmt",
+    "mode": "quick",
+    "error": null,
+    "total_return": 11.583933382512834,
+    "sharpe": 1.0719500572997187,
+    "max_drawdown": 0.2975547502383187,
+    "psr": 0.9999715288361528,
+    "sharpe_ci_lo": 0.5995139798956995,
+    "sharpe_ci_hi": 1.5620154089140612,
+    "positive_window_ratio": 0.6666666666666666,
+    "window_sharpe_mean": 0.717589565136736,
+    "window_sharpe_std": 1.2138761366031763,
+    "n_windows": 3,
+    "sens_sharpe_min": 0.0,
+    "sens_sharpe_median": 1.0749978577721055,
+    "sens_sharpe_max": 1.0938701905528794,
+    "sens_range": 1.0938701905528794
+  }
+}

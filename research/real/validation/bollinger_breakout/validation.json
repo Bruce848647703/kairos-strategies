@@ -1,0 +1,183 @@
+{
+  "name": "bollinger_breakout",
+  "channel": "technical",
+  "mode": "quick",
+  "params": {
+    "window": 20,
+    "num_std": 2.0
+  },
+  "data": {
+    "name": "ashare_real",
+    "n_assets": 38,
+    "n_periods": 1930,
+    "start": "2018-10-16",
+    "end": "2026-09-23",
+    "periods_per_year": 252
+  },
+  "cost_rate": 0.001,
+  "baseline": {
+    "total_return": 0.9444390990256195,
+    "cagr": 0.09070640308889799,
+    "volatility": 0.11633107755389911,
+    "sharpe": 0.8043793701263369,
+    "sortino": 1.2640886592852807,
+    "max_drawdown": 0.1803634430246458,
+    "calmar": 0.502909023956165,
+    "win_rate": 0.4886901630720673,
+    "profit_factor": 1.2036801657174057,
+    "avg_turnover": 0.044732970608999854,
+    "total_turnover": 86.33463327536973,
+    "n_periods": 1930.0
+  },
+  "walk_forward": {
+    "n_windows": 3,
+    "windows": [
+      {
+        "window": 1,
+        "start": "2018-10-16",
+        "end": "2021-06-08",
+        "n_periods": 644,
+        "total_return": 1.0182161966469714,
+        "sharpe": 1.8448864270124277,
+        "volatility": 0.1555433925616284,
+        "max_drawdown": 0.08488464563652898
+      },
+      {
+        "window": 2,
+        "start": "2021-06-09",
+        "end": "2024-01-26",
+        "n_periods": 643,
+        "total_return": -0.12653655821297638,
+        "sharpe": -0.7378704587288101,
+        "volatility": 0.06866217061621759,
+        "max_drawdown": 0.14482328374877385
+      },
+      {
+        "window": 3,
+        "start": "2024-01-29",
+        "end": "2026-09-23",
+        "n_periods": 643,
+        "total_return": 0.09850916399625476,
+        "sharpe": 0.3969653370086715,
+        "volatility": 0.1071135630790162,
+        "max_drawdown": 0.1224568581489277
+      }
+    ],
+    "positive_window_ratio": 0.6666666666666666,
+    "window_sharpe_mean": 0.5013271017640963,
+    "window_sharpe_std": 1.2945372980984728,
+    "best_window_return": 1.0182161966469714,
+    "worst_window_return": -0.12653655821297638
+  },
+  "sensitivity": {
+    "baseline_sharpe": 0.8043793701263369,
+    "params": {
+      "window": {
+        "original": 20,
+        "points": [
+          {
+            "value": 10,
+            "factor": 0.5,
+            "sharpe": 0.6007724403786385
+          },
+          {
+            "value": 20,
+            "factor": 1.0,
+            "sharpe": 0.8043793701263369,
+            "reused_baseline": true
+          },
+          {
+            "value": 40,
+            "factor": 2.0,
+            "sharpe": 0.799443712949655
+          }
+        ],
+        "value_sharpe": {
+          "10": 0.6007724403786385,
+          "20": 0.8043793701263369,
+          "40": 0.799443712949655
+        },
+        "min": 0.6007724403786385,
+        "median": 0.799443712949655,
+        "max": 0.8043793701263369
+      },
+      "num_std": {
+        "original": 2.0,
+        "points": [
+          {
+            "value": 1.0,
+            "factor": 0.5,
+            "sharpe": 0.8751971505238966
+          },
+          {
+            "value": 2.0,
+            "factor": 1.0,
+            "sharpe": 0.8043793701263369,
+            "reused_baseline": true
+          },
+          {
+            "value": 4.0,
+            "factor": 2.0,
+            "sharpe": 0.5120536533674396
+          }
+        ],
+        "value_sharpe": {
+          "1.0": 0.8751971505238966,
+          "2.0": 0.8043793701263369,
+          "4.0": 0.5120536533674396
+        },
+        "min": 0.5120536533674396,
+        "median": 0.8043793701263369,
+        "max": 0.8751971505238966
+      }
+    },
+    "overall": {
+      "min": 0.5120536533674396,
+      "median": 0.799443712949655,
+      "max": 0.8751971505238966,
+      "range": 0.363143497156457
+    },
+    "n_numeric_params": 2,
+    "n_evals": 4,
+    "n_skipped": 0,
+    "capped": false
+  },
+  "psr": 0.9881390138669224,
+  "psr_detail": {
+    "n": 1930,
+    "sr_benchmark": 0.0,
+    "sr": 0.050671137454882505,
+    "skew": 0.9784527736760685,
+    "kurt": 28.89248987663891,
+    "psr": 0.9881390138669224
+  },
+  "sharpe_ci": {
+    "ci": 0.95,
+    "lo": 0.09509749527697652,
+    "hi": 1.3952318899785279,
+    "n_boot": 200,
+    "block": 20,
+    "seed": 0,
+    "point_annualized_sharpe": 0.8043793701263369
+  },
+  "row": {
+    "name": "bollinger_breakout",
+    "channel": "technical",
+    "mode": "quick",
+    "error": null,
+    "total_return": 0.9444390990256195,
+    "sharpe": 0.8043793701263369,
+    "max_drawdown": 0.1803634430246458,
+    "psr": 0.9881390138669224,
+    "sharpe_ci_lo": 0.09509749527697652,
+    "sharpe_ci_hi": 1.3952318899785279,
+    "positive_window_ratio": 0.6666666666666666,
+    "window_sharpe_mean": 0.5013271017640963,
+    "window_sharpe_std": 1.2945372980984728,
+    "n_windows": 3,
+    "sens_sharpe_min": 0.5120536533674396,
+    "sens_sharpe_median": 0.799443712949655,
+    "sens_sharpe_max": 0.8751971505238966,
+    "sens_range": 0.363143497156457
+  }
+}

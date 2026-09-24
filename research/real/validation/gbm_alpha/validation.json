@@ -1,0 +1,304 @@
+{
+  "name": "gbm_alpha",
+  "channel": "ml_signal",
+  "mode": "quick",
+  "params": {
+    "n_estimators": 60,
+    "learning_rate": 0.08,
+    "n_bins": 32,
+    "refit": 21,
+    "train_window": "None",
+    "min_train_dates": 126,
+    "budget": 1.0
+  },
+  "data": {
+    "name": "ashare_real",
+    "n_assets": 38,
+    "n_periods": 1930,
+    "start": "2018-10-16",
+    "end": "2026-09-23",
+    "periods_per_year": 252
+  },
+  "cost_rate": 0.001,
+  "baseline": {
+    "total_return": 6.03171620509439,
+    "cagr": 0.29003280560214306,
+    "volatility": 0.7981465144181226,
+    "sharpe": 0.5256190515310605,
+    "sortino": 2.3284422964237237,
+    "max_drawdown": 0.34632789389111196,
+    "calmar": 0.8374514750848556,
+    "win_rate": 0.4837060702875399,
+    "profit_factor": 1.4112601806761211,
+    "avg_turnover": 0.0675943454207907,
+    "total_turnover": 130.45708666212604,
+    "n_periods": 1930.0
+  },
+  "walk_forward": {
+    "n_windows": 3,
+    "windows": [
+      {
+        "window": 1,
+        "start": "2018-10-16",
+        "end": "2021-06-08",
+        "n_periods": 644,
+        "total_return": 5.230140269765389,
+        "sharpe": 0.8695404248535406,
+        "volatility": 1.3635728715228956,
+        "max_drawdown": 0.34632789389111196
+      },
+      {
+        "window": 2,
+        "start": "2021-06-09",
+        "end": "2024-01-26",
+        "n_periods": 643,
+        "total_return": 0.20960381024177566,
+        "sharpe": 0.5371964483451532,
+        "volatility": 0.16386873544671227,
+        "max_drawdown": 0.14056600535572483
+      },
+      {
+        "window": 3,
+        "start": "2024-01-29",
+        "end": "2026-09-23",
+        "n_periods": 643,
+        "total_return": -0.09062194056965689,
+        "sharpe": -0.18184581947664327,
+        "volatility": 0.14586611557832405,
+        "max_drawdown": 0.18573438051125868
+      }
+    ],
+    "positive_window_ratio": 0.6666666666666666,
+    "window_sharpe_mean": 0.4082970179073502,
+    "window_sharpe_std": 0.5374146965492056,
+    "best_window_return": 5.230140269765389,
+    "worst_window_return": -0.09062194056965689
+  },
+  "sensitivity": {
+    "baseline_sharpe": 0.5256190515310605,
+    "params": {
+      "n_estimators": {
+        "original": 60,
+        "points": [
+          {
+            "value": 30,
+            "factor": 0.5,
+            "sharpe": 0.5843396070624576
+          },
+          {
+            "value": 60,
+            "factor": 1.0,
+            "sharpe": 0.5256190515310605,
+            "reused_baseline": true
+          },
+          {
+            "value": 120,
+            "factor": 2.0,
+            "sharpe": 0.5206153962523222
+          }
+        ],
+        "value_sharpe": {
+          "30": 0.5843396070624576,
+          "60": 0.5256190515310605,
+          "120": 0.5206153962523222
+        },
+        "min": 0.5206153962523222,
+        "median": 0.5256190515310605,
+        "max": 0.5843396070624576
+      },
+      "learning_rate": {
+        "original": 0.08,
+        "points": [
+          {
+            "value": 0.04,
+            "factor": 0.5,
+            "sharpe": 0.5808790661526849
+          },
+          {
+            "value": 0.08,
+            "factor": 1.0,
+            "sharpe": 0.5256190515310605,
+            "reused_baseline": true
+          },
+          {
+            "value": 0.16,
+            "factor": 2.0,
+            "sharpe": 0.523091767736164
+          }
+        ],
+        "value_sharpe": {
+          "0.04": 0.5808790661526849,
+          "0.08": 0.5256190515310605,
+          "0.16": 0.523091767736164
+        },
+        "min": 0.523091767736164,
+        "median": 0.5256190515310605,
+        "max": 0.5808790661526849
+      },
+      "n_bins": {
+        "original": 32,
+        "points": [
+          {
+            "value": 16,
+            "factor": 0.5,
+            "sharpe": 0.5342548984127485
+          },
+          {
+            "value": 32,
+            "factor": 1.0,
+            "sharpe": 0.5256190515310605,
+            "reused_baseline": true
+          },
+          {
+            "value": 64,
+            "factor": 2.0,
+            "sharpe": 0.4595499775116641
+          }
+        ],
+        "value_sharpe": {
+          "16": 0.5342548984127485,
+          "32": 0.5256190515310605,
+          "64": 0.4595499775116641
+        },
+        "min": 0.4595499775116641,
+        "median": 0.5256190515310605,
+        "max": 0.5342548984127485
+      },
+      "refit": {
+        "original": 21,
+        "points": [
+          {
+            "value": 11,
+            "factor": 0.5,
+            "sharpe": 0.37516771573437546
+          },
+          {
+            "value": 21,
+            "factor": 1.0,
+            "sharpe": 0.5256190515310605,
+            "reused_baseline": true
+          },
+          {
+            "value": 42,
+            "factor": 2.0,
+            "sharpe": 0.48285507730344424
+          }
+        ],
+        "value_sharpe": {
+          "11": 0.37516771573437546,
+          "21": 0.5256190515310605,
+          "42": 0.48285507730344424
+        },
+        "min": 0.37516771573437546,
+        "median": 0.48285507730344424,
+        "max": 0.5256190515310605
+      },
+      "min_train_dates": {
+        "original": 126,
+        "points": [
+          {
+            "value": 63,
+            "factor": 0.5,
+            "sharpe": 0.513509263409892
+          },
+          {
+            "value": 126,
+            "factor": 1.0,
+            "sharpe": 0.5256190515310605,
+            "reused_baseline": true
+          },
+          {
+            "value": 252,
+            "factor": 2.0,
+            "sharpe": 0.5229742709197737
+          }
+        ],
+        "value_sharpe": {
+          "63": 0.513509263409892,
+          "126": 0.5256190515310605,
+          "252": 0.5229742709197737
+        },
+        "min": 0.513509263409892,
+        "median": 0.5229742709197737,
+        "max": 0.5256190515310605
+      },
+      "budget": {
+        "original": 1.0,
+        "points": [
+          {
+            "value": 0.5,
+            "factor": 0.5,
+            "sharpe": 0.5256361309211175
+          },
+          {
+            "value": 1.0,
+            "factor": 1.0,
+            "sharpe": 0.5256190515310605,
+            "reused_baseline": true
+          },
+          {
+            "value": 2.0,
+            "factor": 2.0,
+            "sharpe": 0.5250201680493233
+          }
+        ],
+        "value_sharpe": {
+          "0.5": 0.5256361309211175,
+          "1.0": 0.5256190515310605,
+          "2.0": 0.5250201680493233
+        },
+        "min": 0.5250201680493233,
+        "median": 0.5256190515310605,
+        "max": 0.5256361309211175
+      }
+    },
+    "overall": {
+      "min": 0.37516771573437546,
+      "median": 0.523091767736164,
+      "max": 0.5843396070624576,
+      "range": 0.20917189132808212
+    },
+    "n_numeric_params": 6,
+    "n_evals": 12,
+    "n_skipped": 0,
+    "capped": false
+  },
+  "psr": 0.9989530525086182,
+  "psr_detail": {
+    "n": 1930,
+    "sr_benchmark": 0.0,
+    "sr": 0.03311088796925785,
+    "skew": 35.35086485503393,
+    "kurt": 1438.2533968208156,
+    "psr": 0.9989530525086182
+  },
+  "sharpe_ci": {
+    "ci": 0.95,
+    "lo": 0.14063387121263296,
+    "hi": 1.05502868865618,
+    "n_boot": 200,
+    "block": 20,
+    "seed": 0,
+    "point_annualized_sharpe": 0.5256190515310605
+  },
+  "row": {
+    "name": "gbm_alpha",
+    "channel": "ml_signal",
+    "mode": "quick",
+    "error": null,
+    "total_return": 6.03171620509439,
+    "sharpe": 0.5256190515310605,
+    "max_drawdown": 0.34632789389111196,
+    "psr": 0.9989530525086182,
+    "sharpe_ci_lo": 0.14063387121263296,
+    "sharpe_ci_hi": 1.05502868865618,
+    "positive_window_ratio": 0.6666666666666666,
+    "window_sharpe_mean": 0.4082970179073502,
+    "window_sharpe_std": 0.5374146965492056,
+    "n_windows": 3,
+    "sens_sharpe_min": 0.37516771573437546,
+    "sens_sharpe_median": 0.523091767736164,
+    "sens_sharpe_max": 0.5843396070624576,
+    "sens_range": 0.20917189132808212
+  }
+}

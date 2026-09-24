@@ -1,0 +1,303 @@
+{
+  "name": "ssd_pairs",
+  "channel": "pairs",
+  "mode": "quick",
+  "params": {
+    "formation_window": 90,
+    "z_window": 30,
+    "refit_freq": 10,
+    "entry_z": 1.5,
+    "exit_z": 0.5,
+    "leg_budget": 0.5
+  },
+  "data": {
+    "name": "ashare_real",
+    "n_assets": 38,
+    "n_periods": 1930,
+    "start": "2018-10-16",
+    "end": "2026-09-23",
+    "periods_per_year": 252
+  },
+  "cost_rate": 0.001,
+  "baseline": {
+    "total_return": -0.7874584361968607,
+    "cagr": -0.18307087227654772,
+    "volatility": 0.11804031205805823,
+    "sharpe": -1.6527013557462442,
+    "sortino": -2.003026686126172,
+    "max_drawdown": 0.7917458008319912,
+    "calmar": -0.23122430467477206,
+    "win_rate": 0.423841059602649,
+    "profit_factor": 0.6792800376528875,
+    "avg_turnover": 0.2730747959380089,
+    "total_turnover": 527.0343561603571,
+    "n_periods": 1930.0
+  },
+  "walk_forward": {
+    "n_windows": 3,
+    "windows": [
+      {
+        "window": 1,
+        "start": "2018-10-16",
+        "end": "2021-06-08",
+        "n_periods": 644,
+        "total_return": -0.3073162940923413,
+        "sharpe": -0.9204575763091812,
+        "volatility": 0.14452158394333794,
+        "max_drawdown": 0.3352967970297954
+      },
+      {
+        "window": 2,
+        "start": "2021-06-09",
+        "end": "2024-01-26",
+        "n_periods": 643,
+        "total_return": -0.4491578210757704,
+        "sharpe": -2.0194245852804915,
+        "volatility": 0.11252931593848832,
+        "max_drawdown": 0.45448019206898593
+      },
+      {
+        "window": 3,
+        "start": "2024-01-29",
+        "end": "2026-09-23",
+        "n_periods": 643,
+        "total_return": -0.4396671877242829,
+        "sharpe": -2.452118042600298,
+        "volatility": 0.09084951952565593,
+        "max_drawdown": 0.46145309824704206
+      }
+    ],
+    "positive_window_ratio": 0.0,
+    "window_sharpe_mean": -1.797333401396657,
+    "window_sharpe_std": 0.789613396839854,
+    "best_window_return": -0.3073162940923413,
+    "worst_window_return": -0.4491578210757704
+  },
+  "sensitivity": {
+    "baseline_sharpe": -1.6527013557462442,
+    "params": {
+      "formation_window": {
+        "original": 90,
+        "points": [
+          {
+            "value": 45,
+            "factor": 0.5,
+            "sharpe": -0.8618519987508346
+          },
+          {
+            "value": 90,
+            "factor": 1.0,
+            "sharpe": -1.6527013557462442,
+            "reused_baseline": true
+          },
+          {
+            "value": 180,
+            "factor": 2.0,
+            "sharpe": -1.16109202142694
+          }
+        ],
+        "value_sharpe": {
+          "45": -0.8618519987508346,
+          "90": -1.6527013557462442,
+          "180": -1.16109202142694
+        },
+        "min": -1.6527013557462442,
+        "median": -1.16109202142694,
+        "max": -0.8618519987508346
+      },
+      "z_window": {
+        "original": 30,
+        "points": [
+          {
+            "value": 15,
+            "factor": 0.5,
+            "sharpe": -1.765187248637698
+          },
+          {
+            "value": 30,
+            "factor": 1.0,
+            "sharpe": -1.6527013557462442,
+            "reused_baseline": true
+          },
+          {
+            "value": 60,
+            "factor": 2.0,
+            "sharpe": -1.563181222255888
+          }
+        ],
+        "value_sharpe": {
+          "15": -1.765187248637698,
+          "30": -1.6527013557462442,
+          "60": -1.563181222255888
+        },
+        "min": -1.765187248637698,
+        "median": -1.6527013557462442,
+        "max": -1.563181222255888
+      },
+      "refit_freq": {
+        "original": 10,
+        "points": [
+          {
+            "value": 5,
+            "factor": 0.5,
+            "sharpe": -1.6539455355200277
+          },
+          {
+            "value": 10,
+            "factor": 1.0,
+            "sharpe": -1.6527013557462442,
+            "reused_baseline": true
+          },
+          {
+            "value": 20,
+            "factor": 2.0,
+            "sharpe": -1.0444979615725125
+          }
+        ],
+        "value_sharpe": {
+          "5": -1.6539455355200277,
+          "10": -1.6527013557462442,
+          "20": -1.0444979615725125
+        },
+        "min": -1.6539455355200277,
+        "median": -1.6527013557462442,
+        "max": -1.0444979615725125
+      },
+      "entry_z": {
+        "original": 1.5,
+        "points": [
+          {
+            "value": 0.75,
+            "factor": 0.5,
+            "sharpe": -1.5962851747685551
+          },
+          {
+            "value": 1.5,
+            "factor": 1.0,
+            "sharpe": -1.6527013557462442,
+            "reused_baseline": true
+          },
+          {
+            "value": 3.0,
+            "factor": 2.0,
+            "sharpe": -1.4846088240275153
+          }
+        ],
+        "value_sharpe": {
+          "0.75": -1.5962851747685551,
+          "1.5": -1.6527013557462442,
+          "3.0": -1.4846088240275153
+        },
+        "min": -1.6527013557462442,
+        "median": -1.5962851747685551,
+        "max": -1.4846088240275153
+      },
+      "exit_z": {
+        "original": 0.5,
+        "points": [
+          {
+            "value": 0.25,
+            "factor": 0.5,
+            "sharpe": -1.678371018750515
+          },
+          {
+            "value": 0.5,
+            "factor": 1.0,
+            "sharpe": -1.6527013557462442,
+            "reused_baseline": true
+          },
+          {
+            "value": 1.0,
+            "factor": 2.0,
+            "sharpe": -1.638014106360375
+          }
+        ],
+        "value_sharpe": {
+          "0.25": -1.678371018750515,
+          "0.5": -1.6527013557462442,
+          "1.0": -1.638014106360375
+        },
+        "min": -1.678371018750515,
+        "median": -1.6527013557462442,
+        "max": -1.638014106360375
+      },
+      "leg_budget": {
+        "original": 0.5,
+        "points": [
+          {
+            "value": 0.25,
+            "factor": 0.5,
+            "sharpe": -1.65355435750305
+          },
+          {
+            "value": 0.5,
+            "factor": 1.0,
+            "sharpe": -1.6527013557462442,
+            "reused_baseline": true
+          },
+          {
+            "value": 1.0,
+            "factor": 2.0,
+            "sharpe": -1.6115345314416476
+          }
+        ],
+        "value_sharpe": {
+          "0.25": -1.65355435750305,
+          "0.5": -1.6527013557462442,
+          "1.0": -1.6115345314416476
+        },
+        "min": -1.65355435750305,
+        "median": -1.6527013557462442,
+        "max": -1.6115345314416476
+      }
+    },
+    "overall": {
+      "min": -1.765187248637698,
+      "median": -1.6115345314416476,
+      "max": -0.8618519987508346,
+      "range": 0.9033352498868634
+    },
+    "n_numeric_params": 6,
+    "n_evals": 12,
+    "n_skipped": 0,
+    "capped": false
+  },
+  "psr": 3.9523208018351985e-07,
+  "psr_detail": {
+    "n": 1930,
+    "sr_benchmark": 0.0,
+    "sr": -0.10411039949437742,
+    "skew": -1.8404785962079953,
+    "kurt": 19.150565214546226,
+    "psr": 3.9523208018351985e-07
+  },
+  "sharpe_ci": {
+    "ci": 0.95,
+    "lo": -2.1940568179718234,
+    "hi": -1.1552431027626962,
+    "n_boot": 200,
+    "block": 20,
+    "seed": 0,
+    "point_annualized_sharpe": -1.6527013557462442
+  },
+  "row": {
+    "name": "ssd_pairs",
+    "channel": "pairs",
+    "mode": "quick",
+    "error": null,
+    "total_return": -0.7874584361968607,
+    "sharpe": -1.6527013557462442,
+    "max_drawdown": 0.7917458008319912,
+    "psr": 3.9523208018351985e-07,
+    "sharpe_ci_lo": -2.1940568179718234,
+    "sharpe_ci_hi": -1.1552431027626962,
+    "positive_window_ratio": 0.0,
+    "window_sharpe_mean": -1.797333401396657,
+    "window_sharpe_std": 0.789613396839854,
+    "n_windows": 3,
+    "sens_sharpe_min": -1.765187248637698,
+    "sens_sharpe_median": -1.6115345314416476,
+    "sens_sharpe_max": -0.8618519987508346,
+    "sens_range": 0.9033352498868634
+  }
+}

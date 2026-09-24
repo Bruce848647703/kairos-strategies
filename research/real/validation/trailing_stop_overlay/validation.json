@@ -1,0 +1,183 @@
+{
+  "name": "trailing_stop_overlay",
+  "channel": "riskmgmt",
+  "mode": "quick",
+  "params": {
+    "stop": 0.1,
+    "reentry": 0.02
+  },
+  "data": {
+    "name": "ashare_real",
+    "n_assets": 38,
+    "n_periods": 1930,
+    "start": "2018-10-16",
+    "end": "2026-09-23",
+    "periods_per_year": 252
+  },
+  "cost_rate": 0.001,
+  "baseline": {
+    "total_return": 3.0234987903225177,
+    "cagr": 0.19934214926574456,
+    "volatility": 0.28221920243354,
+    "sharpe": 0.7611075938721431,
+    "sortino": 1.849518388526132,
+    "max_drawdown": 0.30554636749989683,
+    "calmar": 0.652412106538337,
+    "win_rate": 0.5383333333333333,
+    "profit_factor": 1.4625512032013894,
+    "avg_turnover": 0.014533349347689593,
+    "total_turnover": 28.049364241040916,
+    "n_periods": 1930.0
+  },
+  "walk_forward": {
+    "n_windows": 3,
+    "windows": [
+      {
+        "window": 1,
+        "start": "2018-10-16",
+        "end": "2021-06-08",
+        "n_periods": 644,
+        "total_return": 4.166942141918922,
+        "sharpe": 1.5347390391342108,
+        "volatility": 0.4813330982457662,
+        "max_drawdown": 0.24171782301674982
+      },
+      {
+        "window": 2,
+        "start": "2021-06-09",
+        "end": "2024-01-26",
+        "n_periods": 643,
+        "total_return": 0.0,
+        "sharpe": 0.0,
+        "volatility": 0.0,
+        "max_drawdown": -0.0
+      },
+      {
+        "window": 3,
+        "start": "2024-01-29",
+        "end": "2026-09-23",
+        "n_periods": 643,
+        "total_return": -0.22129981722066405,
+        "sharpe": -1.2696380423946563,
+        "volatility": 0.07493314406374636,
+        "max_drawdown": 0.22129981722066405
+      }
+    ],
+    "positive_window_ratio": 0.3333333333333333,
+    "window_sharpe_mean": 0.08836699891318485,
+    "window_sharpe_std": 1.404275346477244,
+    "best_window_return": 4.166942141918922,
+    "worst_window_return": -0.22129981722066405
+  },
+  "sensitivity": {
+    "baseline_sharpe": 0.7611075938721431,
+    "params": {
+      "stop": {
+        "original": 0.1,
+        "points": [
+          {
+            "value": 0.05,
+            "factor": 0.5,
+            "sharpe": 0.4885223472424222
+          },
+          {
+            "value": 0.1,
+            "factor": 1.0,
+            "sharpe": 0.7611075938721431,
+            "reused_baseline": true
+          },
+          {
+            "value": 0.2,
+            "factor": 2.0,
+            "sharpe": 0.9230077400525981
+          }
+        ],
+        "value_sharpe": {
+          "0.05": 0.4885223472424222,
+          "0.1": 0.7611075938721431,
+          "0.2": 0.9230077400525981
+        },
+        "min": 0.4885223472424222,
+        "median": 0.7611075938721431,
+        "max": 0.9230077400525981
+      },
+      "reentry": {
+        "original": 0.02,
+        "points": [
+          {
+            "value": 0.01,
+            "factor": 0.5,
+            "sharpe": 0.772545409022515
+          },
+          {
+            "value": 0.02,
+            "factor": 1.0,
+            "sharpe": 0.7611075938721431,
+            "reused_baseline": true
+          },
+          {
+            "value": 0.04,
+            "factor": 2.0,
+            "sharpe": 0.7985123813473516
+          }
+        ],
+        "value_sharpe": {
+          "0.01": 0.772545409022515,
+          "0.02": 0.7611075938721431,
+          "0.04": 0.7985123813473516
+        },
+        "min": 0.7611075938721431,
+        "median": 0.772545409022515,
+        "max": 0.7985123813473516
+      }
+    },
+    "overall": {
+      "min": 0.4885223472424222,
+      "median": 0.772545409022515,
+      "max": 0.9230077400525981,
+      "range": 0.4344853928101759
+    },
+    "n_numeric_params": 2,
+    "n_evals": 4,
+    "n_skipped": 0,
+    "capped": false
+  },
+  "psr": 0.9995225141539347,
+  "psr_detail": {
+    "n": 1930,
+    "sr_benchmark": 0.0,
+    "sr": 0.047945271770200915,
+    "skew": 20.9384156131191,
+    "kurt": 714.8363123516674,
+    "psr": 0.9995225141539347
+  },
+  "sharpe_ci": {
+    "ci": 0.95,
+    "lo": 0.12052648905504398,
+    "hi": 1.314812561982271,
+    "n_boot": 200,
+    "block": 20,
+    "seed": 0,
+    "point_annualized_sharpe": 0.7611075938721431
+  },
+  "row": {
+    "name": "trailing_stop_overlay",
+    "channel": "riskmgmt",
+    "mode": "quick",
+    "error": null,
+    "total_return": 3.0234987903225177,
+    "sharpe": 0.7611075938721431,
+    "max_drawdown": 0.30554636749989683,
+    "psr": 0.9995225141539347,
+    "sharpe_ci_lo": 0.12052648905504398,
+    "sharpe_ci_hi": 1.314812561982271,
+    "positive_window_ratio": 0.3333333333333333,
+    "window_sharpe_mean": 0.08836699891318485,
+    "window_sharpe_std": 1.404275346477244,
+    "n_windows": 3,
+    "sens_sharpe_min": 0.4885223472424222,
+    "sens_sharpe_median": 0.772545409022515,
+    "sens_sharpe_max": 0.9230077400525981,
+    "sens_range": 0.4344853928101759
+  }
+}

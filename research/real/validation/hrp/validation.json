@@ -1,0 +1,153 @@
+{
+  "name": "hrp",
+  "channel": "hrp",
+  "mode": "quick",
+  "params": {
+    "window": 60
+  },
+  "data": {
+    "name": "ashare_real",
+    "n_assets": 38,
+    "n_periods": 1930,
+    "start": "2018-10-16",
+    "end": "2026-09-23",
+    "periods_per_year": 252
+  },
+  "cost_rate": 0.001,
+  "baseline": {
+    "total_return": 4.203673370717468,
+    "cagr": 0.24030519662827343,
+    "volatility": 0.32452484914636204,
+    "sharpe": 0.8031479515629866,
+    "sortino": 1.8076529284687222,
+    "max_drawdown": 0.45708860569887944,
+    "calmar": 0.5257300086508425,
+    "win_rate": 0.5129533678756477,
+    "profit_factor": 1.226798883557965,
+    "avg_turnover": 0.19425195610709478,
+    "total_turnover": 374.9062752866929,
+    "n_periods": 1930.0
+  },
+  "walk_forward": {
+    "n_windows": 3,
+    "windows": [
+      {
+        "window": 1,
+        "start": "2018-10-16",
+        "end": "2021-06-08",
+        "n_periods": 644,
+        "total_return": 6.5979572007844665,
+        "sharpe": 1.792179123847791,
+        "volatility": 0.5010863567976583,
+        "max_drawdown": 0.19902097713865996
+      },
+      {
+        "window": 2,
+        "start": "2021-06-09",
+        "end": "2024-01-26",
+        "n_periods": 643,
+        "total_return": -0.3650840494412927,
+        "sharpe": -0.8512527648606734,
+        "volatility": 0.1882634380737074,
+        "max_drawdown": 0.39288918870539913
+      },
+      {
+        "window": 3,
+        "start": "2024-01-29",
+        "end": "2026-09-23",
+        "n_periods": 643,
+        "total_return": 0.07828125158351695,
+        "sharpe": 0.26168833861938573,
+        "volatility": 0.16434425178620374,
+        "max_drawdown": 0.25740465686651504
+      }
+    ],
+    "positive_window_ratio": 0.6666666666666666,
+    "window_sharpe_mean": 0.4008715658688345,
+    "window_sharpe_std": 1.3272008196278657,
+    "best_window_return": 6.5979572007844665,
+    "worst_window_return": -0.3650840494412927
+  },
+  "sensitivity": {
+    "baseline_sharpe": 0.8031479515629866,
+    "params": {
+      "window": {
+        "original": 60,
+        "points": [
+          {
+            "value": 30,
+            "factor": 0.5,
+            "sharpe": 0.4324349534350591
+          },
+          {
+            "value": 60,
+            "factor": 1.0,
+            "sharpe": 0.8031479515629866,
+            "reused_baseline": true
+          },
+          {
+            "value": 120,
+            "factor": 2.0,
+            "sharpe": 0.9265648836303402
+          }
+        ],
+        "value_sharpe": {
+          "30": 0.4324349534350591,
+          "60": 0.8031479515629866,
+          "120": 0.9265648836303402
+        },
+        "min": 0.4324349534350591,
+        "median": 0.8031479515629866,
+        "max": 0.9265648836303402
+      }
+    },
+    "overall": {
+      "min": 0.4324349534350591,
+      "median": 0.8031479515629866,
+      "max": 0.9265648836303402,
+      "range": 0.49412993019528106
+    },
+    "n_numeric_params": 1,
+    "n_evals": 2,
+    "n_skipped": 0,
+    "capped": false
+  },
+  "psr": 0.9989437638668227,
+  "psr_detail": {
+    "n": 1930,
+    "sr_benchmark": 0.0,
+    "sr": 0.05059356537682409,
+    "skew": 14.679253432963213,
+    "kurt": 415.4667299618817,
+    "psr": 0.9989437638668227
+  },
+  "sharpe_ci": {
+    "ci": 0.95,
+    "lo": 0.17203600423050158,
+    "hi": 1.326343834011613,
+    "n_boot": 200,
+    "block": 20,
+    "seed": 0,
+    "point_annualized_sharpe": 0.8031479515629866
+  },
+  "row": {
+    "name": "hrp",
+    "channel": "hrp",
+    "mode": "quick",
+    "error": null,
+    "total_return": 4.203673370717468,
+    "sharpe": 0.8031479515629866,
+    "max_drawdown": 0.45708860569887944,
+    "psr": 0.9989437638668227,
+    "sharpe_ci_lo": 0.17203600423050158,
+    "sharpe_ci_hi": 1.326343834011613,
+    "positive_window_ratio": 0.6666666666666666,
+    "window_sharpe_mean": 0.4008715658688345,
+    "window_sharpe_std": 1.3272008196278657,
+    "n_windows": 3,
+    "sens_sharpe_min": 0.4324349534350591,
+    "sens_sharpe_median": 0.8031479515629866,
+    "sens_sharpe_max": 0.9265648836303402,
+    "sens_range": 0.49412993019528106
+  }
+}
