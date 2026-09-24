@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "name": "coint_pairs",
+    "channel": "statarb",
+    "universe": "cross_section+sector_equalize",
+    "long_only": false,
+    "description": "[行业均衡] 协整配对统计套利：在滚动网格上遍历全部资产对，用 OLS 做 Engle-Granger 第一步估对冲比率 β，第二步对残差跑自研 ADF 回归（Δe=c+λe₋₁）得到 t 统计量与半衰期，在通过门槛的对里挑「价差最紧(R² 最高)、协整证据最强」的一对；再对残差 logy-α-β·logx 做滚动 z-score，价差被高估(z 高)做空价差、被低估(z 低)做多价差，两腿等预算反向，组合逐行权重和恒为 0。",
+    "hypothesis": "核心假设：存在协整关系的资产对，其线性组合（相对估值）是平稳的，偏离中枢后由套利/基本面纽带拉回，故残差 z-score 的反向持仓期望为正，且多空对冲剥离了市场 beta。失效场景：协整关系结构性破裂（并购、行业政策、基本面脱钩）时残差不回归而持续发散，亏损无自然上限；ADF/半衰期只刻画历史平稳性，且小样本下伪回归会让残差看起来均值回归，故仍可能选中并不真协整的对。",
+    "source": "统计套利经典范式——Engle-Granger 协整配对交易（cointegrated pairs trading）。OLS 对冲比率、ADF 风格 t 统计量、半衰期与配对排序均为本仓库原创 numpy 实现，不依赖 statsmodels（也不查 Dickey-Fuller 临界值表）；与 meanrev 渠道的 pairs_spread（固定两腿、β=1 的对数价差）不同，此处配对是自动筛选的且带估出的 β。",
+    "params": {
+      "est_window": 120,
+      "z_window": 40,
+      "select_freq": 20,
+      "entry_z": 1.5,
+      "exit_z": 0.5,
+      "leg_budget": 0.5,
+      "max_half_life": 60.0,
+      "min_adf_t": -2.0
+    }
+  },
+  "metrics": {
+    "total_return": -0.3695994177160945,
+    "cagr": -0.0584661235458509,
+    "volatility": 0.16152355422696207,
+    "sharpe": -0.2945530000127065,
+    "sortino": -0.46207171108354844,
+    "max_drawdown": 0.5089062614501783,
+    "calmar": -0.1148858404281487,
+    "win_rate": 0.4117272147864882,
+    "profit_factor": 0.9223916602484243,
+    "avg_turnover": 0.09853972919566753,
+    "total_turnover": 190.18167734763833,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "name": "em_regime",
+    "channel": "regime",
+    "universe": "overlay+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] 自研 2 状态高斯 EM 择时：对等权组合收益用 2 分量一维高斯混合 EM（numpy 自研、中位数分割确定性初始化、无随机数）做 walk-forward 拟合——每 refit 期只用截至当期的历史收益重拟合一次，均值较高的分量判为 bull；当期总敞口 = 当期收益属于 bull 分量的后验概率线性映射到 [bear_expo, bull_expo]，两次 refit 之间参数冻结、仅在线打分（bull 满仓、bear 空仓/降杠杆，每资产敞口/N）。",
+    "hypothesis": "核心假设：市场收益是 bull/bear 两种状态的高斯混合（Hamilton regime switching 的简化），EM 后验概率是比硬阈值更平滑的『状态置信度』——bear 证据逐步累积时仓位连续下降，避免开关式择时在临界点反复抖动；walk-forward 重拟合保证状态参数跟随分布漂移且严格无未来。失效场景：单一状态市场被强行二分（后验在 0.5 附近漂移，仓位中庸无增益）、状态突变（下次 refit 前参数冻结，识别滞后最多 refit 期）、以及厚尾/非高斯收益使高斯分量误判极端事件为状态切换。",
+    "source": "Hamilton(1989) 马尔可夫状态切换思想的『2 分量高斯混合 EM + walk-forward』简化实现；EM 算法、确定性初始化、log 域责任计算与冻结参数在线打分均为本仓库原创，未引入任何第三方 ML 库。",
+    "params": {
+      "min_train": 250,
+      "refit": 21,
+      "n_iter": 60,
+      "tol": 1e-07,
+      "bull_expo": 1.0,
+      "bear_expo": 0.0
+    }
+  },
+  "metrics": {
+    "total_return": 0.5542490380628746,
+    "cagr": 0.05927039788993049,
+    "volatility": 0.07646959422594242,
+    "sharpe": 0.789079937383517,
+    "sortino": 2.890690691681843,
+    "max_drawdown": 0.05165057846212906,
+    "calmar": 1.1475263134446478,
+    "win_rate": 0.4922619047619048,
+    "profit_factor": 3.837102891342191,
+    "avg_turnover": 0.012503653669525643,
+    "total_turnover": 24.13205158218449,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

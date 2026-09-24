@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "name": "grid_mm_daily",
+    "channel": "market_making",
+    "universe": "timing+sector_equalize",
+    "long_only": false,
+    "description": "[行业均衡] 日频网格做市：围绕滚动参考价（VWAP/均线，每期重新居中）设对数等比网格，价格每下穿一档净库存 +1 份、每上穿一档 −1 份（可转空），库存有界于 [-cap, +cap]；权重=(库存/cap)×(1/N)，行和可不为 0 但有界。与 crypto.grid_trading（固定首价锚、long-only）不同：此处双向、围绕参考价中性。",
+    "hypothesis": "核心假设：价格围绕滚动的近期成交中枢震荡，网格化「低买高卖」在震荡区间内持续积累库存利润，滚动锚使库存不会因价格中枢漂移而无限累积、净敞口有界且向中性回归。失效场景：单边趋势中价格连续穿越同侧网格，库存被顶在上限（深跌满仓承接 / 急涨过早转空）；日频无真实盘口，「穿档成交」只是收盘价穿越的概念性近似；spacing 相对日波动过宽时成交稀疏、过窄时高频翻转放大换手成本。",
+    "source": "网格做市（grid market making）实务的日频概念性代理，本仓库原创状态机实现，非真实盘口撮合。与 crypto.grid_trading 的区别：参考价滚动（非锚定首价）、库存双向可空（非 long-only [0,max_steps]）、围绕参考价中性；与 inventory_skew_mm 的区别：库存由「网格档位穿越数」递推而非报价带触发，且无报价偏斜项。",
+    "params": {
+      "ref_window": 20,
+      "spacing": 0.02,
+      "cap_steps": 4
+    }
+  },
+  "metrics": {
+    "total_return": 2.256727385057551,
+    "cagr": 0.16668561092648138,
+    "volatility": 0.34791096532940013,
+    "sharpe": 0.565294574757855,
+    "sortino": 2.8743777477304144,
+    "max_drawdown": 0.17272936393751892,
+    "calmar": 0.9650102746095693,
+    "win_rate": 0.49711286089238843,
+    "profit_factor": 1.5068084030458535,
+    "avg_turnover": 0.11743994886838503,
+    "total_turnover": 226.65910131598312,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

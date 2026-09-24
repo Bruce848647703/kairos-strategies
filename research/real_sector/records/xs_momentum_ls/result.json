@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "name": "xs_momentum_ls",
+    "channel": "long_short",
+    "universe": "cross_section+sector_equalize",
+    "long_only": false,
+    "description": "[行业均衡] 截面动量多空(12-1)：按 t-lookback 至 t-skip 的累计收益给全 universe 截面排序，做多最强 top 分位一篮子、做空最弱 bottom 分位一篮子，两腿等权各占 0.5 预算，组合逐行权重和恒 ≈ 0（美元中性、毛敞口 = 1）。",
+    "hypothesis": "成因：信息扩散有滞后，投资者对特质信息先反应不足（强势延续）、对代表性证据又过度外推，使 3~12 个月的相对强弱有延续性；同时做多强者、做空弱者能把「强势延续」与「弱势续差」两段价差一起赚到手，且美元中性构造剥离了市场 beta，收益主要来自截面离散度而非大盘方向。失效条件：动量崩溃——暴跌后的 V 型反弹里前期最弱篮子弹性最大，空头腿与多头腿同时受损；风格急切换或流动性冲击使截面相关性骤升、离散度消失；排序被单一事件驱动的价格跳变主导，或策略拥挤后 alpha 被提前交易掉。",
+    "source": "多空股票 alpha 经典范式——横截面动量 (Jegadeesh-Titman 12-1 风格) 的市场中性版本，本仓库原创实现；与 momentum 渠道的 xs_momentum（只做多 top 1/3）不同，此处补上做空 bottom 分位的另一条腿，且排序/配权工具函数均在本模块内自实现。",
+    "params": {
+      "lookback": 252,
+      "skip": 21,
+      "top_frac": 0.3333333333333333,
+      "leg_budget": 0.5
+    }
+  },
+  "metrics": {
+    "total_return": 0.7267523801153879,
+    "cagr": 0.07392787982057314,
+    "volatility": 0.11873573624620778,
+    "sharpe": 0.6601765982061123,
+    "sortino": 0.9602726908323682,
+    "max_drawdown": 0.16884270624963416,
+    "calmar": 0.4378505975334858,
+    "win_rate": 0.5017878426698451,
+    "profit_factor": 1.1331370444544335,
+    "avg_turnover": 0.08026946744301028,
+    "total_turnover": 154.92007216500983,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

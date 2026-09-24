@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "name": "month_of_year",
+    "channel": "seasonality",
+    "universe": "timing+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] 月份季节性：仅当当日所处月份的历史（截至当期之前）平均日收益为正时持有等权组合，否则空仓。",
+    "hypothesis": "真实市场常见假说：一月效应（税收卖出回补、奖金流入）、Sell in May（夏季成交清淡）、基金年初建仓与年末冲业绩等带来月份季节性。注意：在合成随机数据上通常无显著 edge，结果依赖数据本身。",
+    "source": "日历效应文献范式——month-of-the-year seasonality，本仓库原创实现。",
+    "params": {
+      "min_obs": 40
+    }
+  },
+  "metrics": {
+    "total_return": 0.32144757588921613,
+    "cagr": 0.03706382214121828,
+    "volatility": 0.16665719320213546,
+    "sharpe": 0.3017442807514706,
+    "sortino": 0.43486377713871965,
+    "max_drawdown": 0.33044220902854904,
+    "calmar": 0.11216430930594615,
+    "win_rate": 0.4888888888888889,
+    "profit_factor": 1.0667367988031091,
+    "avg_turnover": 0.031631167218922486,
+    "total_turnover": 61.0481527325204,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "name": "liquidity_premium",
+    "channel": "microstructure",
+    "universe": "cross_section+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] 流动性溢价：偏好低流动性/低换手（滚动成交量相对自身均值偏低且截面量能冷清）的资产，做多最非流动篮子。",
+    "hypothesis": "流动性是资产定价的系统性维度：持有『冷清、难变现』的资产需要补偿，长期看低换手/低量能组合的期望收益高于高流动性组合（Amihud 式非流动性溢价）；同时量能相对自身均值萎缩往往处于关注度低谷，后续关注度修复带来超额收益。当流动性危机中非流动资产折价加剧且无法变现、或溢价被拥挤套利压缩时，策略会失效。",
+    "source": "微观结构/学术因子——流动性溢价（Amihud 非流动性）思想的原创量价实现。",
+    "params": {
+      "fast": 10,
+      "slow": 60,
+      "top_frac": 0.3333333333333333
+    }
+  },
+  "metrics": {
+    "total_return": 4.22667724759961,
+    "cagr": 0.2410197418038813,
+    "volatility": 0.5305486895388095,
+    "sharpe": 0.5885929662327009,
+    "sortino": 1.6407968999526705,
+    "max_drawdown": 0.5978442986066732,
+    "calmar": 0.40314801423313434,
+    "win_rate": 0.501336183858899,
+    "profit_factor": 1.224017398479122,
+    "avg_turnover": 0.2952117366378186,
+    "total_turnover": 569.7586517109899,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

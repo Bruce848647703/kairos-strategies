@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "name": "equal_weight_rebal",
+    "channel": "allocation",
+    "universe": "cross_section+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] 等权定期再平衡：每 k 期把组合调回 1/N 等权，其间买入持有让权重随收益自然漂移。",
+    "hypothesis": "等权是不预测收益的分散化基准；日历再平衡隐含『卖高买低』，在均值回归/震荡市中收割再平衡溢价并抑制权重漂移带来的集中度。在强者恒强的单边趋势市中，再平衡会过早减持赢家而跑输纯买入持有。",
+    "source": "组合配置经典范式——等权组合 + 日历再平衡 (calendar rebalancing)，原创 numpy 实现。",
+    "params": {
+      "rebal_freq": 21
+    }
+  },
+  "metrics": {
+    "total_return": 5.993469855915791,
+    "cagr": 0.2891144692285732,
+    "volatility": 0.2637745517285493,
+    "sharpe": 1.0941091318026168,
+    "sortino": 1.7240266371090438,
+    "max_drawdown": 0.29839745039021837,
+    "calmar": 0.96889054799394,
+    "win_rate": 0.5067357512953368,
+    "profit_factor": 1.2281513162817552,
+    "avg_turnover": 0.014002780054582747,
+    "total_turnover": 27.025365505344702,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

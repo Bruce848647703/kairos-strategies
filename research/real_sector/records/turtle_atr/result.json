@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "name": "turtle_atr",
+    "channel": "trend",
+    "universe": "timing+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] 海龟 + ATR 仓位：唐奇安通道突破入场(收盘创 N 日新高做多、跌破 M 日新低离场，通道 shift(1) 防未来，状态机持有)，每资产仓位 = 等预算(1/N) × 持有(0/1) × min(risk_target/(ATR/价格), 1)，即按 ATR 占价比反比缩放——波动大仓位小、波动小仓位大，单资产上限=1/N，逐行和≤1。",
+    "hypothesis": "核心假设：区间突破后趋势倾向延续(海龟交易法则)，而每笔头寸的风险应由波动决定——用 ATR 占价比作分母做反比缩放(等价于每资产等风险预算)，可在高波动资产上自动减仓、低波动资产上加仓，平滑组合风险、抑制单一名义敞口主导。入场/离场用不同长度通道(进 N 出 M)形成滞后带降低 whipsaw。失效场景：震荡市中突破频繁失败造成连续小亏(靠偶发大趋势回本)；ATR 收盘价近似系统性低估含日内振幅的波动；risk_target 设置过高会让多数资产仓位触顶(=1/N)而丧失波动率区分度。",
+    "source": "经典 CTA——海龟交易法 (唐奇安突破) + ATR 波动率仓位管理（本仓库原创实现）。",
+    "params": {
+      "entry": 20,
+      "exit": 10,
+      "atr_window": 14,
+      "risk_target": 0.02,
+      "atr_floor_pct": 0.001
+    }
+  },
+  "metrics": {
+    "total_return": 0.7654431495781646,
+    "cagr": 0.0770396202517003,
+    "volatility": 0.10755745949471206,
+    "sharpe": 0.7436641322943239,
+    "sortino": 1.1557782643269783,
+    "max_drawdown": 0.19220214913403244,
+    "calmar": 0.40082600844372773,
+    "win_rate": 0.5052410901467506,
+    "profit_factor": 1.172345348772644,
+    "avg_turnover": 0.07751783354023585,
+    "total_turnover": 149.6094187326552,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "name": "grid_trading",
+    "channel": "crypto",
+    "universe": "timing+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] 网格交易：以首个有效价为参考价、按等比间距划档，价格每下穿一档加一份仓位、每上穿一档减一份，仓位在 [0,1] 内阶梯变化（状态机维护当前档位）。",
+    "hypothesis": "加密市场高波动、宽震荡，网格化『低买高卖』能在区间内持续积累低位筹码；单边急涨时过早清空仓位、单边深跌时满仓承接是主要失效场景。",
+    "source": "加密市场实践——网格交易 (grid trading)，本仓库基于价格面板原创实现。",
+    "params": {
+      "spacing": 0.04,
+      "max_steps": 5
+    }
+  },
+  "metrics": {
+    "total_return": 2.5588850632577897,
+    "cagr": 0.1802799660097374,
+    "volatility": 0.2380965294968124,
+    "sharpe": 0.8007920416065427,
+    "sortino": 2.0364696325207934,
+    "max_drawdown": 0.1772798049218881,
+    "calmar": 1.016923309957224,
+    "win_rate": 0.4987039917055469,
+    "profit_factor": 1.285178521605999,
+    "avg_turnover": 0.1096277416706025,
+    "total_turnover": 211.58154142426284,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

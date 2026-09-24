@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "name": "carry_proxy",
+    "channel": "crypto",
+    "universe": "timing+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] carry 代理：以「短期均线 - 长期均线」的相对价差作为持有收益 (carry) 的概念性代理，正 carry（短均线高于长均线）时持有、否则空仓，等预算 1/N。",
+    "hypothesis": "真实的现货-远期基差/资金费在加密市场代表持有收益；此处用价格面板的短长均线价差做概念性代理——正价差近似『持有有正收益』。注意这是概念性代理、非真实资金费数据；震荡市中价差频繁变号会失效。",
+    "source": "加密市场实践——资金费率/现货-远期 carry 的概念性代理，本仓库基于价格面板原创实现。",
+    "params": {
+      "fast": 10,
+      "slow": 30,
+      "buffer": 0.0
+    }
+  },
+  "metrics": {
+    "total_return": 0.82881025183195,
+    "cagr": 0.08201017980319691,
+    "volatility": 0.14879792867127709,
+    "sharpe": 0.6042344496200567,
+    "sortino": 0.8839945207217612,
+    "max_drawdown": 0.24929782004374057,
+    "calmar": 0.3289646888561152,
+    "win_rate": 0.49763282482903737,
+    "profit_factor": 1.1308321859836734,
+    "avg_turnover": 0.08545225727371258,
+    "total_turnover": 164.92285653826528,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

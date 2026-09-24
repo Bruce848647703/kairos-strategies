@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "name": "keltner_breakout",
+    "channel": "breakout",
+    "universe": "timing+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] 肯特纳通道突破：中轨 = EMA(span)，上/下轨 = EMA ± k×ATR（只有收盘价，ATR 用 |close.diff()| 的 Wilder 平滑近似，即平均绝对价格变动，见模块 docstring）；收盘突破上轨（带 entry_band 缓冲）做多，回落至中轨下方（带 exit_band 缓冲）离场，状态机持有。",
+    "hypothesis": "核心假设：EMA 中轨 + 波动自适应带宽能刻画「相对近期均衡的异常强势」——收盘站上上轨说明涨速超出近期波动常态，趋势惯性使其大概率延续；跌回 EMA 中轨意味着异常强势消失，及时离场。进/出双缓冲带避免价格在轨道附近抖动导致的频繁换手。失效场景：无方向的高波动震荡市（通道被反复刺穿）；收盘近似 ATR 系统性偏窄，触发比真实高低价通道更频繁；单边急跌后的 V 型反弹会因 EMA 滞后而踏空。",
+    "source": "经典技术分析——肯特纳通道 (Keltner Channel) 突破范式（本仓库原创实现）。",
+    "params": {
+      "ema_span": 20,
+      "atr_window": 14,
+      "k": 2.0,
+      "entry_band": 0.0,
+      "exit_band": 0.005,
+      "atr_floor_pct": 0.002
+    }
+  },
+  "metrics": {
+    "total_return": 0.6961216398106347,
+    "cagr": 0.07142108291238047,
+    "volatility": 0.12976976772493984,
+    "sharpe": 0.5962436658359861,
+    "sortino": 0.9198196833457619,
+    "max_drawdown": 0.28032516083430514,
+    "calmar": 0.25477942365150774,
+    "win_rate": 0.49868904037755635,
+    "profit_factor": 1.139144627837803,
+    "avg_turnover": 0.10008776413022501,
+    "total_turnover": 193.16938477133425,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

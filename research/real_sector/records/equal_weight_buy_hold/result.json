@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "name": "equal_weight_buy_hold",
+    "channel": "benchmark",
+    "universe": "passive+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] 等权买入并持有全部资产（不择时、不调仓）。",
+    "hypothesis": "被动持有获取市场 beta，作为主动策略的对照基准。",
+    "source": "被动投资基准——buy & hold。",
+    "params": {}
+  },
+  "metrics": {
+    "total_return": 11.779816968569492,
+    "cagr": 0.3946937802015782,
+    "volatility": 0.3410773599568268,
+    "sharpe": 1.1312689503580986,
+    "sortino": 2.292344930626945,
+    "max_drawdown": 0.29467551895939015,
+    "calmar": 1.3394182916700716,
+    "win_rate": 0.5067357512953368,
+    "profit_factor": 1.3033823120760974,
+    "avg_turnover": 0.01734936829230046,
+    "total_turnover": 33.484280804139885,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

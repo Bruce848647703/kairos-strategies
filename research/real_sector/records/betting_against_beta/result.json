@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "name": "betting_against_beta",
+    "channel": "defensive",
+    "universe": "cross_section+sector_equalize",
+    "long_only": false,
+    "description": "[行业均衡] Betting-against-beta（自研版）：以等权组合为市场代理，逐资产滚动 OLS 估计 beta 并朝当期截面均值收缩；每期按 beta 升序取最低 leg_frac 分位为多头腿、最高 leg_frac 分位为空头腿（中间分位不下注），腿内权重 ∝ 1/clip(β) 后各自归一到 0.5 预算——逐行权重和 ≈ 0（美元中性）、绝对值之和 = 1（不加杠杆）；1/β 倾斜使腿内每个资产的 beta 贡献相等（w_i·β_i 恒定），而低 beta 腿的组合 beta 低于高 beta 腿，故美元中性下净 beta 为负——这正是 BAB 的防御属性。",
+    "hypothesis": "成因（杠杆约束异象）：受杠杆/融资约束的投资者无法用「借钱买低 beta」放大收益，只能退而买高 beta 资产来追求目标收益，于是高 beta 被系统性买贵、预期收益被压低，低 beta 反而提供更高的单位风险收益；加上高 beta 资产多为『彩票型』题材股、散户偏好与做空限制使其定价偏差更难被套利掉，做多做空两端即可赚到这条「beta 与预期收益负相关」的截面价差。用 1/β 配权而非等权，是让腿内每个资产承担相等的 beta 贡献，避免单只极端 beta 资产主导整条腿的市场风险，价差因此更接近纯 beta 异象。失效场景：强牛/流动性宽松阶段高 beta 暴力反弹，空头腿亏损超过多头腿盈利（BAB 的最大回撤来源，且空头对被逼空标的风险不封顶）；利率快速上行、风险偏好切换时防御风格整体跑输；beta 估计窗口与真实风险结构错配（急转弯处滞后一个窗口）；等权市场是粗糙的单因子代理，真实因子多元时残差仍被行业/风格共同因子污染；策略拥挤后价差被提前交易掉。",
+    "source": "防御类范式——Betting Against Beta (Frazzini & Pedersen, 2014) 思路的本仓库原创实现：滚动 OLS beta + 截面收缩 + 三分位腿 + 1/β 腿内配权 + 美元中性归一，纯 numpy/pandas（不用 statsmodels）；与 regime 渠道 beta_timing（只做多的预算乘数再分配）、long_short 渠道 lowvol_ls（按波动率分位）在信号变量、配权规则与组合形态上均不同，所有工具函数在本模块内自实现。",
+    "params": {
+      "beta_window": 60,
+      "shrink": 0.2,
+      "leg_frac": 0.3333333333333333,
+      "leg_budget": 0.5,
+      "beta_floor": 0.1,
+      "beta_cap": 4.0
+    }
+  },
+  "metrics": {
+    "total_return": 0.5564564508868168,
+    "cagr": 0.059466709073714874,
+    "volatility": 0.0964855709837025,
+    "sharpe": 0.6469882046931187,
+    "sortino": 0.9478471665734018,
+    "max_drawdown": 0.26441810843615343,
+    "calmar": 0.22489650737394085,
+    "win_rate": 0.5136290753607696,
+    "profit_factor": 1.1233040584944596,
+    "avg_turnover": 0.0700605323800969,
+    "total_turnover": 135.216827493587,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "name": "adx_trend",
+    "channel": "trend",
+    "universe": "timing+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] 用收盘价近似构造 Wilder DMI/ADX：+DM=max(Δclose,0)、−DM=max(−Δclose,0)，TR=|Δclose|，DI=100×Wilder(DM)/ATR，DX=100×|+DI−(−DI)|/(+DI+(−DI))，ADX=DX 的 Wilder 平滑；仅当 ADX>阈值(趋势够强)且 +DI>−DI(方向向上)时做多，单资产仓位=等预算 1/N，逐行和≤1。",
+    "hypothesis": "核心假设：趋势「强度」可与趋势「方向」分离——ADX 度量方向移动相对总波幅的占比，高 ADX 代表单边行情、低 ADX 代表无方向震荡；只在强趋势且方向向上时持有，可避开震荡市的反复止损。只有收盘价时用价格动能近似 +DI/−DI：单日收盘涨则全部计入 +DM、跌则计入 −DM，ATR 退化为平均绝对价格变动，DX=|平滑(+DM)−平滑(−DM)|/(平滑(+DM)+平滑(−DM))×100 仍是有意义的方向占比度量。失效场景：ADX 高度滞后，趋势启动初期 ADX 仍低而踏空、见顶后才升高而追高；窄幅盘整后突然爆发时反应慢。",
+    "source": "经典 CTA——Wilder ADX/DMI 趋向系统（本仓库以收盘价近似原创实现）。",
+    "params": {
+      "window": 14,
+      "adx_min": 25.0
+    }
+  },
+  "metrics": {
+    "total_return": 0.2822511416920783,
+    "cagr": 0.032994576457615166,
+    "volatility": 0.07419403059482943,
+    "sharpe": 0.4746657951381327,
+    "sortino": 0.7002038235958076,
+    "max_drawdown": 0.11478349948565736,
+    "calmar": 0.28745051863258414,
+    "win_rate": 0.4697442295695571,
+    "profit_factor": 1.1504539366448534,
+    "avg_turnover": 0.030606309777281952,
+    "total_turnover": 59.07017787015417,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

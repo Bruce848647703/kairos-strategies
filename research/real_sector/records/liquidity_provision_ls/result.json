@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "name": "liquidity_provision_ls",
+    "channel": "market_making",
+    "universe": "cross_section+sector_equalize",
+    "long_only": false,
+    "description": "[行业均衡] 流动性提供多空：对 1~3 期极短收益取每期平均并按自身日波动标准化得到冲击强度，做多短期急跌（流动性冲击的买方对手盘）、做空短期急涨（卖方对手盘），逐行去均值构成美元中性组合（行和 ≈ 0），每行绝对值和 ≤ 1。",
+    "hypothesis": "核心假设：极短窗口（1~3 期）的价格变动中流动性冲击（被动抛压/抢购、止损盘）占比最高，冲击造成的临时错价随后回补，站在冲击对面提供流动性可获得近似做市价差的补偿；美元中性对冲掉市场方向，收益来源是截面冲击离散度。失效场景：短期涨跌由真实信息驱动（业绩爆雷/利好兑现）时跌者继续跌、涨者继续涨，「对手盘」变成接飞刀；horizon 极短、换手高，交易成本可能吞掉毛收益；危机期流动性螺旋中冲击持续同向放大。",
+    "source": "做市/流动性提供理论（为订单流冲击提供对手盘、赚取流动性溢价）的日频截面代理，本仓库原创实现。与 long_short.reversal_ls（lookback 5、top/bottom 分位篮子等权）、statarb.xs_zscore_reversion（lookback 10、截面 z + 平滑）、factor.short_term_reversal（只做多）不同：此处 horizon 仅 1~3 期、按时序波动标准化成「冲击强度（几个日 σ）」、连续配权 + 截断 + 逐行去均值，语义是流动性提供而非纯反转因子。",
+    "params": {
+      "horizons": [
+        1,
+        2,
+        3
+      ],
+      "sigma_window": 20,
+      "z_cap": 3.0,
+      "budget": 1.0
+    }
+  },
+  "metrics": {
+    "total_return": 1.6962226209083413,
+    "cagr": 0.13826597911900818,
+    "volatility": 0.3959856144812531,
+    "sharpe": 0.46858408548875696,
+    "sortino": 2.0012163816285167,
+    "max_drawdown": 0.4870087182432076,
+    "calmar": 0.283908632309041,
+    "win_rate": 0.4806282722513089,
+    "profit_factor": 1.2515448342356357,
+    "avg_turnover": 0.5138644837908771,
+    "total_turnover": 991.7584537163928,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "name": "avellaneda_stoikov_proxy",
+    "channel": "market_making",
+    "universe": "timing+sector_equalize",
+    "long_only": false,
+    "description": "[行业均衡] A-S 做市日频代理：reservation price = 滚动 VWAP/均线参考价按 库存×gamma×日波动 调整，收盘价相对 reservation 的标准化偏离经 tanh 决定目标库存（价低建多、价高建空、偏离越大越反向），库存以 eta 速度向目标收敛并裁剪在 ±cap，权重=(库存/cap)×(1/N)；每行绝对值和 ≤ 1，行和可不为 0 但有界（净库存敞口）。",
+    "hypothesis": "核心假设：短周期价格变动含流动性冲击成分，围绕公允锚（参考价）按偏离反向建立有界库存、并用库存惩罚项使净敞口均值回归，可在价格向参考价回归时获利（做市价差的日频代理）。失效场景：单边趋势/结构性位移中价格长期偏离参考价，库存被顶在上限「接飞刀」；日频数据无真实盘口，「成交」只是收盘价穿越的概念性近似，赚不到真实 bid-ask 价差，代理误差本身是主要模型风险。",
+    "source": "Avellaneda-Stoikov (2008) 库存规避做市模型的日频概念性代理，本仓库原创 numpy 实现：reservation price 用滚动 VWAP/SMA + 库存×gamma×日波动调整，σ²(T−t) 以日波动率替代，非真实盘口撮合。与 meanrev.zscore_reversion（三态择时、无库存递推）、microstructure.vwap_reversion（只做多、无库存惩罚）、crypto.grid_trading（固定锚、long-only）在信号构造与组合形态上均不同。",
+    "params": {
+      "ref_window": 20,
+      "sigma_window": 20,
+      "gamma": 1.0,
+      "eta": 0.25,
+      "cap": 5.0
+    }
+  },
+  "metrics": {
+    "total_return": 1.0295006327080776,
+    "cagr": 0.0968210853119904,
+    "volatility": 0.16310063972240366,
+    "sharpe": 0.6405329583401416,
+    "sortino": 1.6459320153994805,
+    "max_drawdown": 0.14837346122509543,
+    "calmar": 0.6525498867018031,
+    "win_rate": 0.4915433403805497,
+    "profit_factor": 1.2598702582484442,
+    "avg_turnover": 0.0687272025285747,
+    "total_turnover": 132.64350088014916,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "name": "xs_momentum",
+    "channel": "momentum",
+    "universe": "cross_section+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] 截面动量(12-1)：按剔除最近 skip 期的较长窗口收益做截面排名，做多排名前约 1/3 并等权归一。",
+    "hypothesis": "相对强势资产倾向继续跑赢（横截面动量）；剔除最近一期规避短期反转污染；在动量崩溃/风格急切换时失效。",
+    "source": "动量范式——横截面动量 / 12-1（Jegadeesh-Titman 思路，原创实现）。",
+    "params": {
+      "lookback": 252,
+      "skip": 21,
+      "top_frac": 0.3333333333333333
+    }
+  },
+  "metrics": {
+    "total_return": 1.678034421869207,
+    "cagr": 0.13726044222926004,
+    "volatility": 0.23747674526765805,
+    "sharpe": 0.6607614636050727,
+    "sortino": 0.9612083679605697,
+    "max_drawdown": 0.32507515647523755,
+    "calmar": 0.4222421784474809,
+    "win_rate": 0.5017878426698451,
+    "profit_factor": 1.1332620056074274,
+    "avg_turnover": 0.15997396308368916,
+    "total_turnover": 308.7497487515201,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

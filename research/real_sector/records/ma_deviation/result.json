@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "name": "ma_deviation",
+    "channel": "meanrev",
+    "universe": "timing+sector_equalize",
+    "long_only": false,
+    "description": "[行业均衡] 均线偏离回归：价格相对 N 期均线的百分比偏离显著为负做多、显著为正做空，偏离收敛回均线附近（滞后带）平仓以降低换手。",
+    "hypothesis": "核心假设：均线代表近期持仓成本中枢，价格远离成本中枢后存在回归拉力（过度反应修正）。失效场景：单边趋势中偏离会长期维持在同一侧（均线追随），策略逆势加仓并承受回撤；低波动期偏离不足，几乎不交易。",
+    "source": "经典技术分析——均线乖离率(BIAS)回归，本仓库原创实现（指标复用自研 indicators.sma）。",
+    "params": {
+      "window": 20,
+      "entry_dev": 0.05,
+      "exit_dev": 0.015
+    }
+  },
+  "metrics": {
+    "total_return": 2.233524149407079,
+    "cagr": 0.16559689837941116,
+    "volatility": 0.2921434219923849,
+    "sharpe": 0.6370129540348889,
+    "sortino": 2.4091185353299447,
+    "max_drawdown": 0.14644415099388575,
+    "calmar": 1.1307853352663095,
+    "win_rate": 0.4866193336974331,
+    "profit_factor": 1.4471484970432567,
+    "avg_turnover": 0.07040572212058133,
+    "total_turnover": 135.88304369272197,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

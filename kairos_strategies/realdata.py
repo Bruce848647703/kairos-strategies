@@ -35,6 +35,19 @@ UNIVERSE: Dict[str, str] = {
 }
 _UA = {"User-Agent": "Mozilla/5.0", "Referer": "https://gu.qq.com/"}
 
+# 行业分组（与 kairos-data universe 一致），用于行业中性/均衡回测
+SECTOR_GROUPS: Dict[str, List[str]] = {
+    "consumer": ["sh600519", "sz000858", "sh600887", "sh600809", "sz002304", "sh601888"],
+    "finance": ["sh600036", "sh601318", "sh601166", "sh601398", "sh600030", "sz300059"],
+    "appliance": ["sz000333", "sz000651", "sh600690"],
+    "pharma": ["sh600276", "sz300760", "sh600196"],
+    "tech": ["sz002415", "sz002475", "sh603501", "sz300750"],
+    "auto_newenergy": ["sz002594", "sh601012", "sh600438", "sh601633"],
+    "energy_material": ["sh601088", "sh600028", "sh601899", "sh600585"],
+    "industrial": ["sh600031", "sh601766", "sh600900", "sh600009", "sh601668", "sh600048", "sz002714", "sz002352"],
+}
+SECTOR_MAP: Dict[str, str] = {s: sec for sec, ms in SECTOR_GROUPS.items() for s in ms}
+
 
 def load_panel(data_dir: str, drop_incomplete: bool = True,
                periods_per_year: int = 252) -> MarketData:

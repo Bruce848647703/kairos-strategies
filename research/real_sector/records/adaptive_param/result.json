@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "name": "adaptive_param",
+    "channel": "adaptive",
+    "universe": "timing+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] 在线自适应参数择时（模块内自实现均线逻辑，不改其它渠道）：以「价格上穿均线做多」为基础逻辑，但均线窗口不再固定——第 t 期用截至 t-1 的 vol_window 期年化已实现波动 σ_{t-1} 在线设定有效窗口 W_t = clip(round(base_window·ref_vol/σ_{t-1}), min_window, max_window)（高波 → 更短窗口、更快响应），敞口同缩放为 clip(target_vol/σ_{t-1}, 0, 1)（高波 → 更低敞口），单资产权重 = 信号(0/1)×敞口/N，逐行和 ≤ 1。变窗口均线用前缀和按格点查表，全向量化。",
+    "hypothesis": "核心假设：最优平滑窗口与波动 regime 相关——高波动期价格信息更快被噪声稀释，更短的窗口能更快跟上趋势转折；同时波动率目标化的敞口把单位时间风险拉平（高波自动降低敞口、低波放大到上限 1）。两者都是对『参数应随环境在线调整』这一自适应思想的直接实现。防未来：σ 面板整体 shift(1)，第 t 期的窗口与敞口参数严格由 ≤t-1 的已实现收益决定；价格与均线比较只用截至 t 的收盘价（引擎还会再滞后一期）。失效场景：波动率跳变时参数调整滞后一期，窗口在临界值附近抖动会放大换手；低波动长趋势中窗口触顶 max_window，均线过于迟钝。",
+    "source": "在线自适应参数 (adaptive parameter / volatility-scaled window) 范式——固定规则的参数随已实现波动状态在线调整；均线择时骨架参考经典趋势跟随，变窗口前缀和实现、参数映射与敞口缩放为本渠道 100% 原创实现（不复用、不修改其它渠道代码）。",
+    "params": {
+      "base_window": 30,
+      "min_window": 8,
+      "max_window": 80,
+      "vol_window": 21,
+      "ref_vol": 0.2,
+      "target_vol": 0.15,
+      "vol_floor": 0.02
+    }
+  },
+  "metrics": {
+    "total_return": 0.10573681118647182,
+    "cagr": 0.013210330399980652,
+    "volatility": 0.052054474033037694,
+    "sharpe": 0.2780759906301077,
+    "sortino": 0.43324756540500226,
+    "max_drawdown": 0.17985000043304544,
+    "calmar": 0.07345193421280304,
+    "win_rate": 0.4769392033542977,
+    "profit_factor": 1.0548040750492464,
+    "avg_turnover": 0.10005314922854677,
+    "total_turnover": 193.10257801109526,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

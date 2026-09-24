@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "name": "cppi",
+    "channel": "riskmgmt",
+    "universe": "overlay+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] 固定比例组合保险 (CPPI)：以等权组合为风险资产、现金为保本资产，递推模拟受保护净值 V（起点 1，现金收益 0），每期敞口 e = min(1, multiplier × (V - floor) / V)，剩余 1-e 配现金；V 跌破 floor 后敞口永久归零（吸收态），实现『最差亏到 floor 附近』的保底语义。",
+    "hypothesis": "核心假设：凸性保护（convex protection）——仓位随安全垫 (V-floor) 线性缩放，让组合在接近保底线时自动去风险，理论上把最大回撤锁定在 1-floor 附近，代价是『踏空风险』：崩盘后即便市场 V 型反转，策略也已锁定空仓无法参与（吸收态设计），且缺口 (gap) 行情下实际净值可能击穿 floor（单期跌幅超过 1/multiplier 时安全垫直接转负）。multiplier 越大越接近满仓持有、保护越弱；越小越保守、越容易永久出局。适合有明确保底线需求的下行保护场景，不适合追求反弹收益的场景。",
+    "source": "经典结构化产品范式——Constant Proportion Portfolio Insurance (Black-Perold / Black-Jones 的 CPPI)，此处为等权组合层的原创递推实现（策略自身净值状态机）。",
+    "params": {
+      "floor": 0.8,
+      "multiplier": 5.0
+    }
+  },
+  "metrics": {
+    "total_return": 11.655316064349503,
+    "cagr": 0.39291215431713233,
+    "volatility": 0.34082913873466597,
+    "sharpe": 1.1281038758179907,
+    "sortino": 2.284217016568394,
+    "max_drawdown": 0.29467551895939004,
+    "calmar": 1.3333722316148038,
+    "win_rate": 0.5067357512953368,
+    "profit_factor": 1.302309760436985,
+    "avg_turnover": 0.017460448762155162,
+    "total_turnover": 33.698666110959465,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

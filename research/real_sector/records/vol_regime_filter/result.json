@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "name": "vol_regime_filter",
+    "channel": "volatility",
+    "universe": "overlay+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] 波动率 regime 过滤：等权组合的已实现波动低于其滚动分位阈值（默认 70% 分位）时满仓等权，突破极端高波分位（默认 90%）时空仓（risk-off），双分位滞后带减少状态抖动。",
+    "hypothesis": "核心假设：波动率状态可预测（聚集性）且高波动状态下的收益分布显著更差、更偏负（低波动异象 + 波动率与收益的负相关）。用**滚动分位**而非绝对阈值可自适应不同资产/时代的波动水平；双分位（进/出）滞后带避免临界抖动。失效场景：低波之后的突发崩盘（分位阈值滞后于跳升的波动）、以及高波动伴随强反弹的市场（如政策底后的急涨）会踏空；lookback 越长越稳但反应越慢。",
+    "source": "波动率 regime switching / risk-off 择时过滤范式（本仓库原创实现）。",
+    "params": {
+      "vol_window": 20,
+      "lookback": 250,
+      "q_enter": 0.7,
+      "q_exit": 0.9,
+      "vol_floor": 0.01
+    }
+  },
+  "metrics": {
+    "total_return": 0.5016307327556992,
+    "cagr": 0.054517620747174034,
+    "volatility": 0.19229188227129318,
+    "sharpe": 0.37253376676956834,
+    "sortino": 0.5288941955705285,
+    "max_drawdown": 0.4688488965215746,
+    "calmar": 0.1162797249852658,
+    "win_rate": 0.4940554821664465,
+    "profit_factor": 1.077283983731271,
+    "avg_turnover": 0.022602776215633967,
+    "total_turnover": 43.623358096173554,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

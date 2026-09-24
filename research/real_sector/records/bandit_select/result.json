@@ -1,0 +1,44 @@
+{
+  "meta": {
+    "name": "bandit_select",
+    "channel": "adaptive",
+    "universe": "cross_section+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] 多臂老虎机在线选择元策略：把 sma_cross、donchian_turtle、rsi_reversion、ts_momentum、tsmom_volscaled、low_volatility、inverse_vol 七个专家当作臂，每 hold 期为一个段，段首用只含 ≤t-1 奖励的滑动窗口 [t-window, t) 计算 UCB1 式分数 = 窗口均值 + explore_c·sqrt(2·ln(段数)/拉动次数)，确定性选中（argmax，并列取池内靠前者）分数最高的专家整段持有其权重面板；预热期等权。",
+    "hypothesis": "核心假设：与 Hedge 的连续加权不同，bandit 做**离散切换**——每次只押注当前统计意义上最优的单一专家，在市场 regime 分明（某类专家显著占优）时比软加权更锐利、跟得上切换；UCB1 的探索项按拉动次数衰减，保证被冷落的专家仍会被周期性复查，避免在统计噪声上过早锁死（乐观面对不确定性）。滑动窗口均值使统计量只反映近期表现，适应非平稳奖励。防未来：打分只用 [t-window, t) 的已实现奖励，段内不换仓。失效场景：专家表现接近时离散切换制造高换手（每次换臂都是全组合调仓）；窗口过短则均值估计噪声主导、频繁误切换；探索项在专家数少时可能反复拉起真正的差专家。",
+    "source": "在线学习经典算法——多臂老虎机 UCB1（Auer-Cesa-Bianchi-Fischer 思想）的滑动窗口确定性变体自研实现；专家池复用本仓库其它渠道公开 Strategy 类，奖励由 engine.Backtester 回测产生，无 RNG、并列按池序打破。",
+    "params": {
+      "window": 63,
+      "hold": 21,
+      "explore_c": 0.0002,
+      "cost_rate": 0.0,
+      "n_bases": 7,
+      "bases": [
+        "sma_cross",
+        "donchian_turtle",
+        "rsi_reversion",
+        "ts_momentum",
+        "tsmom_volscaled",
+        "low_volatility",
+        "inverse_vol"
+      ]
+    }
+  },
+  "metrics": {
+    "total_return": 1.6792193848903705,
+    "cagr": 0.13732613359422863,
+    "volatility": 0.2123444587611134,
+    "sharpe": 0.7066387387259531,
+    "sortino": 1.2934238831725693,
+    "max_drawdown": 0.4075027010047053,
+    "calmar": 0.3369944131797128,
+    "win_rate": 0.5072689511941848,
+    "profit_factor": 1.1880075905990803,
+    "avg_turnover": 0.10584111274517359,
+    "total_turnover": 204.27334759818504,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

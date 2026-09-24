@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "name": "ic_weighted_composite",
+    "channel": "multi_factor",
+    "universe": "cross_section+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] IC 加权复合：对每个基础因子逐日计算它与下一期已实现收益的截面秩相关（Spearman IC），取截至 t−2 的滚动窗口（默认半年）IC 均值作为该因子在第 t 期的复合权重（IC 越高权重越大，IC 为负则给负权反向使用），加权合成复合 alpha 后做多最高的约 1/3 篮子。",
+    "hypothesis": "成因：因子有效性随市场风格漂移，历史 IC 是「这个因子最近还能不能预测收益」的直接样本内证据，按 IC 配权等于把预算动态挪到当前有效的因子上，并能自动反向使用已经翻转的因子（负 IC -> 负权），比固定等权更自适应；秩相关对离群值与量纲不敏感，估计相对稳健。失效条件：IC 本身是噪声很大的统计量（半年窗口约 126 个重叠样本、且截面只有几只资产），IC 均值可能只是运气，加权反而放大近期表现最好的因子——在风格急切换处会追高杀低（IC 动量崩溃）；因子间相关性高时 IC 加权会重复计入同一维暴露；样本太短或截面太窄时 IC 估计偏差大，退化为噪声权重。",
+    "source": "多因子合成经典范式——IC 加权（information-coefficient weighting，Grinold-Kahn 的「基本面定律」思路：IR ≈ IC·√breadth，故按 IC 配置因子预算），本仓库原创 numpy/pandas 实现（逐日截面秩相关 + 滞后滚动统计，walk-forward，不用 scipy/sklearn）。与 equalweight_composite 的固定等权不同，权重完全由历史 IC 数据驱动。",
+    "params": {
+      "mom_window": 63,
+      "vol_window": 21,
+      "rev_window": 5,
+      "qual_window": 21,
+      "top_frac": 0.3333333333333333,
+      "xs_norm": "z",
+      "score_lag": 1,
+      "label_lag": 2,
+      "ic_window": 126,
+      "ic_min_obs": 42,
+      "ic_min_assets": 3,
+      "ic_scheme": "ic",
+      "ir_std_floor": 0.02
+    }
+  },
+  "metrics": {
+    "total_return": 0.5334000548467892,
+    "cagr": 0.05740418683696702,
+    "volatility": 0.4243892835422638,
+    "sharpe": 0.30063302883216614,
+    "sortino": 0.6480720581162228,
+    "max_drawdown": 0.6450327412097288,
+    "calmar": 0.08899422179610317,
+    "win_rate": 0.4868421052631579,
+    "profit_factor": 1.0890520809805053,
+    "avg_turnover": 0.5219439531705392,
+    "total_turnover": 1007.3518296191406,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

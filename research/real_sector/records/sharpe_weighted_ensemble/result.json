@@ -1,0 +1,44 @@
+{
+  "meta": {
+    "name": "sharpe_weighted_ensemble",
+    "channel": "ensemble",
+    "universe": "cross_section+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] 夏普加权元策略（walk-forward）：对 sma_cross、donchian_turtle、ts_momentum、low_volatility、inverse_vol 各做零成本回测得到策略收益序列，第 t 期按各基础策略「截至 t-1」的 window 期滚动年化夏普（负值 clip 到 0）作为混合系数，逐行归一到和为 1 后加权其权重面板；预热期或全部夏普非正时回退等权。",
+    "hypothesis": "核心假设：策略的风险调整后表现存在持续性（manager/strategy momentum）——近期滚动夏普高的基础策略，其信号与当前市场性格更契合，把资金倾斜给它可提升元策略的期望夏普；clip≥0 保证系数非负（只做多策略、不做空失效策略），归一保证无杠杆。系数由滚动统计再 shift(1) 得到，第 t 期只用 [0, t-1] 的回测收益，严格防未来。失效场景：策略收益均值回复（近期赢家随即变输家，倾斜反而追高杀低）、窗口过短使夏普估计噪声主导、危机中所有基础策略夏普同时为负而被迫等权（此时它退化为 equal_weight_ensemble，无法降低总暴露）。",
+    "source": "元策略范式——策略层夏普加权 / 表现倾斜配置（performance-tilted fund-of-strategies），思路来自 manager momentum 与均值-方差配置的对角近似；滚动夏普、clip≥0、shift(1) 的 walk-forward 系数与退化回退为本渠道原创实现，基础策略复用本仓库已稳定渠道的公开类。",
+    "params": {
+      "weighting": "sharpe",
+      "window": 126,
+      "min_obs": 63,
+      "vol_floor": 0.0001,
+      "clip_lower": 0.0,
+      "cost_rate": 0.0,
+      "n_bases": 5,
+      "bases": [
+        "sma_cross",
+        "donchian_turtle",
+        "ts_momentum",
+        "low_volatility",
+        "inverse_vol"
+      ]
+    }
+  },
+  "metrics": {
+    "total_return": 1.9405483858116166,
+    "cagr": 0.15123149606666542,
+    "volatility": 0.18208017174407481,
+    "sharpe": 0.8624009343486337,
+    "sortino": 1.4299865903132518,
+    "max_drawdown": 0.32329223616916447,
+    "calmar": 0.4677857342281882,
+    "win_rate": 0.5036269430051813,
+    "profit_factor": 1.1967011511339605,
+    "avg_turnover": 0.10343116573456965,
+    "total_turnover": 199.62214986771943,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

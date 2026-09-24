@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "name": "beta_timing",
+    "channel": "regime",
+    "universe": "timing+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] 滚动 beta 状态择时：以等权组合为『市场』代理，逐资产滚动 window 期估计 beta（cov/var，仅用历史收益），权重乘数 g = clip(1 + k×(1 − beta), g_min, g_max)——高 beta（高风险状态）资产按比例降敞口、低 beta 资产按比例提高，每资产基础预算 1/N；等权市场的 beta 截面均值恒为 1，故行和天然 ≈ 1，超出 1 的行由 _finalize 等比缩回（组合层 ≤ 1，不加杠杆）。",
+    "hypothesis": "核心假设：beta 是时变且有持续性的『风险状态』——资产对市场的敏感度升高时，其下行弹性与系统性风险贡献同步升高，而预期收益补偿并不同步升高（低 beta 异象 / betting-against-beta 逻辑），因此按 1−beta 线性重分配预算可改善组合风险调整后收益。行和恒等式（等权 beta 均值 = 1）使该策略是纯『组合内部风险再分配』，不改变总敞口、不做择时赌博。失效场景：高 beta 资产领涨的强牛阶段降配跑输、beta 估计窗口与真实风险状态切换错配（滞后一个窗口）、以及同质化行情中各资产 beta 都贴近 1，乘数失去区分度。",
+    "source": "低 beta 异象 / betting-against-beta 范式的『滚动 beta 预算再分配』择时改写（纯价格收益实现，cov/var 滚动估计与行和恒等式约束为本仓库原创）。",
+    "params": {
+      "window": 60,
+      "k": 1.0,
+      "g_min": 0.25,
+      "g_max": 1.75,
+      "var_eps": 1e-16
+    }
+  },
+  "metrics": {
+    "total_return": 3.0953794460683515,
+    "cagr": 0.20211831781609924,
+    "volatility": 0.2240351394844925,
+    "sharpe": 0.9336444564958541,
+    "sortino": 1.416902818592833,
+    "max_drawdown": 0.31667350755505985,
+    "calmar": 0.6382545839612335,
+    "win_rate": 0.5061464457509354,
+    "profit_factor": 1.189784827587846,
+    "avg_turnover": 0.027056618510851022,
+    "total_turnover": 52.21927372594247,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

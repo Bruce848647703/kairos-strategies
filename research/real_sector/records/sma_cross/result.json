@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "name": "sma_cross",
+    "channel": "technical",
+    "universe": "timing+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] 双均线 + 滞后带：短均线带缓冲上穿长均线做多，反向跌破离场。",
+    "hypothesis": "价格存在中期趋势，带缓冲的金叉能过滤噪声、捕捉趋势启动。",
+    "source": "经典技术分析——移动平均交叉（moving average crossover）。",
+    "params": {
+      "fast": 10,
+      "slow": 30,
+      "band": 0.01
+    }
+  },
+  "metrics": {
+    "total_return": 1.0402345109321183,
+    "cagr": 0.09757678651309232,
+    "volatility": 0.14820663689880892,
+    "sharpe": 0.7025002582762602,
+    "sortino": 1.0272659620599771,
+    "max_drawdown": 0.22353179709697502,
+    "calmar": 0.436523070902349,
+    "win_rate": 0.5023671751709626,
+    "profit_factor": 1.152944193101514,
+    "avg_turnover": 0.0671786992567699,
+    "total_turnover": 129.65488956556592,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

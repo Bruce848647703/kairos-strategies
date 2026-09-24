@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "name": "reversal_ls",
+    "channel": "long_short",
+    "universe": "cross_section+sector_equalize",
+    "long_only": false,
+    "description": "[行业均衡] 短期反转多空：按最近 lookback 日收益截面排序，做多近期跌得最多的 bottom 分位、做空近期涨得最多的 top 分位（分数 = -近端收益），两腿等权各占 0.5 预算，组合美元中性。",
+    "hypothesis": "成因：短窗口（周级）价格变动里流动性冲击与过度反应成分大——被动抛压、止损盘与情绪化追涨把价格暂时推离短期均衡，做市商回补与套利资金随后推动修复：近端超跌者反弹、超涨者回吐，多空两端同时赚取这个截面收敛价差，市场方向被对冲掉。失效条件：短窗口涨跌由真实信息（业绩爆雷/超预期、并购）驱动时，跌者继续跌、涨者继续涨，反转变成「接飞刀」与「空逼空」；持续单边资金流/动量行情中信号长期为负；信号窗口短、换手高，交易成本与滑点可能吞掉毛 alpha；空头腿对被逼空的高波动标的风险不封顶。",
+    "source": "多空股票 alpha 经典范式——短期反转 (short-term reversal) 的市场中性版本，本仓库原创实现；与 factor 渠道的 short_term_reversal（只做多超跌篮子）、statarb 渠道的 xs_zscore_reversion（对全篮子连续 z 配权）不同，此处是「top/bottom 分位各取一篮子、腿内等权」的分位多空形态。",
+    "params": {
+      "lookback": 5,
+      "top_frac": 0.3333333333333333,
+      "leg_budget": 0.5
+    }
+  },
+  "metrics": {
+    "total_return": 1.7212208439695669,
+    "cagr": 0.13963842904422386,
+    "volatility": 0.27828961730014695,
+    "sharpe": 0.5875918717548632,
+    "sortino": 1.5645127850693255,
+    "max_drawdown": 0.41253163115829394,
+    "calmar": 0.3384914476791786,
+    "win_rate": 0.4831168831168831,
+    "profit_factor": 1.2062910899518584,
+    "avg_turnover": 0.4045983696118934,
+    "total_turnover": 780.8748533509543,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "name": "volatility_breakout",
+    "channel": "breakout",
+    "universe": "timing+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] 波动率突破（Larry Williams 范式的收盘价适配）：触发价 = 前收 + k_entry×近期波幅（|close.diff()| 的 M 日均值，滞后一期），当日收盘站上触发价做多；收盘跌破「前收 - k_exit×波幅」的回落大阴线立即离场，否则最多持有 max_hold 期强制离场（时间止损，近似日内策略的次日/限期离场），持有期内触发价再次突破则重置计时。",
+    "hypothesis": "核心假设：单日超出近期常态波幅的向上位移是「日内动能爆发」的信号，动量在短期内（数日）延续，但会快速衰减——因此用时间止损限期持有、见反向大阴线立即离场，把每次突破当作一笔短线的动能交易而非趋势跟踪。失效场景：突破后立即反转的假突破/猎杀止损行情（靠 k_exit 反向触发价快速止血）；低波动背景下的微小位移也会触发（用 range_floor_pct 波幅下限缓解）；持续单边趋势中因限期离场而跑输趋势跟踪策略。",
+    "source": "经典日内突破范式——Larry Williams 波动率突破 (volatility breakout) 的收盘价适配（本仓库原创实现）。",
+    "params": {
+      "range_window": 10,
+      "k_entry": 1.2,
+      "k_exit": 1.2,
+      "max_hold": 10,
+      "range_floor_pct": 0.002
+    }
+  },
+  "metrics": {
+    "total_return": 0.8621028814214411,
+    "cagr": 0.08456195397731747,
+    "volatility": 0.14171564194787303,
+    "sharpe": 0.6432822678931056,
+    "sortino": 1.0409327030876858,
+    "max_drawdown": 0.37418022064914835,
+    "calmar": 0.22599258141067627,
+    "win_rate": 0.4768108389786347,
+    "profit_factor": 1.138870380233893,
+    "avg_turnover": 0.25303856550009224,
+    "total_turnover": 488.36443141517805,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

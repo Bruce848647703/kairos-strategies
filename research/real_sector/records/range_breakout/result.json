@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "name": "range_breakout",
+    "channel": "breakout",
+    "universe": "timing+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] 区间突破 + 波动收缩过滤：收盘价突破过去 N 日震荡区间上沿（滚动最高价，用截至昨日的历史）做多，跌回区间中轴（(上沿+下沿)/2）离场；默认要求突破前区间相对宽度不高于其历史滚动分位（squeeze），即「横盘收窄后的突破」才入场，状态机持有降低换手。",
+    "hypothesis": "核心假设：长时间窄幅震荡代表供需平衡与筹码沉淀，波动收缩后的方向性突破更可能是信息驱动的真突破并延续为趋势（波动收缩形态 VCP / 挤压突破的思路）；离场用区间中轴而非下沿，在趋势衰竭初期即兑现，牺牲少量空间换取更低回撤。失效场景：无趋势的宽幅震荡市中区间上沿频繁被噪声刺穿（squeeze 过滤可部分缓解）；收缩过滤会漏掉波动扩张期的突破，V 型反转中反应滞后。",
+    "source": "经典突破范式——价格区间（箱体）突破 + 波动收缩过滤（本仓库原创实现）。",
+    "params": {
+      "window": 20,
+      "use_squeeze": true,
+      "squeeze_window": 60,
+      "squeeze_q": 0.5
+    }
+  },
+  "metrics": {
+    "total_return": 0.9654757904229201,
+    "cagr": 0.09223996229883435,
+    "volatility": 0.10641814882034731,
+    "sharpe": 0.8821423458798684,
+    "sortino": 1.4094476643592366,
+    "max_drawdown": 0.18691597565682527,
+    "calmar": 0.49348356647794217,
+    "win_rate": 0.5021551724137931,
+    "profit_factor": 1.2202241027930762,
+    "avg_turnover": 0.07295621081926956,
+    "total_turnover": 140.80548688119026,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

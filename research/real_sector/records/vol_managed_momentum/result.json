@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "name": "vol_managed_momentum",
+    "channel": "momentum_adv",
+    "universe": "cross_section+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] 波动管理动量：先按截面动量做多强者构成动量组合（每行和≈1），再按**市场层**已实现波动对总敞口整体缩放（高波降杠杆、上限满仓不加杠杆），以控制动量崩溃；只做多、每行和≤1。",
+    "hypothesis": "针对动量的『崩溃 (momentum crash)』缺陷：截面动量在低波平稳期表现最好，而在高波/危机后的 V 型反弹期，因前期最弱者弹性最大而多头跑输、空头（此处不做空但组合整体）剧烈回撤。用市场已实现波动对动量组合整体缩放（高波降仓、低波满仓）能显著削薄尾部、提升夏普，且不加杠杆。失效条件：波动骤升后又快速回落时缩放滞后、踏空反弹；低波牛市里因缩放上限为 1 退化为满仓动量、相对无管理版没有超额；市场层波动是个股波动的粗糙代理。",
+    "source": "进阶动量变体——波动管理动量 (volatility-managed momentum, Barroso-Santa-Clara / Moreira-Muir 思路，本仓库原创实现)；与 volatility 渠道的 vol_target（缩放对象是**等权组合**、名字不同）区别在于：此处缩放的是**截面动量组合**，目标是压制动量崩溃而非通用风险预算。",
+    "params": {
+      "lookback": 126,
+      "skip": 21,
+      "top_frac": 0.3333333333333333,
+      "vol_window": 21,
+      "target_vol": 0.15,
+      "max_scale": 1.0,
+      "vol_floor": 0.01
+    }
+  },
+  "metrics": {
+    "total_return": 0.09130961543944327,
+    "cagr": 0.011474331479750077,
+    "volatility": 0.16879297289904285,
+    "sharpe": 0.1520844122987202,
+    "sortino": 0.2137357171630645,
+    "max_drawdown": 0.5174707422062923,
+    "calmar": 0.022173874856823844,
+    "win_rate": 0.5094235033259423,
+    "profit_factor": 1.0270384696580248,
+    "avg_turnover": 0.1810803989055674,
+    "total_turnover": 349.4851698877451,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

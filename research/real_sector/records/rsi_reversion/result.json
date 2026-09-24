@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "name": "rsi_reversion",
+    "channel": "technical",
+    "universe": "timing+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] RSI 均值回归：超卖买入，回升至中性上方离场（双阈值滞后）。",
+    "hypothesis": "短期超跌后价格倾向反弹；及时止盈避免持有下行趋势。",
+    "source": "经典技术分析——RSI 超买超卖。",
+    "params": {
+      "window": 14,
+      "enter_below": 35.0,
+      "exit_above": 55.0
+    }
+  },
+  "metrics": {
+    "total_return": 1.5591338021966212,
+    "cagr": 0.13053674113520364,
+    "volatility": 0.17723896903467434,
+    "sharpe": 0.7721125544082199,
+    "sortino": 2.065514863075635,
+    "max_drawdown": 0.15071483175291656,
+    "calmar": 0.8661174193473334,
+    "win_rate": 0.5070581592320723,
+    "profit_factor": 1.3251634126127938,
+    "avg_turnover": 0.03970803175017736,
+    "total_turnover": 76.63650127784231,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

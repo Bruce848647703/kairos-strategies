@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "name": "pca_factor",
+    "channel": "multi_factor",
+    "universe": "cross_section+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] PCA 复合因子：把四个基础因子的截面标准化值逐日堆成 N×F 矩阵，其 ZᵀZ/(N−1) 即当期因子相关阵；对截至 t−1 的滚动窗口（默认半年）平均相关阵做 numpy.linalg.eigh 特征分解，取最大特征值对应的特征向量（按 Σv ≥ 0 定向、单位化）作为复合权重，复合 alpha = 当期截面 z 向量在该方向上的投影，做多最高的约 1/3 篮子。",
+    "hypothesis": "成因：多个价格因子之间往往被同一个潜在的市场/风格维度驱动（例如趋势行情里动量与趋势质量同涨同跌），第一主成分正是这个共同维度的方向，用它做复合权重相当于让数据自己决定「哪些因子在讲同一件事、该合并放大」，无需 IC 标签、无需主观先验，且对因子间相关结构的变化自适应；相比 IC/IR 加权，它不依赖收益标签，估计噪声更小、换手更低。失效条件：主成分是「方差最大」方向而非「收益最高」方向——当共同维度恰好是与未来收益无关的噪声（或所有因子等方差且互不相关时相关阵退化为单位阵，主成分方向任意）时，复合 alpha 会退化成某个 arbitrary 的因子组合；因子相关结构突变（危机中相关性趋同）会让载荷急转、产生跳变换手；特征向量符号本身有歧义，必须靠定向规则固定（此处按 Σv ≥ 0）。",
+    "source": "多因子合成范式——因子层 PCA / 主成分 alpha（statistical risk model 的主成分思想反过来用作 alpha 合成方向），本仓库原创 numpy 实现：逐日因子相关阵 + 尾部滚动平均 + ``numpy.linalg.eigh`` 特征分解 + 确定性符号定向，不用 sklearn/scipy。与 statarb.eof_stat_arb（对**收益**做 PCA 提取因子、再对残差做均值回归的多空策略）完全不同：此处 PCA 作用在**因子截面标准化值**上，输出的是复合权重而非公允价格。",
+    "params": {
+      "mom_window": 63,
+      "vol_window": 21,
+      "rev_window": 5,
+      "qual_window": 21,
+      "top_frac": 0.3333333333333333,
+      "xs_norm": "z",
+      "score_lag": 1,
+      "pca_window": 126,
+      "pca_min_obs": 42,
+      "n_components": 1,
+      "sign_rule": "sum_nonneg"
+    }
+  },
+  "metrics": {
+    "total_return": 0.5264536497988257,
+    "cagr": 0.05677750701123596,
+    "volatility": 0.2704297481213644,
+    "sharpe": 0.33960436382194664,
+    "sortino": 0.48964578083305615,
+    "max_drawdown": 0.5738900050344267,
+    "calmar": 0.09893447614204394,
+    "win_rate": 0.4882191780821918,
+    "profit_factor": 1.0634659020301795,
+    "avg_turnover": 0.4460644195117481,
+    "total_turnover": 860.9043296576738,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

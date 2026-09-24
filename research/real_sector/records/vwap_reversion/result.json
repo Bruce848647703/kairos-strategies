@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "name": "vwap_reversion",
+    "channel": "microstructure",
+    "universe": "timing+sector_equalize",
+    "long_only": true,
+    "description": "[行业均衡] VWAP 回归：价格显著低于滚动成交量加权均价做多，回到/高于 VWAP 离场（均值回归）。",
+    "hypothesis": "VWAP 是近期成交量的加权平均成本，代表市场共识价位：价格大幅折价于 VWAP 时，流动性提供者与价值买盘倾向入场修复偏离；量能加权的锚比等权均线更贴近真实换手成本，回归信号更可靠。当折价由持续基本面利空驱动（趋势性下跌）而非流动性冲击时，『接飞刀』会放大亏损；高成交量把 VWAP 快速拉向现价时信号也会变钝。",
+    "source": "微观结构/量价分析——机构执行算法常用的 VWAP 锚，原创均值回归化实现。",
+    "params": {
+      "window": 20,
+      "enter_below": -0.02,
+      "exit_above": 0.0
+    }
+  },
+  "metrics": {
+    "total_return": 1.9679970775851081,
+    "cagr": 0.15262896944683235,
+    "volatility": 0.2820772190909631,
+    "sharpe": 0.6188885943300809,
+    "sortino": 1.7759435957022018,
+    "max_drawdown": 0.24902295804053143,
+    "calmar": 0.6129112377742705,
+    "win_rate": 0.4944237918215613,
+    "profit_factor": 1.2741995085320237,
+    "avg_turnover": 0.12829056163466326,
+    "total_turnover": 247.60078395490012,
+    "n_periods": 1930.0
+  },
+  "variant": "sector_equalize",
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

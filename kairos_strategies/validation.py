@@ -442,7 +442,7 @@ def _validation_md(sm: Dict) -> str:
              f"（共 {wf['n_windows']} 窗），窗口夏普均值 {_fmt(wf['window_sharpe_mean'], nd=2)}。")
     L.append(f"- 参数稳健性区间（max−min）= {_fmt(ov['range'], nd=2)}，越小越稳健。")
     L.append("")
-    L.append("> 本报告由 `kairos_strategies.validation` 自动生成，基于合成数据，"
+    L.append("> 本报告由 `kairos_strategies.validation` 自动生成，基于回测样本数据，"
              "仅用于方法演示与实现验证，**不构成任何投资建议**。")
     return "\n".join(L) + "\n"
 
@@ -535,7 +535,7 @@ def _summary_md(rows: List[Dict], data: MarketData, mode: str, cfg: Dict) -> str
         f"> 数据：{data.name}（{data.n_assets} 资产，{len(data.dates)} 期）｜ 模式：**{mode}**"
         f"（walk-forward {cfg['n_windows']} 窗、bootstrap {cfg['n_boot']} 次、OAT 扰动 ×0.5/×1.0/×2.0）。",
         "> 由 `kairos_strategies.validation` / `examples/validate.py` 自动生成，"
-        "**仅为合成数据演示，非投资建议**。按 PSR 降序排列。",
+        f"**{'合成数据演示' if str(data.name).startswith('synthetic') else f'真实历史数据（{data.name}）回测'}，非投资建议**。按 PSR 降序排列。",
         "",
         f"| 策略 | 渠道 | 累计收益 | 夏普 | PSR | 夏普{ci_pct:.0f}%CI | 正收益窗口占比 "
         f"| 窗口夏普 均值±std | 敏感性区间(稳健性) | 敏感性中位夏普 |",
