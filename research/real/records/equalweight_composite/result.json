@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "name": "equalweight_composite",
+    "channel": "multi_factor",
+    "universe": "cross_section",
+    "long_only": true,
+    "description": "等权复合因子：动量、低波动、短期反转、趋势质量四个纯价格因子先做截面标准化（z 分数，可选百分位排名），再等权相加成一个复合 alpha，做多复合分最高的约 1/3 篮子，篮子内按秩线性倾斜配权（分数越高权重越大），每行权重和 ≈ 1。",
+    "hypothesis": "成因：单一异象各自只捕捉收益截面的一维（信息扩散、彩票偏好、流动性冲击、趋势干净度），噪声大、时灵时不灵；把方向一致的多个弱信号等权相加，各因子的特质噪声在求和中相互抵消，复合分的信噪比与截面区分度高于任何单一成分，且等权不需要估计任何参数，避免了权重估计误差（DeMiguel 的 1/N 稳健性结论在因子层同样成立）。失效条件：几个因子高度相关时等权等于给同一维暴露加倍下注，分散化是假的；因子风格集体逆风（动量崩溃 + 高波反弹同时发生）时四路信号同向亏损；等权对量纲/分布异常敏感（已用截面标准化缓解），且在因子有效性差异悬殊时明显劣于按 IC/IR 加权。",
+    "source": "多因子合成最基础的范式——因子等权（equal-weight factor blending），本仓库原创实现；四个基础因子与截面标准化、篮子配权工具均在本模块内自实现。与 factor 渠道的单因子策略（low_volatility / short_term_reversal / trend_quality 各自只用一个分数）、long_short.quality_ls（两成分固定主观权重的多空版）不同，此处是四因子标准化后的等权复合、只做多。",
+    "params": {
+      "mom_window": 63,
+      "vol_window": 21,
+      "rev_window": 5,
+      "qual_window": 21,
+      "top_frac": 0.3333333333333333,
+      "xs_norm": "z",
+      "score_lag": 1,
+      "n_factors": 4,
+      "factor_weight": 0.25
+    }
+  },
+  "metrics": {
+    "total_return": 1.6188061276470926,
+    "cagr": 0.13394432678338464,
+    "volatility": 0.2519803238430475,
+    "sharpe": 0.6249635298338404,
+    "sortino": 0.9230747274216569,
+    "max_drawdown": 0.4625992424482134,
+    "calmar": 0.2895472246658063,
+    "win_rate": 0.5048231511254019,
+    "profit_factor": 1.121977793059437,
+    "avg_turnover": 0.3824967639133744,
+    "total_turnover": 738.2187543528125,
+    "n_periods": 1930.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

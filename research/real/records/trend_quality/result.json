@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "name": "trend_quality",
+    "channel": "factor",
+    "universe": "cross_section",
+    "long_only": true,
+    "description": "趋势质量/价格效率：用净位移/路径长度（效率比）衡量趋势平滑度，做多效率最高的一篮子。",
+    "hypothesis": "净位移占路径长度比例高，说明趋势由持续信息驱动而非噪声来回拉锯，动量更可信、回撤更小；做多『走得直』的资产可过滤假突破与震荡。在趋势末端发生反转，或市场进入高噪声状态时，效率比会失去 predictive 能力。",
+    "source": "因子异象——趋势质量/价格效率 (efficiency ratio)，纯价格构造。",
+    "params": {
+      "window": 30,
+      "top_frac": 0.3333333333333333
+    }
+  },
+  "metrics": {
+    "total_return": 0.3251273622939621,
+    "cagr": 0.03744043596103541,
+    "volatility": 0.2968119988663775,
+    "sharpe": 0.27140139657459483,
+    "sortino": 0.4100791478942136,
+    "max_drawdown": 0.6467056828881637,
+    "calmar": 0.05789408838009249,
+    "win_rate": 0.48105263157894734,
+    "profit_factor": 1.049528816830821,
+    "avg_turnover": 0.4278851809303609,
+    "total_turnover": 825.8183991955965,
+    "n_periods": 1930.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

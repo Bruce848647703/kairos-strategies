@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "name": "inventory_skew_mm",
+    "channel": "market_making",
+    "universe": "timing",
+    "long_only": false,
+    "description": "库存偏斜做市：维护有界净库存，收盘价低于参考价×(1−band−偏斜) 买入一份加库存、高于参考价×(1+band−偏斜) 卖出一份减库存（可转空）；偏斜 = skew·band·(库存/cap)，多库存时报价带整体下移使其更易卖出，驱动库存均值回归到 0；权重=(库存/cap)×(1/N)，行和可不为 0 但有界。",
+    "hypothesis": "核心假设：价格围绕参考价（近期成交中枢）震荡时，「低买高卖」的双边成交能持续积累库存利润，库存偏斜报价保证净敞口有界且自动向 0 回归，风险可控。失效场景：单边行情中价格持续位于报价带同一侧，库存被顶在上限（下跌接飞刀 / 上涨过早转空）；日频无真实盘口，「报价被击中」只是收盘价穿越阈值的概念性近似，赚不到真实价差；band 相对日波动过宽时几乎不成交、过窄时高频翻转。",
+    "source": "做市实务中的库存偏斜报价范式（inventory-skew quoting，如 Avellaneda-Stoikov 的报价偏斜思想）的日频概念性代理，本仓库原创状态机实现，非真实盘口撮合。与 crypto.grid_trading（固定首价锚、long-only [0,max_steps]、无库存偏斜）不同：此处参考价滚动、库存双向有界，且报价带随库存偏斜以驱动库存归零。",
+    "params": {
+      "ref_window": 20,
+      "band": 0.01,
+      "skew": 1.0,
+      "cap_steps": 5
+    }
+  },
+  "metrics": {
+    "total_return": 0.1721991308961892,
+    "cagr": 0.020961836713287108,
+    "volatility": 0.2829002040073507,
+    "sharpe": 0.18705948588872504,
+    "sortino": 0.5415640601429033,
+    "max_drawdown": 0.4658100889135661,
+    "calmar": 0.04500082160559795,
+    "win_rate": 0.4730507587650445,
+    "profit_factor": 1.0708972781335793,
+    "avg_turnover": 0.09137032125013635,
+    "total_turnover": 176.34472001276316,
+    "n_periods": 1930.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "name": "bollinger_reversion",
+    "channel": "meanrev",
+    "universe": "timing",
+    "long_only": false,
+    "description": "布林带回归：收盘跌破下轨做多、升破上轨做空，价格回到中轨附近（带内 exit_band 比例）双向平仓。",
+    "hypothesis": "核心假设：布林带刻画了近期价格的常态波动区间，触及边界多为流动性冲击/过度反应，价格倾向回到中轨。失效场景：真突破行情（波动率 regime 切换）中带轨会被持续「骑乘」，逆势持仓亏损；带宽收窄期信号稀疏。",
+    "source": "经典技术分析——布林带均值回归（与 technical 渠道的 bollinger_breakout 突破逻辑相反，本仓库独立原创实现）。",
+    "params": {
+      "window": 20,
+      "num_std": 2.0,
+      "entry_band": 1.0,
+      "exit_band": 0.2
+    }
+  },
+  "metrics": {
+    "total_return": -0.2245099523510633,
+    "cagr": -0.03265370216790442,
+    "volatility": 0.16449808204725322,
+    "sharpe": -0.12424313263551189,
+    "sortino": -0.2202265830191012,
+    "max_drawdown": 0.363998341988232,
+    "calmar": -0.08970838160839784,
+    "win_rate": 0.478806907378336,
+    "profit_factor": 0.9657757914015153,
+    "avg_turnover": 0.08154836673240519,
+    "total_turnover": 157.388347793542,
+    "n_periods": 1930.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

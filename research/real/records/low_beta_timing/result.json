@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "name": "low_beta_timing",
+    "channel": "defensive",
+    "universe": "cross_section",
+    "long_only": true,
+    "description": "低 beta 倾斜配置（只做多满仓）：逐资产滚动 OLS 估计对等权市场的 beta 并朝当期截面均值收缩，权重 ∝ 1/clip(β, floor, cap)——beta 越低权重越高，逐行归一到和 = 1（满仓、无杠杆），并对单资产权重设 max(w_cap, 1/N) 上限用 water-filling 再分配；单个资产 beta 未知时用当期截面中位数填补，整行未知（预热期）回退等权 1/N。组合 beta 因此低于等权基准，是纯『低 beta 倾斜』的风险端配置。",
+    "hypothesis": "成因：与 BAB 同源的杠杆约束异象，但只用多头表达——在不能做空或不愿承担空头尾部风险时，把预算按 1/β 重新分配即可把组合 beta 压到等权基准之下，用更少的系统性风险换取相近（甚至更高）的收益，夏普与最大回撤同时改善；beta 的可预测性远强于收益，故这是一种『不预测收益、只管理风险』的稳健倾斜。朝截面均值收缩 beta 可抑制估计噪声导致的排序抖动，单资产上限避免近零 beta 资产垄断预算。失效场景：高 beta 领涨的强牛阶段（成长/题材行情）持续跑输基准；各资产 beta 都贴近 1 的同质化行情中倾斜失去区分度（退化为等权）；beta 结构突变处窗口估计滞后；低 beta 资产拥挤、估值被买贵后异象衰减；等权市场代理粗糙时『低 beta』可能只是低行业暴露。",
+    "source": "防御类范式——低 beta 倾斜配置 (low-beta / minimum-beta tilt) 的本仓库原创实现；与 regime 渠道 beta_timing（等权预算 × 乘数 g=clip(1+k(1-β))，靠 beta 均值恒等式保持行和）不同，此处是**逆 beta 直接配权 + 截面收缩 + 上限 water-filling**；与 allocation 渠道 inverse_vol / risk_parity_alloc（按波动/协方差分配）的输入变量也不同。",
+    "params": {
+      "beta_window": 60,
+      "shrink": 0.2,
+      "beta_floor": 0.2,
+      "beta_cap": 2.5,
+      "w_cap": 0.4
+    }
+  },
+  "metrics": {
+    "total_return": 7.45748220794623,
+    "cagr": 0.321508075730472,
+    "volatility": 0.3320971686763226,
+    "sharpe": 0.9833931640574669,
+    "sortino": 2.1892918414417752,
+    "max_drawdown": 0.3223393420750178,
+    "calmar": 0.9974211452465138,
+    "win_rate": 0.5113989637305699,
+    "profit_factor": 1.2918031241880163,
+    "avg_turnover": 0.03262418305758629,
+    "total_turnover": 62.964673301141545,
+    "n_periods": 1930.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

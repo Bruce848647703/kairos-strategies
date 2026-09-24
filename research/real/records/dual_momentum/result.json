@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "name": "dual_momentum",
+    "channel": "momentum",
+    "universe": "cross_section",
+    "long_only": true,
+    "description": "双动量：绝对动量(自身过去收益>0)过滤 + 相对动量(截面排名靠前)共同决定持有，被选中者等权归一。",
+    "hypothesis": "绝对动量规避下行资产（择大势），相对动量优选最强者，二者结合降低回撤；在动量崩溃/普跌无强势标的时失效。",
+    "source": "动量范式——双动量 dual momentum（Antonacci 思路，原创实现）。",
+    "params": {
+      "lookback": 126,
+      "top_frac": 0.3333333333333333
+    }
+  },
+  "metrics": {
+    "total_return": 1.4822173880030092,
+    "cagr": 0.1260410264548777,
+    "volatility": 0.2540148471345844,
+    "sharpe": 0.594611069289115,
+    "sortino": 0.8640183910739009,
+    "max_drawdown": 0.4978079577358753,
+    "calmar": 0.2531920683392369,
+    "win_rate": 0.5077605321507761,
+    "profit_factor": 1.1166091252402823,
+    "avg_turnover": 0.15435030325741253,
+    "total_turnover": 297.89608528680617,
+    "n_periods": 1930.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

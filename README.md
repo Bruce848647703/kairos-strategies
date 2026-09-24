@@ -101,6 +101,20 @@ for s in ks.discover():
 4. 加测试；运行 `python examples/run_all.py` 生成记录。
 详见 `CHANNEL_SPEC.md`。
 
+## 真实数据回测（A 股）
+除合成数据外，本库支持在**真实 A 股行情**上回测全部策略：
+
+```bash
+python examples/run_real.py            # 无本地数据则自动联网抓取(腾讯公开行情)
+python examples/run_real.py --data-dir /path/to/csv --cost 0.001
+```
+- 真实数据加载/抓取见 `kairos_strategies/realdata.py`（自包含；自动处理停牌、上市日、非正价、防未来）。
+- 默认股票池：38 只跨行业流动 A 股，约 8 年（2018-10 ~ 2026-09）前复权日线。
+- 产物：`research/real/records/<策略>/`（逐策略真实回测记录）+ `research/real/SUMMARY.md`（真实数据汇总）+ `REAL_NOTES.md`。
+- 合成数据结果在 `research/SUMMARY.md`，真实数据结果在 `research/real/SUMMARY.md`，便于对照。
+
+> 真实数据来自公开行情接口，仅用于研究演示；结果存在过拟合/幸存者偏差/样本区间依赖等局限，**不构成投资建议**。
+
 ## 数据与免责声明
 - 默认使用**合成数据**（固定 seed、离线、可复现），植入趋势/均值回归/随机三种"市场性格"，
   仅用于验证实现正确性与演示 QR 流程。

@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "name": "dual_thrust",
+    "channel": "trend",
+    "universe": "timing",
+    "long_only": true,
+    "description": "Dual Thrust：range = 近 N 日 max(HH−LC, HC−LL)（收盘价近似=滚动收盘极差），锚定前一日收盘构造 上轨=anchor+K1×range、下轨=anchor−K2×range（range 用截至昨日的值，防未来）；收盘突破上轨做多、跌破下轨离场，状态机持有，单资产仓位=等预算 1/N，逐行和≤1。",
+    "hypothesis": "核心假设：以近几日真实波幅自适应地设定突破门槛，可在波动放大时抬高门槛过滤噪声、在波动收敛后更易捕捉真突破；Dual Thrust 的非对称上下轨(K1/K2)允许对多空设不同敏感度（本策略 long_only 只用做多侧与离场侧）。只有收盘价时 HH≈HC=滚动最高、LL≈LC=滚动最低，range 退化为滚动收盘极差，当日 open 用前收近似。失效场景：无方向宽幅震荡市中频繁触发上下轨而反复止损(靠偶发大趋势回本)；range 滞后于波动骤升时门槛偏低产生假突破。",
+    "source": "经典 CTA——Dual Thrust 区间突破系统（本仓库以收盘价近似原创实现）。",
+    "params": {
+      "window": 4,
+      "k1": 0.5,
+      "k2": 0.5,
+      "range_floor_pct": 0.002
+    }
+  },
+  "metrics": {
+    "total_return": 0.6812760994623401,
+    "cagr": 0.07019194452486155,
+    "volatility": 0.1432083654769716,
+    "sharpe": 0.5448235139513443,
+    "sortino": 0.876760105711504,
+    "max_drawdown": 0.36884096542551503,
+    "calmar": 0.19030409066380222,
+    "win_rate": 0.4771547248182762,
+    "profit_factor": 1.1189243209577824,
+    "avg_turnover": 0.1977998746338223,
+    "total_turnover": 381.753758043277,
+    "n_periods": 1930.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

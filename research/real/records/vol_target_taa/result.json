@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "name": "vol_target_taa",
+    "channel": "taa",
+    "universe": "cross_section",
+    "long_only": true,
+    "description": "组合波动率目标战术配置：风险 sleeve 用滚动逆波动率加权（行内归一到 1），再按 scale = clip(目标波动 / sleeve 已实现波动(EWMA 年化), 0, 1) 缩放总敞口，scale < 1 的差额即为现金；波动越高仓位越低，缩放上限 1（不加杠杆）。",
+    "hypothesis": "核心假设：波动率有强聚集性与可预测性，且高波动期单位风险补偿更差（去杠杆、流动性收缩、杠杆效应），把组合波动锁定在目标水平能显著改善风险调整后收益并压低下行尾部。与单资产择时不同，这里直接对**组合 sleeve 的已实现波动**（含相关性效应）做目标控制，比用单资产波动近似更准确；EWMA 对波动突变反应快于等权滚动窗口。失效场景：目标波动长期高于市场已实现波动时退化为满仓持有（不加杠杆故无超额收益）、波动骤升后急速回落的 V 型行情中因滞后而踏空、以及波动与收益正相关的上行加速阶段会被系统性降仓。",
+    "source": "TAA 风险管理范式——组合层 volatility targeting / 风险预算缩放（目标波动 - 现金二元配置），EWMA 波动与逆波动率 sleeve 均为本仓库原创实现。",
+    "params": {
+      "target_vol": 0.1,
+      "vol_span": 20,
+      "sleeve_window": 60,
+      "vol_floor": 0.02,
+      "max_scale": 1.0,
+      "min_scale": 0.0
+    }
+  },
+  "metrics": {
+    "total_return": 0.4533303980224108,
+    "cagr": 0.05002564419456701,
+    "volatility": 0.11072195466428367,
+    "sharpe": 0.4959862516292424,
+    "sortino": 0.7478511835663779,
+    "max_drawdown": 0.22914210720157524,
+    "calmar": 0.21831711685604638,
+    "win_rate": 0.5028780743066458,
+    "profit_factor": 1.093896597172724,
+    "avg_turnover": 0.03012265065750143,
+    "total_turnover": 58.13671576897776,
+    "n_periods": 1930.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

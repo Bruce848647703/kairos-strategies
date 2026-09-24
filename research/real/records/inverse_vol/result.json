@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "name": "inverse_vol",
+    "channel": "allocation",
+    "universe": "cross_section",
+    "long_only": true,
+    "description": "逆波动率加权：权重 ∝ 1/滚动已实现波动（滚动样本协方差对角线），归一到每行和=1。",
+    "hypothesis": "波动率的可预测性远强于收益率，按风险倒数分配资金可在不预测收益的前提下压低组合波动、改善夏普。忽略相关性是其近似：当相关性结构剧变、低波资产拥挤或出现尾部跳空时，配置会偏离真正的风险最优。",
+    "source": "组合配置经典范式——逆波动率加权 (inverse volatility weighting)，原创实现。",
+    "params": {
+      "window": 60
+    }
+  },
+  "metrics": {
+    "total_return": 6.580972147012601,
+    "cagr": 0.302763657388466,
+    "volatility": 0.3335142679488879,
+    "sharpe": 0.9378733347063476,
+    "sortino": 2.058341516307962,
+    "max_drawdown": 0.31472557320273953,
+    "calmar": 0.961992552138215,
+    "win_rate": 0.5041450777202072,
+    "profit_factor": 1.2711201930559333,
+    "avg_turnover": 0.022091292138200738,
+    "total_turnover": 42.63619382672742,
+    "n_periods": 1930.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

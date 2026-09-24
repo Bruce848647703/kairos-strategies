@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "name": "zscore_reversion",
+    "channel": "meanrev",
+    "universe": "timing",
+    "long_only": false,
+    "description": "滚动 z-score 回归：对数价格相对 N 期均值偏离 z < -阈值做多、z > +阈值做空，|z| 收敛到中枢附近平仓（三态滞后带）。",
+    "hypothesis": "核心假设：无漂移或弱漂移品种的价格围绕中枢震荡，标准化偏离越极端、回归概率越高，故反向持仓期望为正。失效场景：强趋势/结构性位移（如趋势品种持续单边），z 长期停留在极端区，逆势持仓被反复止损。",
+    "source": "统计套利经典范式——时序 z-score 均值回归（本仓库原创实现，指标复用自研 indicators.rolling_zscore）。",
+    "params": {
+      "window": 20,
+      "entry_z": 1.5,
+      "exit_z": 0.5
+    }
+  },
+  "metrics": {
+    "total_return": 0.1556815795991351,
+    "cagr": 0.019071789448928067,
+    "volatility": 0.28470271319120277,
+    "sharpe": 0.18130854312388064,
+    "sortino": 0.4918482547262588,
+    "max_drawdown": 0.3932590925255882,
+    "calmar": 0.048496753950290725,
+    "win_rate": 0.48717948717948717,
+    "profit_factor": 1.0749984723512886,
+    "avg_turnover": 0.1222533252866162,
+    "total_turnover": 235.94891780316925,
+    "n_periods": 1930.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

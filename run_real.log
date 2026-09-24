@@ -1,0 +1,14 @@
+真实数据: 1930 交易日 × 38 只 A 股，区间 2018-10-16 ~ 2026-09-23
+============================================================
+真实数据回测完成：成功 106 / 跳过 0 -> /home/zhuoming.wang/quant-hub/kairos/kairos-strategies/research/real
+
+真实数据夏普 Top8：
+  equal_weight_rebal       ch=allocation    sharpe=1.15 ret= 750.2% mdd= 29.1%
+  equal_weight_buy_hold    ch=benchmark     sharpe=1.07 ret=1170.7% mdd= 29.8%
+  cppi                     ch=riskmgmt      sharpe=1.07 ret=1158.4% mdd= 29.8%
+  turn_of_month            ch=seasonality   sharpe=1.05 ret= 196.1% mdd= 15.5%
+  correlation_regime       ch=dispersion    sharpe=1.03 ret= 895.3% mdd= 31.2%
+  trend_reversion_blend    ch=ensemble      sharpe=1.01 ret= 167.5% mdd= 10.2%
+  range_breakout           ch=breakout      sharpe=1.00 ret= 114.9% mdd= 15.3%
+  low_beta_timing          ch=defensive     sharpe=0.98 ret= 745.7% mdd= 32.2%
+===DONE===

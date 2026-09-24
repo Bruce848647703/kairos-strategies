@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "name": "eof_stat_arb",
+    "channel": "statarb",
+    "universe": "cross_section",
+    "long_only": false,
+    "description": "PCA/EOF 统计套利：对截面收益的滚动协方差做 numpy.linalg.eigh 特征分解，取前 m 个主成分构造投影矩阵 P 重构「公允（系统性）收益」，特质残差 u = r - P·r 在 h 日上累计成实际价格相对公允价格的偏离，按自身残差波动标准化后做多被低估(z 低)、做空被高估(z 高)的资产，逐行去均值后为美元中性组合。",
+    "hypothesis": "核心假设：截面收益的大部分方差由少数共同因子（主成分/EOF）解释，剔除因子后的特质偏离多为流动性冲击与过度反应造成的临时错价，会向因子隐含的公允价格回归，且多空对冲掉因子敞口后风险有限。失效场景：偏离来自真实的特质信息（财报、被并购、退市风险）时会继续扩大；因子结构不稳定或主成分个数选错（m 过大把信号本身当因子吸收、m 过小残留因子敞口）都会显著削弱效果。",
+    "source": "Avellaneda & Wei (2010) 的 PCA 统计套利思路（用主成分重构公允价格、对残差做 OU 均值回归）的自研简化版：改为对**收益**（而非对数价格）做滚动 PCA，用「h 日累计残差 / 残差波动」替代 OU 参数估计。特征分解、投影与标准化全部为本仓库原创 numpy 实现，不使用 sklearn/statsmodels。",
+    "params": {
+      "window": 150,
+      "n_components": 2,
+      "refit_freq": 5,
+      "horizon": 5,
+      "z_window": 40,
+      "z_cap": 3.0,
+      "budget": 1.0
+    }
+  },
+  "metrics": {
+    "total_return": -0.40666696823157145,
+    "cagr": -0.06588660375839905,
+    "volatility": 0.22633063831332556,
+    "sharpe": -0.2125790916985952,
+    "sortino": -0.6607432834886846,
+    "max_drawdown": 0.6056978034146583,
+    "calmar": -0.10877801337062692,
+    "win_rate": 0.4592422502870264,
+    "profit_factor": 0.9170949980862586,
+    "avg_turnover": 0.5756941694760608,
+    "total_turnover": 1111.0897470887974,
+    "n_periods": 1930.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

@@ -105,7 +105,7 @@ def record_readme(s: Strategy, m: Dict[str, float], data: MarketData,
 ## 净值曲线
 {chart}
 ## 结论与改进方向
-- 结果为**合成数据上的演示**，用于验证实现正确性与 QR 流程，不构成任何投资建议或收益承诺。
+- 结果为 **{"合成数据演示，用于验证实现正确性与 QR 流程" if str(data.name).startswith("synthetic") else f"真实历史数据（{data.name}）回测演示，存在过拟合/幸存者偏差/样本区间依赖等局限"}**，不构成任何投资建议或收益承诺。
 - 改进方向：在真实数据上重跑、参数敏感性分析、加入波动率目标/风控叠加、与其它策略做相关性分散。
 """
 
@@ -116,7 +116,7 @@ def summary_md(rows: List[Dict], data: MarketData, bt: Backtester) -> str:
         "# 策略回测汇总 (SUMMARY)",
         "",
         f"> 数据集：{data.name}（{data.n_assets} 资产，{int(rows[0]['n_periods']) if rows else 0} 期）  ",
-        f"> 回测：向量化、权重滞后一期、单边成本 {bt.cost_rate:.4%}。结果由 `examples/run_all.py` 自动生成，**仅为合成数据演示，非投资建议**。",
+        f"> 回测：向量化、权重滞后一期、单边成本 {bt.cost_rate:.4%}。结果由回测流水线自动生成，**仅供研究，非投资建议**。",
         "",
     ]
     by_ch: Dict[str, List[Dict]] = {}

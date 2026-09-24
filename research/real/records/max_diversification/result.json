@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "name": "max_diversification",
+    "channel": "allocation",
+    "universe": "cross_section",
+    "long_only": true,
+    "description": "最大分散化：最大化分散化比率 DR=(Σwᵢσᵢ)/σ_p，自研两阶段迭代（阻尼定点迭代 + Frank-Wolfe 精确线搜索）求解，归一到每行和=1。",
+    "hypothesis": "DR 度量『加权平均单资产波动』与『组合实际波动』之比，最大化 DR 即最大化分散化收益，避免组合被相关性结构中暗含的共同风险主导，兼具低相关暴露与风险均衡。当所有资产相关性趋同（系统性危机）时无处分散，DR 优势消失。",
+    "source": "组合配置经典范式——Most Diversified Portfolio（Choueifaty-Coignard 分散化比率思想），两阶段迭代求解为本仓库原创纯 numpy 实现。",
+    "params": {
+      "window": 60,
+      "max_iters": 80,
+      "gamma": 0.5,
+      "tol": 1e-07,
+      "fw_iters": 60,
+      "fw_tol": 1e-09
+    }
+  },
+  "metrics": {
+    "total_return": 5.2881004380217,
+    "cagr": 0.27134273551916777,
+    "volatility": 0.3218216773226802,
+    "sharpe": 0.8841293782339174,
+    "sortino": 1.9887391056806465,
+    "max_drawdown": 0.38122590550669566,
+    "calmar": 0.7117636330577278,
+    "win_rate": 0.5134715025906735,
+    "profit_factor": 1.261836942864775,
+    "avg_turnover": 0.14082497253901857,
+    "total_turnover": 271.79219700030586,
+    "n_periods": 1930.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

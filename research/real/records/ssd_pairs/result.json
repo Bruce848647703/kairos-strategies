@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "name": "ssd_pairs",
+    "channel": "pairs",
+    "universe": "cross_section",
+    "long_only": false,
+    "description": "距离法（SSD）配对交易：在形成期窗口内把每只价格除以窗口首日价格做归一化，用一次矩阵乘法算出全部资产对的归一化路径平方差之和 SSD，取「历史走势最像」的一对（SSD 最小，并列按资产索引字典序）；交易期沿用同一归一化基准构造价差 norm_y - norm_x，对其做尾部滚动 z-score：价差被高估(z 高)则做空 y 腿/做多 x 腿，被低估则反向，两腿等预算反向，组合逐行权重和恒为 0。每 refit_freq 期重新选对。",
+    "hypothesis": "核心假设：历史上价格走势最贴近的两只资产，往往受同一基本面/资金纽带约束，短期背离多为流动性冲击造成的临时错价，会向「历史最像」的关系收敛，故按价差 z-score 反向持仓可获得收敛收益，且两腿对冲掉市场 beta。失效场景：SSD 只度量过去的**几何相似度**、不检验价差的平稳性，可能选中两只同涨同跌的趋势资产（相似但都非平稳），此时价差发散；相似度排名频繁换位会带来换手，且窗口内发生结构性变化（并购、政策）时形成期本身已失效。",
+    "source": "配对交易距离法（distance approach / Sum of Squared Difference）经典范式——Gatev, Goetzmann & Rouwenhorst (2006) 的自研 numpy 实现：归一化价格、SSD 矩阵、最接近对筛选与价差 z-score 全部本仓库原创。与 statarb 渠道 coint_pairs（协整门槛 + 估 β + ADF/半衰期诊断，只取统计上最显著的一对）、meanrev 渠道 pairs_spread（固定两腿、β=1 的对数价差 + 三态状态机）均不同：此处**不做任何平稳性检验、不估 β**，纯按价格路径距离选对，且用死区+斜坡的连续仓位而非离散三态。",
+    "params": {
+      "formation_window": 90,
+      "z_window": 30,
+      "refit_freq": 10,
+      "entry_z": 1.5,
+      "exit_z": 0.5,
+      "leg_budget": 0.5
+    }
+  },
+  "metrics": {
+    "total_return": -0.7874584361968607,
+    "cagr": -0.18307087227654772,
+    "volatility": 0.11804031205805823,
+    "sharpe": -1.6527013557462442,
+    "sortino": -2.003026686126172,
+    "max_drawdown": 0.7917458008319912,
+    "calmar": -0.23122430467477206,
+    "win_rate": 0.423841059602649,
+    "profit_factor": 0.6792800376528875,
+    "avg_turnover": 0.2730747959380089,
+    "total_turnover": 527.0343561603571,
+    "n_periods": 1930.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

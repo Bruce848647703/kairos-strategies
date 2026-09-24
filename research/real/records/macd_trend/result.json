@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "name": "macd_trend",
+    "channel": "technical",
+    "universe": "timing",
+    "long_only": true,
+    "description": "MACD 动能：柱状图转正做多，明显转负离场（带缓冲）。",
+    "hypothesis": "MACD 反映快慢动能差，柱持续为正代表上升动能占优。",
+    "source": "经典技术分析——MACD。",
+    "params": {
+      "fast": 12,
+      "slow": 26,
+      "signal": 9,
+      "band": 0.0
+    }
+  },
+  "metrics": {
+    "total_return": 3.1478198837330265,
+    "cagr": 0.20411706380445227,
+    "volatility": 0.2654729847708897,
+    "sharpe": 0.8055899027547867,
+    "sortino": 2.4381650101242367,
+    "max_drawdown": 0.18843269335213675,
+    "calmar": 1.0832359298872043,
+    "win_rate": 0.4942226890756303,
+    "profit_factor": 1.3379593403361525,
+    "avg_turnover": 0.08299526227206742,
+    "total_turnover": 160.18085618509014,
+    "n_periods": 1930.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

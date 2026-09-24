@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "name": "volume_price_divergence",
+    "channel": "microstructure",
+    "universe": "timing",
+    "long_only": true,
+    "description": "量价背离：价涨量增（确认）按量能连续加权做多，价创新高但量缩（背离）清仓离场。",
+    "hypothesis": "健康的上涨需要成交量确认：放量新高意味着新增资金入场、信息被广泛接受，趋势延续概率高；缩量新高说明追买意愿枯竭，是经典的顶部背离信号。按量比连续调仓（而非 0/1 开关）能让仓位与信号置信度成正比，降低阈值敏感性。当量能季节性萎缩（假期）、或上涨由低量能的逼空行情驱动时，确认/背离判别可能失真。",
+    "source": "微观结构/量价分析——经典『量在价先/背离』范式的原创连续权重实现。",
+    "params": {
+      "mom_window": 20,
+      "vol_window": 20,
+      "high_window": 20,
+      "vr_floor": 0.5,
+      "vr_cap": 1.5,
+      "div_ratio": 0.9
+    }
+  },
+  "metrics": {
+    "total_return": 0.5971945956026739,
+    "cagr": 0.06304689078676784,
+    "volatility": 0.09660040773637972,
+    "sharpe": 0.68085494384862,
+    "sortino": 1.1412688204843653,
+    "max_drawdown": 0.18789906444081395,
+    "calmar": 0.33553594837949224,
+    "win_rate": 0.4680628272251309,
+    "profit_factor": 1.189350460134835,
+    "avg_turnover": 0.1550918962395768,
+    "total_turnover": 299.32735974238324,
+    "n_periods": 1930.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

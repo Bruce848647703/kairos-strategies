@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "name": "ridge_alpha",
+    "channel": "ml_signal",
+    "universe": "cross_section",
+    "long_only": true,
+    "description": "自研岭回归（闭式解 (XᵀX+αI)⁻¹Xᵀy）walk-forward 预测下期收益：每 21 期用滚动 2 年窗口重训（只用已实现标签），按预测值截面排名做多前约 1/3 篮子，选中集内按分数线性加权，权重持有到下次重训。",
+    "hypothesis": "滞后收益/动量/波动/RSI/均线偏离等特征对下期收益存在弱而相对稳定的线性可预测性；L2 收缩把共线特征与噪声的系数整体压小，以微小偏差换取方差大幅下降，使小样本下的截面信号更稳健。当特征与收益的关系转为非线性、市场风格急切换或信噪比极低时失效，退化为近似等权噪声权重。",
+    "source": "机器学习范式——岭回归（Hoerl–Kennard L2 正则最小二乘，闭式解），numpy.linalg 全自研实现，不使用任何第三方 ML 库。",
+    "params": {
+      "alpha": 25.0,
+      "refit": 21,
+      "train_window": 504,
+      "min_train_dates": 126,
+      "top_frac": 0.3333333333333333
+    }
+  },
+  "metrics": {
+    "total_return": 2.277739326246719,
+    "cagr": 0.16766570315756635,
+    "volatility": 0.4059635073511655,
+    "sharpe": 0.5836305541005199,
+    "sortino": 0.9105630716009124,
+    "max_drawdown": 0.6153252428726013,
+    "calmar": 0.2724830568868444,
+    "win_rate": 0.49607182940516276,
+    "profit_factor": 1.1441903061518293,
+    "avg_turnover": 0.08159677616811704,
+    "total_turnover": 157.4817780044659,
+    "n_periods": 1930.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "name": "vol_target",
+    "channel": "volatility",
+    "universe": "overlay",
+    "long_only": true,
+    "description": "对等权组合做波动率目标：按 目标波动/已实现波动 缩放总敞口，高波降仓、低波满仓，缩放上限 1（不加杠杆）。",
+    "hypothesis": "核心假设：波动率具有强聚集性与可预测性，且高波动期单位风险收益更差（杠杆效应、被迫去杠杆与流动性收缩）。把组合波动锁定在目标水平可显著降低尾部回撤、改善 Sharpe；当目标波动高于市场已实现波动时策略退化为等权持有（不加杠杆），因此牛市低波阶段不占优；在波动骤升后快速回落的 V 型反转中会因滞后而踏空反弹。",
+    "source": "风险管理范式——volatility targeting / 风险预算的总敞口缩放（本仓库原创实现）。",
+    "params": {
+      "window": 20,
+      "target_vol": 0.12,
+      "max_scale": 1.0,
+      "min_scale": 0.0,
+      "vol_floor": 0.01
+    }
+  },
+  "metrics": {
+    "total_return": 0.8072755400418539,
+    "cagr": 0.08033801609526692,
+    "volatility": 0.13287360444553337,
+    "sharpe": 0.6478547458895892,
+    "sortino": 0.9794443722311514,
+    "max_drawdown": 0.2596332395185339,
+    "calmar": 0.3094288552738718,
+    "win_rate": 0.5034013605442177,
+    "profit_factor": 1.1226315530994129,
+    "avg_turnover": 0.02429646718801326,
+    "total_turnover": 46.89218167286559,
+    "n_periods": 1930.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}
