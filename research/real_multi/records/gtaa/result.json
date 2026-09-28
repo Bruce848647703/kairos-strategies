@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "name": "gtaa",
+    "channel": "multi_asset",
+    "universe": "cross_section",
+    "long_only": true,
+    "description": "全球战术资产配置：类别层 12 月绝对+相对动量选强，弱者转现金(货币ETF)。",
+    "hypothesis": "资产类别存在中期动量；绝对动量过滤可在熊市 retreat 到现金降回撤。",
+    "source": "多资产配置——GTAA / 双动量(Antonacci)思想。",
+    "params": {
+      "lookback": 252,
+      "top_k": 2,
+      "vol_window": 60
+    }
+  },
+  "metrics": {
+    "total_return": 1.2664005151704587,
+    "cagr": 0.09158008802548423,
+    "volatility": 0.1267863232167601,
+    "sharpe": 0.7549589140803373,
+    "sortino": 1.0351217543706615,
+    "max_drawdown": 0.1485602913120848,
+    "calmar": 0.6164506492054418,
+    "win_rate": 0.536003408606732,
+    "profit_factor": 1.1783798890460875,
+    "avg_turnover": 0.09042911217541032,
+    "total_turnover": 212.77970094874047,
+    "n_periods": 2353.0
+  },
+  "data": "ashare_etf_real",
+  "cost_rate": 0.0005
+}

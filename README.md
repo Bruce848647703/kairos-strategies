@@ -114,6 +114,7 @@ python examples/run_real.py --data-dir /path/to/csv --cost 0.001
 - 合成数据结果在 `research/SUMMARY.md`，真实数据结果在 `research/real/SUMMARY.md`，便于对照。
 - **行业均衡回测**：`python examples/run_sector.py` 对每个策略叠加 `sector_equalize`（8 行业分组，消除行业集中度），结果在 `research/real_sector/`。
 - **真实数据样本外验证**：`python examples/validate_real.py` 在真实 A 股上产出 walk-forward OOS / 参数敏感性 / PSR / bootstrap CI，结果在 `research/real/validation/` 与 `research/real/VALIDATION_SUMMARY.md`。
+- **真实多资产配置**：`python examples/run_multi.py` 在真实跨资产 ETF（A股/海外股/黄金/国债/货币，9 只 ~9.7 年）上跑 `multi_asset`（全天候/GTAA/60-40）+ 配置类策略，结果在 `research/real_multi/`。多资产策略在 `kairos_strategies/multi_asset.py`（不入个股渠道管线）。
 
 > 真实数据来自公开行情接口，仅用于研究演示；结果存在过拟合/幸存者偏差/样本区间依赖等局限，**不构成投资建议**。
 

@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "name": "all_weather",
+    "channel": "multi_asset",
+    "universe": "cross_section",
+    "long_only": true,
+    "description": "全天候(类风险平价)：在风险资产类别间按逆波动分配，类别内等权。",
+    "hypothesis": "低相关多资产 + 按风险而非资金配置，可在不同宏观环境下更稳健。",
+    "source": "多资产配置——All Weather / 风险平价思想（类别层逆波动简化版）。",
+    "params": {
+      "window": 60
+    }
+  },
+  "metrics": {
+    "total_return": 0.6875936648142631,
+    "cagr": 0.0576446627564573,
+    "volatility": 0.03403197344077359,
+    "sharpe": 1.664016891952429,
+    "sortino": 2.430696823100185,
+    "max_drawdown": 0.05130404617149953,
+    "calmar": 1.1235890160351547,
+    "win_rate": 0.5626859328516787,
+    "profit_factor": 1.3484985511596546,
+    "avg_turnover": 0.009371050474642224,
+    "total_turnover": 22.050081766833152,
+    "n_periods": 2353.0
+  },
+  "data": "ashare_etf_real",
+  "cost_rate": 0.0005
+}

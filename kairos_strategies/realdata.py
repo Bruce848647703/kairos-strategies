@@ -48,6 +48,22 @@ SECTOR_GROUPS: Dict[str, List[str]] = {
 }
 SECTOR_MAP: Dict[str, str] = {s: sec for sec, ms in SECTOR_GROUPS.items() for s in ms}
 
+# 跨资产 ETF 池（真实多资产配置/GTAA 演示）
+ETF_UNIVERSE: Dict[str, str] = {
+    "sh510300": "沪深300ETF", "sh510500": "中证500ETF", "sz159915": "创业板ETF",
+    "sh513100": "纳指ETF", "sz159920": "恒生ETF", "sh513050": "中概互联ETF",
+    "sh518880": "黄金ETF", "sh511010": "国债ETF", "sh511990": "货币ETF",
+}
+# 资产类别分组（全天候/GTAA 在类别层配置）
+ASSET_CLASSES: Dict[str, List[str]] = {
+    "cn_equity": ["sh510300", "sh510500", "sz159915"],
+    "global_equity": ["sh513100", "sz159920", "sh513050"],
+    "commodity": ["sh518880"],
+    "bond": ["sh511010"],
+    "cash": ["sh511990"],
+}
+CLASS_OF: Dict[str, str] = {s: c for c, ms in ASSET_CLASSES.items() for s in ms}
+
 
 def load_panel(data_dir: str, drop_incomplete: bool = True,
                periods_per_year: int = 252) -> MarketData:

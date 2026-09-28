@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "name": "sixty_forty",
+    "channel": "multi_asset",
+    "universe": "cross_section",
+    "long_only": true,
+    "description": "经典 60/40：60% 股票(中外宽基等权) + 40% 债券，定期再平衡。",
+    "hypothesis": "股债负/低相关，60/40 是长期稳健的配置基准。",
+    "source": "多资产配置——传统 60/40 股债组合。",
+    "params": {
+      "equity": 0.6
+    }
+  },
+  "metrics": {
+    "total_return": 0.7784553578063049,
+    "cagr": 0.06360147861558207,
+    "volatility": 0.11561834609768913,
+    "sharpe": 0.5912388288608903,
+    "sortino": 0.841480528844499,
+    "max_drawdown": 0.21311986654797876,
+    "calmar": 0.29843054824390924,
+    "win_rate": 0.5189120271993201,
+    "profit_factor": 1.1077890984210208,
+    "avg_turnover": 0.007153203556399163,
+    "total_turnover": 16.83148796820723,
+    "n_periods": 2353.0
+  },
+  "data": "ashare_etf_real",
+  "cost_rate": 0.0005
+}
