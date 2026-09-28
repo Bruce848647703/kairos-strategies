@@ -135,6 +135,16 @@ python examples/run_real.py --data-dir /path/to/csv --cost 0.001
 python examples/validate.py        # quick 模式；--full 更细
 ```
 
+## 策略锦标赛 / 组合优选 (Tournament)
+`tournament.py` + `examples/run_tournament.py` 把 QR 流程推进到「组合与优选」：在全部策略的收益流上做
+**相关性层次聚类 → 去相关贪心精选 → 分散化策略组合(inverse-vol/equal/sharpe 加权)**，
+产物在 `research/tournament/`（REPORT.md / ranking.csv / correlation.csv / selection.json / combo_equity.*）。
+
+```bash
+python examples/run_tournament.py --data-dir <ashare_csv>   # 真实数据；或 --synthetic
+```
+意义：从上百个策略里挑出**彼此低相关、各自较优**的精英组合，通常能在相近夏普下显著降低回撤。
+
 ## 测试
 ```bash
 make test          # 或 python -m pytest -q
