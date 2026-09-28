@@ -112,7 +112,7 @@ def _windows(start: str, end: str, step: int = 700) -> List[Tuple[str, str]]:
 
 
 def fetch_one(symbol: str, start: str = "2016-01-01", end: Optional[str] = None,
-              adjust: str = "qfq") -> pd.DataFrame:
+              adjust: str = "hfq") -> pd.DataFrame:
     """腾讯源抓取单只前复权日线（按日期窗口分页拼接）。"""
     end = end or dt.date.today().isoformat()
     rows: Dict[str, tuple] = {}
@@ -120,7 +120,7 @@ def fetch_one(symbol: str, start: str = "2016-01-01", end: Optional[str] = None,
         url = (f"https://web.ifzq.gtimg.cn/appstock/app/fqkline/get"
                f"?param={symbol},day,{s},{e},800,{adjust}")
         node = (_http_json(url).get("data") or {}).get(symbol) or {}
-        for r in (node.get("qfqday") or node.get("day") or []):
+        for r in (node.get("qfqday") or node.get("hfqday") or node.get("day") or []):
             if len(r) >= 6:
                 try:
                     rows[r[0]] = (r[0], float(r[1]), float(r[3]), float(r[4]), float(r[2]), float(r[5]))
