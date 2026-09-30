@@ -64,7 +64,8 @@ def test_gtaa_holds_strong_class():
 def test_sixty_forty_constant_split():
     data = _mk(trends={c: 0.05 for c in realdata.ASSET_CLASSES}, vols={c: 0.15 for c in realdata.ASSET_CLASSES})
     w = SixtyForty(equity=0.6).generate_weights(data)
-    eq = realdata.ASSET_CLASSES["cn_equity"] + realdata.ASSET_CLASSES["global_equity"]
+    eq = (realdata.ASSET_CLASSES["cn_equity"] + realdata.ASSET_CLASSES["global_equity"]
+          + realdata.ASSET_CLASSES.get("cn_value", []))
     bond = realdata.ASSET_CLASSES["bond"]
     np.testing.assert_allclose(w[eq].sum(axis=1).values, 0.6, atol=1e-9)
     np.testing.assert_allclose(w[bond].sum(axis=1).values, 0.4, atol=1e-9)

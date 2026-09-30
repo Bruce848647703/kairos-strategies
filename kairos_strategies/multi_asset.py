@@ -148,7 +148,7 @@ class SixtyForty(Strategy):
         self.equity = equity
 
     def generate_weights(self, data: MarketData) -> pd.DataFrame:
-        eq_classes = _present_classes(data, self.asset_classes, include=["cn_equity", "global_equity"])
+        eq_classes = _present_classes(data, self.asset_classes, include=["cn_equity", "global_equity", "cn_value"])
         bond_classes = _present_classes(data, self.asset_classes, include=["bond"])
         cash_classes = _present_classes(data, self.asset_classes, include=["cash"])
         eq_syms = [s for mem in eq_classes.values() for s in mem]
