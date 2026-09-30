@@ -1,5 +1,7 @@
 # Kairos Strategies
 
+[![CI](https://github.com/Bruce848647703/kairos-strategies/actions/workflows/ci.yml/badge.svg)](https://github.com/Bruce848647703/kairos-strategies/actions/workflows/ci.yml)
+
 > Kairos 量化系列的**策略研究库** —— 多渠道收集策略、100% 原创实现、向量化回测，
 > 并把「策略 → 回测 → 结果」的完整 **QR（量化研究）流程**固化为仓库内的研究记录。
 
