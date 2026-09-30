@@ -147,6 +147,12 @@ python examples/run_tournament.py --data-dir <ashare_csv>   # 真实数据；或
 ```
 意义：从上百个策略里挑出**彼此低相关、各自较优**的精英组合，通常能在相近夏普下显著降低回撤。
 
+## 压力 / 情景稳健性测试 (Stress)
+`scenarios.py` + `examples/run_stress.py`：在 6 种合成极端行情（单边上涨 / 崩盘 / 泡沫 / 震荡 / 高波 / 板块轮动）下回测全部策略，产出**跨情景稳健性矩阵**与排行（按最差情景夏普、正收益情景数），识别哪些策略真正稳健、哪些只在特定行情有效。
+```bash
+python examples/run_stress.py            # 产物 research/stress/STRESS_SUMMARY.md + stress_metrics.csv
+```
+
 ## 测试
 ```bash
 make test          # 或 python -m pytest -q
