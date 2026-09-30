@@ -28,6 +28,7 @@ def main():
     ap.add_argument("--cost", type=float, default=0.001, help="单边成本率(默认千一)")
     ap.add_argument("--fetch", action="store_true", help="强制联网重新抓取")
     ap.add_argument("--no-chart", action="store_true")
+    ap.add_argument("--out", default=None, help="输出目录(默认 research/real)；用于增量实验如 60 池 -> research/real60")
     a = ap.parse_args()
 
     have = os.path.isdir(a.data_dir) and any(f.endswith(".csv") for f in os.listdir(a.data_dir))
@@ -42,7 +43,9 @@ def main():
 
     strategies = ks.discover()
     bt = Backtester(cost_rate=a.cost, periods_per_year=data.periods_per_year)
-    root = os.path.join(HERE, "research", "real")
+    root = a.out if a.out else os.path.join(HERE, "research", "real")
+    if not os.path.isabs(root):
+        root = os.path.join(HERE, root)
     records_root = os.path.join(root, "records")
     os.makedirs(records_root, exist_ok=True)
 

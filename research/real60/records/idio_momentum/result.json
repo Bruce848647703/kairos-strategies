@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "name": "idio_momentum",
+    "channel": "factor",
+    "universe": "cross_section",
+    "long_only": true,
+    "description": "残差动量：用过去收益减去等权市场收益得到相对强度，做多相对强度靠前的一篮子。",
+    "hypothesis": "剔除等权市场收益后的相对强度更接近资产特质信息的扩散速度，比原始动量更少被市场beta 污染，截面区分度更高、更稳健。当市场剧烈轮动、特质收益被系统性因子主导，或残差动量策略拥挤时，其优势会衰减。",
+    "source": "因子异象——残差/相对动量 (residual momentum)，纯价格构造。",
+    "params": {
+      "window": 60,
+      "top_frac": 0.3333333333333333
+    }
+  },
+  "metrics": {
+    "total_return": 0.6597196129777321,
+    "cagr": 0.06828058159032069,
+    "volatility": 0.2638195320613043,
+    "sharpe": 0.38183791975744236,
+    "sortino": 0.5670324447655225,
+    "max_drawdown": 0.6668334206352045,
+    "calmar": 0.10239526016149395,
+    "win_rate": 0.4890549919914576,
+    "profit_factor": 1.0704100021997756,
+    "avg_turnover": 0.19968597278013603,
+    "total_turnover": 385.99298538400296,
+    "n_periods": 1933.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

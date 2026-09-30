@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "name": "low_volatility",
+    "channel": "factor",
+    "universe": "cross_section",
+    "long_only": true,
+    "description": "低波动异象：按滚动已实现波动升序排名，做多波动最低的一篮子，波动越低权重越高。",
+    "hypothesis": "高波动『彩票型』资产因投资者偏好博取高收益而被系统性高估，加之机构受杠杆约束倾向用高 beta 替代加杠杆，使低波动组合长期风险调整后收益更优。当低波资产拥挤/估值过高，或危机中相关性趋同、市场普跌时，该优势可能减弱甚至反转。",
+    "source": "因子异象——低波动 (low-volatility anomaly)，纯价格/波动构造。",
+    "params": {
+      "vol_window": 21,
+      "top_frac": 0.3333333333333333
+    }
+  },
+  "metrics": {
+    "total_return": 0.1376320310420478,
+    "cagr": 0.01695282064480086,
+    "volatility": 0.10038747259329134,
+    "sharpe": 0.21764565756596765,
+    "sortino": 0.3136826379469834,
+    "max_drawdown": 0.16377807465430783,
+    "calmar": 0.10351092892369004,
+    "win_rate": 0.4973849372384937,
+    "profit_factor": 1.0397562543132044,
+    "avg_turnover": 0.1328191317448324,
+    "total_turnover": 256.73938166276105,
+    "n_periods": 1933.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

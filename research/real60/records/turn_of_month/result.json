@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "name": "turn_of_month",
+    "channel": "seasonality",
+    "universe": "timing",
+    "long_only": true,
+    "description": "月初/月末效应：仅在每月最后 end_days 个与最前 start_days 个交易日持有等权组合，其余空仓。",
+    "hypothesis": "真实市场常见假说：月末/月初有工资入账与定投资金持续流入、机构 window dressing 与月度再平衡，使该窗口收益系统性偏高。注意：在合成随机数据上通常无显著 edge，结果依赖数据本身是否含有该效应。",
+    "source": "日历效应文献范式——turn-of-the-month effect，本仓库原创实现。",
+    "params": {
+      "end_days": 1,
+      "start_days": 3
+    }
+  },
+  "metrics": {
+    "total_return": 0.7088905435892641,
+    "cagr": 0.07235437778065656,
+    "volatility": 0.07057016631091884,
+    "sharpe": 1.0252073067096767,
+    "sortino": 1.7331566452996405,
+    "max_drawdown": 0.10455260492914709,
+    "calmar": 0.6920380207617923,
+    "win_rate": 0.42643391521197005,
+    "profit_factor": 1.5586887257725093,
+    "avg_turnover": 0.09756209366085396,
+    "total_turnover": 188.5875270464307,
+    "n_periods": 1933.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

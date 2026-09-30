@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "name": "gbm_alpha",
+    "channel": "ml_signal",
+    "universe": "cross_section",
+    "long_only": false,
+    "description": "自研梯度提升决策桩集成 walk-forward 预测下期收益：扩展窗口每 21 期重训，逐轮拟合残差（分位数分箱 + 全量阈值搜索，确定性），按预测值截面去均值后做多高分/做空低分（美元中性，绝对值和 = 1），权重持有到下次重训。",
+    "hypothesis": "提升法把大量弱学习器（单特征阈值分裂）叠加，可捕捉线性模型漏掉的单调非线性与阈值效应（如 RSI 超买超卖、动量突破）；小学习率 + 有限轮数 + 分箱即天然正则。金融序列信噪比低，轮数/箱数过大易过拟合噪声；市场结构突变时历史分裂点失效。",
+    "source": "机器学习范式——梯度提升树（Friedman GBM，决策桩为基学习器），分箱、分裂搜索与提升循环纯 numpy 自研，不使用任何第三方 ML 库。",
+    "params": {
+      "n_estimators": 60,
+      "learning_rate": 0.08,
+      "n_bins": 32,
+      "refit": 21,
+      "train_window": null,
+      "min_train_dates": 126,
+      "budget": 1.0
+    }
+  },
+  "metrics": {
+    "total_return": 0.2666666264803619,
+    "cagr": 0.03129713441674231,
+    "volatility": 0.07879963231717194,
+    "sharpe": 0.43047445017196434,
+    "sortino": 0.6315166192263207,
+    "max_drawdown": 0.1291606775927132,
+    "calmar": 0.242311630753693,
+    "win_rate": 0.492436974789916,
+    "profit_factor": 1.0789321013542432,
+    "avg_turnover": 0.062442648897619045,
+    "total_turnover": 120.70164031909762,
+    "n_periods": 1933.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "name": "portfolio_vol_target",
+    "channel": "riskmgmt",
+    "universe": "overlay",
+    "long_only": true,
+    "description": "组合波动目标 overlay：对『等权 1/N 基准组合』本身做风险预算——用 EWMA（RiskMetrics 风格，平方收益指数平滑）估计基准组合的年化已实现波动，总敞口 e = clip(target_vol / 已实现波动, 0, 1)，每资产 e/N，余额留现金；波动未知的预热期不建仓。",
+    "hypothesis": "核心假设：波动率聚集且可预测（EWMA 对突变反应快于等权滚动窗口），高波动期单位风险补偿更差，把组合波动锁定在目标水平能压低下行尾部并改善风险调整后收益。与既有策略的区别：``vol_target`` 用滚动标准差估计、``vol_target_taa`` 作用于逆波动率 sleeve，本策略直接对等权基准组合做 EWMA 波动目标，是『组合层风险预算』的最小实现。失效场景：目标波动长期高于已实现波动时退化为满仓持有（上限 1 不加杠杆）；波动骤升后急速回落的 V 型行情因平滑滞后而踏空；上行加速伴随高波动时被系统性降仓。",
+    "source": "风险管理范式——volatility targeting / RiskMetrics EWMA 波动估计在等权基准组合层的原创实现（与本仓库 vol_target、vol_target_taa 在作用对象与估计方法上均不同）。",
+    "params": {
+      "target_vol": 0.1,
+      "span": 20,
+      "vol_floor": 0.01,
+      "max_scale": 1.0,
+      "min_scale": 0.0
+    }
+  },
+  "metrics": {
+    "total_return": 0.29460955926695087,
+    "cagr": 0.03423500835979576,
+    "volatility": 0.10281203413616122,
+    "sharpe": 0.37887792227080425,
+    "sortino": 0.5371351042499328,
+    "max_drawdown": 0.22508276829736273,
+    "calmar": 0.15209964147307356,
+    "win_rate": 0.5114942528735632,
+    "profit_factor": 1.0663254962236774,
+    "avg_turnover": 0.03028778660341174,
+    "total_turnover": 58.546291504394894,
+    "n_periods": 1933.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

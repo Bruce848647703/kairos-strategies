@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "name": "high_52w",
+    "channel": "momentum",
+    "universe": "timing",
+    "long_only": true,
+    "description": "52周新高接近度：价格越接近滚动 window 期最高价权重越高，低于阈值则空仓（等预算 1/N）。",
+    "hypothesis": "锚定效应使投资者不愿追高，接近历史高点的价格蕴含上行惯性；接近度捕捉突破动能；在假突破/见顶急跌时失效。",
+    "source": "动量范式——52周新高接近度 52-week-high proximity（George-Hwang 思路，原创实现）。",
+    "params": {
+      "window": 250,
+      "threshold": 0.9
+    }
+  },
+  "metrics": {
+    "total_return": 0.10439504277090217,
+    "cagr": 0.013029326641518013,
+    "volatility": 0.03902935477633506,
+    "sharpe": 0.3512283160401202,
+    "sortino": 0.5060221063440831,
+    "max_drawdown": 0.10110486484362902,
+    "calmar": 0.12886943335189116,
+    "win_rate": 0.4970308788598575,
+    "profit_factor": 1.0923707497058022,
+    "avg_turnover": 0.030025202527056503,
+    "total_turnover": 58.03871648480022,
+    "n_periods": 1933.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

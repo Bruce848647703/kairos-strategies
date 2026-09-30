@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "name": "dca",
+    "channel": "crypto",
+    "universe": "timing",
+    "long_only": true,
+    "description": "定投 (DCA)：每隔 period 期等额买入一份，仓位随时间阶梯式累加，至 n_tranches 份封顶（模拟分批买入摊薄成本）。",
+    "hypothesis": "分批买入摊薄成本、放弃择时，假设长期看多且入场时点不可预测；持续单边下跌中会不断『接飞刀』，是其失效场景。",
+    "source": "加密市场实践——定投 (Dollar-Cost Averaging)，本仓库原创实现。",
+    "params": {
+      "period": 20,
+      "n_tranches": 10
+    }
+  },
+  "metrics": {
+    "total_return": 0.8813061104925355,
+    "cagr": 0.08587676603813477,
+    "volatility": 0.14695535444155516,
+    "sharpe": 0.6342611922731596,
+    "sortino": 0.9173778474586736,
+    "max_drawdown": 0.20690518215056197,
+    "calmar": 0.41505372241302035,
+    "win_rate": 0.5131919296430419,
+    "profit_factor": 1.119492277601748,
+    "avg_turnover": 0.011187254532261418,
+    "total_turnover": 21.624963010861322,
+    "n_periods": 1933.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}

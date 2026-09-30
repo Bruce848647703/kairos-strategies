@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "name": "trend_reversion_blend",
+    "channel": "ensemble",
+    "universe": "cross_section",
+    "long_only": true,
+    "description": "趋势-回归混合元策略：趋势腿取 technical 渠道 donchian_turtle（唐奇安通道突破），均值回归腿取 meanrev 渠道 zscore_reversion（滚动 z-score 回归，因其可多空，混合时只保留多头腿以维持 long_only），按固定 60%/40% 比例逐期线性叠加两者的目标权重面板，每行权重和 ≤ 0.6 + 0.4 = 1，无杠杆。",
+    "hypothesis": "核心假设：趋势型策略在单边行情盈利、在震荡市被反复止损；均值回归策略恰好相反——震荡市收割偏离、单边市逆势受损。两者收益在时间上互补（低相关甚至负相关），按固定 60/40 混合可在不预测市场 regime 的前提下平滑净值、降低最大回撤，同时以趋势腿为主保留上行捕获能力。失效场景：高波动无方向的跳空行情中两腿同时受损（突破即反转、偏离不回归）；固定比例不随 regime 自适应，若市场长期以某一风格为主，混合会持续跑输该风格的纯策略。",
+    "source": "元策略范式——趋势跟随与均值回归的风格混合（style blend / barbell of strategies）；两条腿分别复用本仓库 technical.DonchianTurtleStrategy 与 meanrev.ZscoreReversionStrategy 公开类，多头腿截取、固定比例混合与去杠杆为本渠道原创实现。",
+    "params": {
+      "weighting": "fixed_blend",
+      "trend_base": "donchian_turtle",
+      "reversion_base": "zscore_reversion",
+      "trend_weight": 0.6,
+      "reversion_weight": 0.4
+    }
+  },
+  "metrics": {
+    "total_return": 0.2852968502340243,
+    "cagr": 0.033262065070329916,
+    "volatility": 0.06052517459611345,
+    "sharpe": 0.5708988309283064,
+    "sortino": 0.8344702022080878,
+    "max_drawdown": 0.08317490405162786,
+    "calmar": 0.39990506090254907,
+    "win_rate": 0.5109717868338558,
+    "profit_factor": 1.115839179236777,
+    "avg_turnover": 0.04777758664357912,
+    "total_turnover": 92.35407498203844,
+    "n_periods": 1933.0
+  },
+  "data": "ashare_real",
+  "cost_rate": 0.001
+}
